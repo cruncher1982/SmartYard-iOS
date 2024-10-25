@@ -34,7 +34,7 @@ final class AddressesHeaderCell: CustomBorderCollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backgroundColor = .white
+        backgroundColor = .SmartYard.secondBackgroundColor
         
         let dimensions = type(of: self).preferredHeight(
             for: bounds.width,
@@ -49,7 +49,7 @@ final class AddressesHeaderCell: CustomBorderCollectionViewCell {
             .right()
             .vCenter()
         
-        arrowImageView.tintColor = UIColor(hex: 0x6D7A8A)?.withAlphaComponent(0.5)
+        arrowImageView.tintColor = UIColor.SmartYard.gray.withAlphaComponent(0.5)
         
         if dimensions.titleLabelHeight != 0 {
             titleLabel.pin.top().left().bottom().width(dimensions.titleLabelWidth)

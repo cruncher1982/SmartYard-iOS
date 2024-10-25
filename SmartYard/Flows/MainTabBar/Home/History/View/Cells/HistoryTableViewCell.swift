@@ -32,6 +32,7 @@ final class HistoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        containerView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -91,47 +92,47 @@ final class HistoryTableViewCell: UITableViewCell {
         switch value.event {
         case .answered:
             titleLabel.text = NSLocalizedString("Call to intercom", comment: "")
-            titleLabel.textColor = UIColor(named: "semiBlack")
+            titleLabel.textColor = UIColor.SmartYard.semiBlack
             iconImage.image = UIImage(named: "LogsCall")
             description = ""
         case .unanswered:
             titleLabel.text = NSLocalizedString("Call to intercom", comment: "")
-            titleLabel.textColor = UIColor(named: "incorrectDataRed")
+            titleLabel.textColor = UIColor.SmartYard.incorrectDataRed
             iconImage.image = UIImage(named: "LogsCall")
             description = ""
         case .rfid:
             titleLabel.text = NSLocalizedString("Opening with a key", comment: "")
-            titleLabel.textColor = UIColor(named: "semiBlack")
+            titleLabel.textColor = UIColor.SmartYard.semiBlack
             iconImage.image = UIImage(named: "LogsKey")
             description = ""
         case .app:
             titleLabel.text = NSLocalizedString("Opening from the app", comment: "")
-            titleLabel.textColor = UIColor(named: "semiBlack")
+            titleLabel.textColor = UIColor.SmartYard.semiBlack
             iconImage.image = UIImage(named: "LogsApp")
             description = ""
         case .face:
             titleLabel.text = NSLocalizedString("Opening with Face-ID", comment: "")
-            titleLabel.textColor = UIColor(named: "semiBlack")
+            titleLabel.textColor = UIColor.SmartYard.semiBlack
             iconImage.image = UIImage(named: "LogsFace")
             description = ""
         case .passcode:
             titleLabel.text = NSLocalizedString("Opening with code", comment: "")
-            titleLabel.textColor = UIColor(named: "semiBlack")
+            titleLabel.textColor = UIColor.SmartYard.semiBlack
             iconImage.image = UIImage(named: "LogsCode")
             description = ""
         case .call:
             titleLabel.text = NSLocalizedString("Gate opening on call", comment: "")
-            titleLabel.textColor = UIColor(named: "semiBlack")
+            titleLabel.textColor = UIColor.SmartYard.semiBlack
             iconImage.image = UIImage(named: "LogsWicket")
             description = ""
         case .plate:
             titleLabel.text = NSLocalizedString("Gate opening by numberplate", comment: "")
-            titleLabel.textColor = UIColor(named: "semiBlack")
+            titleLabel.textColor = UIColor.SmartYard.semiBlack
             iconImage.image = UIImage(named: "LogsWicket")
             description = ""
         case .unknown:
             titleLabel.text = NSLocalizedString("Unknown event", comment: "")
-            titleLabel.textColor = UIColor(named: "incorrectDataRed")
+            titleLabel.textColor = UIColor.SmartYard.incorrectDataRed
             iconImage.image = UIImage(named: "LogsApp")
             description = ""
         }
@@ -148,4 +149,14 @@ final class HistoryTableViewCell: UITableViewCell {
         
     }
     
+}
+
+extension HistoryTableViewCell {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        containerView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
+    }
+        
 }

@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "FastForward.pdf",
+      "filename" : "FastForward_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "FastForward_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "FastForward_dark.pdf",
       "idiom" : "universal"
     }
   ],

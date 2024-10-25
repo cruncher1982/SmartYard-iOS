@@ -99,7 +99,12 @@ final class HistoryViewModel: BaseViewModel {
         errorTracker.asDriver()
             .drive(
                 onNext: { [weak self] error in
-                    self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                    self?.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("Error", comment: ""),
+                            message: error.localizedDescription
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -645,7 +650,12 @@ final class HistoryViewModel: BaseViewModel {
                 
                 let imageURL = face != nil ? face?.image : event.previewURL
                 
-                self.router.trigger(.deleteFaceFromEvent(event: event, imageURL: imageURL))
+                self.router.trigger(
+                    .deleteFaceFromEvent(
+                        event: event,
+                        imageURL: imageURL
+                    )
+                )
             }
             .disposed(by: disposeBag)
        

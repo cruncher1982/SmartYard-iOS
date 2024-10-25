@@ -135,11 +135,21 @@ final class IncomingCallViewModel: BaseViewModel {
             .drive(
                 onNext: { [weak self] error in
                     if (error as NSError) == NSError.PermissionError.noMicPermission {
-                        self?.router.trigger(.alert(title: NSLocalizedString("No microphone access", comment: ""), message: micMsg))
+                        self?.router.trigger(
+                            .alert(
+                                title: NSLocalizedString("No microphone access", comment: ""),
+                                message: micMsg
+                            )
+                        )
                         return
                     }
                     
-                    self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                    self?.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("Error", comment: ""),
+                            message: error.localizedDescription
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)

@@ -27,7 +27,7 @@ final class PinNumberField: PMNibLinkableView {
     }
     
     func markValue(isCorrect: Bool) {
-        underlineView.backgroundColor = isCorrect ? .black : UIColor.SmartYard.incorrectDataRed
+        underlineView.backgroundColor = isCorrect ? .SmartYard.semiBlack : UIColor.SmartYard.incorrectDataRed
     }
 
 }

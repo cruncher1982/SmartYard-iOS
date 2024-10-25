@@ -52,7 +52,7 @@ final class SmartYardDropDownTextField: SmartYardTextField {
     }
     
     private func configureUI() {
-        dropDownImage.tintColor = UIColor(hex: 0x6D7A8A)?.withAlphaComponent(0.5)
+        dropDownImage.tintColor = UIColor.SmartYard.gray.withAlphaComponent(0.5)
         rightViewMode = .always
         
         rightView = dropDownImage

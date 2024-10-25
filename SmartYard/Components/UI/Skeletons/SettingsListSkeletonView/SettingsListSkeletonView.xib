@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,7 +16,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udm-5s-78a">
                     <rect key="frame" x="24" y="24" width="366" height="22"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="backgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="Bl0-Qn-b0L"/>
                     </constraints>
@@ -26,7 +29,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5X6-Qo-Fd7">
                     <rect key="frame" x="24" y="54" width="366" height="18"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="backgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="6wK-9b-TdP"/>
                     </constraints>
@@ -39,7 +42,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7v-xg-3Ci">
                     <rect key="frame" x="24" y="84" width="366" height="1"/>
-                    <color key="backgroundColor" red="0.95294117647058818" green="0.95686274509803915" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="grayBorder"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="jUn-Ak-0ye"/>
                     </constraints>
@@ -49,10 +52,14 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ag2-ZC-QsG">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <color key="backgroundColor" name="grayBorder"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="bKJ-CU-Zyl"/>
                                 <constraint firstAttribute="width" constant="40" id="rBW-T2-VIQ"/>
                             </constraints>
+                            <state key="normal">
+                                <color key="titleColor" name="secondBackgroundColor"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
@@ -62,10 +69,14 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5G-Ai-n07">
                             <rect key="frame" x="52" y="0.0" width="40" height="40"/>
+                            <color key="backgroundColor" name="grayBorder"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="T7u-2E-a4o"/>
                                 <constraint firstAttribute="height" constant="40" id="u5Y-cM-TOS"/>
                             </constraints>
+                            <state key="normal">
+                                <color key="titleColor" name="gray"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
@@ -75,10 +86,14 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgf-0U-aKs">
                             <rect key="frame" x="104" y="0.0" width="40" height="40"/>
+                            <color key="backgroundColor" name="grayBorder"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="IiJ-jc-QIy"/>
                                 <constraint firstAttribute="width" constant="40" id="tfX-gZ-sCy"/>
                             </constraints>
+                            <state key="normal">
+                                <color key="titleColor" name="gray"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
@@ -88,10 +103,14 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2g-9h-ynL">
                             <rect key="frame" x="156" y="0.0" width="40" height="40"/>
+                            <color key="backgroundColor" name="grayBorder"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="0cB-03-vbT"/>
                                 <constraint firstAttribute="width" constant="40" id="pl4-kd-mbO"/>
                             </constraints>
+                            <state key="normal">
+                                <color key="titleColor" name="gray"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
@@ -101,10 +120,14 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-QL-2Uf">
                             <rect key="frame" x="208" y="0.0" width="40" height="40"/>
+                            <color key="backgroundColor" name="grayBorder"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="Npi-yu-mKq"/>
                                 <constraint firstAttribute="height" constant="40" id="i2t-NY-9H6"/>
                             </constraints>
+                            <state key="normal">
+                                <color key="titleColor" name="gray"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
@@ -113,7 +136,6 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="ag2-ZC-QsG" firstAttribute="top" secondItem="CDX-oV-OVd" secondAttribute="top" id="28A-ry-ZfV"/>
                         <constraint firstItem="Lgf-0U-aKs" firstAttribute="top" secondItem="CDX-oV-OVd" secondAttribute="top" id="8bd-g1-7n9"/>
@@ -135,18 +157,21 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Yc-BN-h8C">
                     <rect key="frame" x="24" y="165" width="366" height="1"/>
-                    <color key="backgroundColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="grayBorder"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="f8x-rl-YEH"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARU-rm-bib">
-                    <rect key="frame" x="24" y="186" width="248.5" height="24"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="24.000000000000014" y="186" width="248.33333333333337" height="24"/>
+                    <color key="backgroundColor" name="backgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="VgX-Fq-9SD"/>
                     </constraints>
@@ -159,14 +184,14 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ca-Fe-MGj">
                     <rect key="frame" x="24" y="230" width="366" height="1"/>
-                    <color key="backgroundColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="grayBorder"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="yXc-A6-pap"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xh0-HE-2sZ">
-                    <rect key="frame" x="24" y="251" width="157.5" height="24"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="24" y="251" width="157.33333333333334" height="24"/>
+                    <color key="backgroundColor" name="backgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="VBk-47-n5S"/>
                     </constraints>
@@ -179,14 +204,14 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Unz-ZH-eTG">
                     <rect key="frame" x="24" y="295" width="366" height="1"/>
-                    <color key="backgroundColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="grayBorder"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="JBZ-7b-NRm"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCh-Hf-FIH">
-                    <rect key="frame" x="24" y="316" width="219.5" height="24"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="24.000000000000014" y="316" width="219.33333333333337" height="24"/>
+                    <color key="backgroundColor" name="backgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="RKy-wM-AeV"/>
                     </constraints>
@@ -198,7 +223,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="secondBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Y7v-xg-3Ci" firstAttribute="top" secondItem="5X6-Qo-Fd7" secondAttribute="bottom" constant="12" id="2Wd-99-RzF"/>
                 <constraint firstItem="Unz-ZH-eTG" firstAttribute="top" secondItem="Xh0-HE-2sZ" secondAttribute="bottom" constant="20" id="4LZ-gZ-Bng"/>
@@ -241,4 +266,18 @@
             <point key="canvasLocation" x="137.68115942028987" y="-73.660714285714278"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="backgroundColor">
+            <color red="0.95294117647058818" green="0.95686274509803926" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="gray">
+            <color red="0.43529411764705883" green="0.47450980392156861" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="grayBorder">
+            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="secondBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>

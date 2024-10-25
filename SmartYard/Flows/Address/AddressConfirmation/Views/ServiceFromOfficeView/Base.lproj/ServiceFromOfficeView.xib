@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,11 +33,11 @@
                                     <rect key="frame" x="16" y="10" width="455" height="54"/>
                                     <string key="text">Посетите наш ближайший офис с квитанцией ЖКХ за эту квартиру и мы сразу же активируем функцию умного домофона и видеонаблюдения.</string>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
-                                    <color key="textColor" red="0.42745098039215684" green="0.47843137254901957" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="gray"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="secondBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="ydR-2y-k4D" firstAttribute="leading" secondItem="RAz-Li-Zn5" secondAttribute="leading" constant="16" id="0HZ-QH-hNM"/>
                                 <constraint firstAttribute="trailing" secondItem="ydR-2y-k4D" secondAttribute="trailing" constant="16" id="7d2-Gi-K9I"/>
@@ -57,7 +58,7 @@
                                     <state key="normal" title="Так и сделаю"/>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="secondBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="bQy-0w-33M" secondAttribute="trailing" constant="16" id="3Np-S0-bzI"/>
                                 <constraint firstAttribute="bottom" secondItem="bQy-0w-33M" secondAttribute="bottom" constant="15" id="BFN-x4-Pc4"/>
@@ -65,7 +66,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="secondBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="59B-VS-YVQ" firstAttribute="leading" secondItem="cGs-JD-k45" secondAttribute="leading" id="6mk-Qj-A6R"/>
                         <constraint firstAttribute="bottom" secondItem="59B-VS-YVQ" secondAttribute="bottom" id="CcZ-hq-fON"/>
@@ -93,4 +94,12 @@
             <point key="canvasLocation" x="190.57971014492756" y="-50.892857142857139"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="gray">
+            <color red="0.43529411764705883" green="0.47450980392156861" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="secondBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

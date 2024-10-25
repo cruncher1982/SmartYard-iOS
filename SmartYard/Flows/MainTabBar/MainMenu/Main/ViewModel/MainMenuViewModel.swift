@@ -27,7 +27,8 @@ final class MainMenuViewModel: BaseViewModel {
         self.router = router
         defaultItems = (
             accessService.showCityCams ?
-            [ MenuListItem.essential(
+            [
+            MenuListItem.essential(
                 label: NSLocalizedString("Public cams", comment: ""),
                 iconName: "PublicCamsMenuIcon",
                 route: .cityCams,
@@ -58,7 +59,12 @@ final class MainMenuViewModel: BaseViewModel {
         errorTracker.asDriver()
             .drive(
                 onNext: { [weak self] error in
-                    self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                    self?.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("Error", comment: ""),
+                            message: error.localizedDescription
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -136,7 +142,11 @@ final class MainMenuViewModel: BaseViewModel {
                                         return
                                     }
                                     self.router.trigger(
-                                        .webViewFromContent(content: ext.contentHTML, baseURL: ext.basePath, version: ext.version)
+                                        .webViewFromContent(
+                                            content: ext.contentHTML,
+                                            baseURL: ext.basePath,
+                                            version: ext.version
+                                        )
                                     )
                                 }
                             )

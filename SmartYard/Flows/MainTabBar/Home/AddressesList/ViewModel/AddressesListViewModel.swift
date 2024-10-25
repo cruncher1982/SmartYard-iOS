@@ -86,7 +86,12 @@ final class AddressesListViewModel: BaseViewModel {
                     if (error as NSError) == NSError.PermissionError.noCameraPermission {
                         let msg = NSLocalizedString("To use this feature, go to settings and grant access to the camera", comment: "")
                         
-                        self?.router.trigger(.appSettings(title: NSLocalizedString("Can't access camera", comment: ""), message: msg))
+                        self?.router.trigger(
+                            .appSettings(
+                                title: NSLocalizedString("Can't access camera", comment: ""),
+                                message: msg
+                            )
+                        )
                         
                         return
                     }
@@ -437,7 +442,13 @@ final class AddressesListViewModel: BaseViewModel {
                     // даем пользователю выбрать как он хочет отобразить камеры, но по умолчанию будет стоять list 
                     
                     if accessService.showList {
-                        self.router.trigger(.yardCamerasMap(houseId: uHouseId, address: uAddress, cameras: nil))
+                        self.router.trigger(
+                            .yardCamerasMap(
+                                houseId: uHouseId,
+                                address: uAddress,
+                                cameras: nil
+                            )
+                        )
                     } else {
                         self.apiWrapper.getAllTreeCCTV(houseId: uHouseId)
                             .trackActivity(self.activityTracker)
@@ -514,7 +525,12 @@ final class AddressesListViewModel: BaseViewModel {
                         return
                     }
                     
-                    self?.router.trigger(.history(houseId: uHouseId, address: uAddress))
+                    self?.router.trigger(
+                        .history(
+                            houseId: uHouseId,
+                            address: uAddress
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)

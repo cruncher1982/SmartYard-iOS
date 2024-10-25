@@ -57,7 +57,7 @@ final class AddressAccessViewController: BaseViewController, LoaderPresentable {
         super.viewWillAppear(animated)
         
         if skeletonView.sk.isSkeletonActive {
-            skeletonView.showSkeletonAsynchronously()
+            skeletonView.showSkeletonAsynchronously(with: UIColor.SmartYard.secondBackgroundColor)
         }
     }
     
@@ -85,7 +85,7 @@ final class AddressAccessViewController: BaseViewController, LoaderPresentable {
         
         scrollView.isHidden = true
         skeletonView.isHidden = false
-        skeletonView.showSkeletonAsynchronously()
+        skeletonView.showSkeletonAsynchronously(with: UIColor.SmartYard.secondBackgroundColor)
     }
     
     // swiftlint:disable:next function_body_length

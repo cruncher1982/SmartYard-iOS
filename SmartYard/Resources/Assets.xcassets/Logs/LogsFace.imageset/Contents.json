@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ic_el_face.pdf",
+      "filename" : "LogsFace_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "LogsFace_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "LogsFace_dark.pdf",
       "idiom" : "universal"
     }
   ],

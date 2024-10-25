@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +23,7 @@
             <subviews>
                 <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="200" translatesAutoresizingMaskIntoConstraints="NO" id="gc7-nj-dVr">
                     <rect key="frame" x="57" y="353" width="300" height="200"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="secondBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ST0-Uf-yDL"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="kgo-Ub-Tl5"/>
@@ -39,7 +40,8 @@
                         <constraint firstAttribute="height" constant="28" id="7rj-hz-jb2"/>
                         <constraint firstAttribute="width" constant="28" id="O1b-P8-lQH"/>
                     </constraints>
-                    <state key="normal" image="CloseIcon"/>
+                    <color key="tintColor" name="secondBackgroundColor"/>
+                    <state key="normal" image="CloseIconBlue"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Mmh-do-YCQ"/>
@@ -58,6 +60,9 @@
         </view>
     </objects>
     <resources>
-        <image name="CloseIcon" width="28" height="28"/>
+        <image name="CloseIconBlue" width="28" height="28"/>
+        <namedColor name="secondBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

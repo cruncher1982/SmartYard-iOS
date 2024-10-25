@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ic_el_gates.pdf",
+      "filename" : "LogsWicket_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "LogsWicket_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "LogsWicket_dark.pdf",
       "idiom" : "universal"
     }
   ],

@@ -21,6 +21,8 @@ final class ServiceFromOfficeView: PMNibLinkableView {
     private var shownAnnotation: ViewAnnotation?
     private var mapView: MapView!
     
+    private var styleURI: StyleURI!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configureMapBox()
@@ -33,9 +35,14 @@ final class ServiceFromOfficeView: PMNibLinkableView {
             bearing: .zero,
             pitch: .zero
         )
+        if traitCollection.userInterfaceStyle == .dark {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/dark-v11")!)!
+        } else {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/streets-v11")!)!
+        }
         let options = MapInitOptions(
             cameraOptions: cameraOptions,
-            styleURI: StyleURI(url: URL(string: "mapbox://styles/mapbox/streets-v11")!)
+            styleURI: styleURI
         )
         mapView = MapView(frame: containerView.bounds, mapInitOptions: options)
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +57,7 @@ final class ServiceFromOfficeView: PMNibLinkableView {
         label.font = .systemFont(ofSize: 14)
         label.numberOfLines = 0
         label.textColor = .black
-        label.backgroundColor = .white
+        label.backgroundColor = .SmartYard.secondBackgroundColor
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.sizeToFit()
@@ -122,3 +129,26 @@ extension Reactive where Base: ServiceFromOfficeView {
     }
     
 }
+
+
+// TODO: - new commit
+
+extension ServiceFromOfficeView {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        updateMapStyle()
+    }
+    
+    func updateMapStyle() {
+        if traitCollection.userInterfaceStyle == .dark {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/dark-v11")!)!
+        } else {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/streets-v11")!)!
+        }
+        mapView.mapboxMap.loadStyle(styleURI)
+    }
+
+}
+

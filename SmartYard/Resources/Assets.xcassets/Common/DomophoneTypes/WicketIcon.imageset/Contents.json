@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ic_wicket.pdf",
+      "filename" : "WicketIcon_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "WicketIcon_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "WicketIcon_dark.pdf",
       "idiom" : "universal"
     }
   ],
@@ -11,6 +31,6 @@
   },
   "properties" : {
     "preserves-vector-representation" : true,
-    "template-rendering-intent" : "template"
+    "template-rendering-intent" : "original"
   }
 }

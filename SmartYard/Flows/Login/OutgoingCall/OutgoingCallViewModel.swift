@@ -44,7 +44,6 @@ final class OutgoingCallViewModel: BaseViewModel {
     // swift-lint:disable:next function_body_length
     func transform(input: Input) -> Output {
         
-        
         input.makeCallButtonTapped
             .drive(
                 onNext: { [weak self] in
@@ -162,7 +161,11 @@ extension OutgoingCallViewModel {
             .drive(
                 onNext: { [weak self] data in
                     self?.activityTracker.onNext(false)
-                    self?.router.trigger(.userName(preloadedName: data.name))
+                    self?.router.trigger(
+                        .userName(
+                            preloadedName: data.name
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)

@@ -19,7 +19,7 @@ final class OutgoingCallViewController: BaseViewController, LoaderPresentable {
     @IBOutlet private weak var messageLabel: UILabel!
     @IBOutlet private weak var fixPhoneNumberButton: UIButton!
     @IBOutlet private weak var sendCodeAgainGroupView: UIView!
-    
+    @IBOutlet private weak var numberPhoneLabel: UILabel!
     @IBOutlet private weak var containerView: TopRoundedView!
     
     @IBOutlet private var sendCodeAgainGroupButtonConstraint: NSLayoutConstraint!
@@ -51,6 +51,7 @@ final class OutgoingCallViewController: BaseViewController, LoaderPresentable {
     
     private func configureView() {
         makeCallButton.isHidden = false
+        
     }
     
     private func bind() {

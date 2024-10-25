@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ArrowDown.pdf",
+      "filename" : "ArrowDown_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "ArrowDown_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "ArrowDown_dark.pdf",
       "idiom" : "universal"
     }
   ],

@@ -17,6 +17,7 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
     @IBOutlet private weak var fakeNavBar: FakeNavBar!
     @IBOutlet private weak var mainContainerView: UIView!
     
+    @IBOutlet private weak var nameContainerView: UIView!
     @IBOutlet private weak var nameTextLabel: UILabel!
     @IBOutlet private weak var phoneTextLabel: UILabel!
     
@@ -51,20 +52,24 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
     @IBOutlet private var collapsedCallsBottomConstraint: NSLayoutConstraint!
     @IBOutlet private var expandedCallsBottomConstraint: NSLayoutConstraint!
     
-    @IBOutlet private weak var camerasContainerView: UIView!
-    @IBOutlet private weak var camerasHeader: UIView!
-    @IBOutlet private weak var camerasHeaderArrowImageView: UIImageView!
+    @IBOutlet private weak var displayContainerView: UIView!
+    @IBOutlet private weak var displayHeader: UIView!
+    @IBOutlet private weak var displayHeaderArrowImageView: UIImageView!
     
     @IBOutlet private weak var enableListContainerView: UIView!
-    @IBOutlet private weak var enableListSwitch: UISwitch!
+    @IBOutlet private weak var showCamerasOnMapSwitch: UISwitch!
     
-    @IBOutlet private var сollapsedCamerasBottomConstraint: NSLayoutConstraint!
-    @IBOutlet private var expandedCamerasBottomConstaint: NSLayoutConstraint!
+    @IBOutlet private weak var appearanceContainerView: UIView!
+    @IBOutlet private weak var appearanceHighSeparator: UIView!
+    @IBOutlet private weak var changeAppereanceButton: UIButton!
+    
+    @IBOutlet private var сollapsedDisplayBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private var expandedDisplayBottomConstaint: NSLayoutConstraint!
     
     @IBOutlet private weak var logoutButton: UIButton!
     @IBOutlet private weak var deleteAccountButton: UIButton!
     
-    @IBOutlet private var deleteAccountBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var deleteAccountBottomConstraint: NSLayoutConstraint!
     
     private let viewModel: CommonSettingsViewModel
     
@@ -98,11 +103,11 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
         super.viewWillAppear(animated)
         
         if textNotificationsSkeleton.sk.isSkeletonActive {
-            textNotificationsSkeleton.showSkeletonAsynchronously()
+            textNotificationsSkeleton.showSkeletonAsynchronously(with: UIColor.SmartYard.backgroundColor)
         }
         
         if balanceWarningSkeleton.sk.isSkeletonActive {
-            balanceWarningSkeleton.showSkeletonAsynchronously()
+            balanceWarningSkeleton.showSkeletonAsynchronously(with: UIColor.SmartYard.backgroundColor)
         }
     }
     
@@ -114,14 +119,17 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
         editNameButton.setImage(UIImage(named: "pencil")?.darkened(), for: .highlighted)
         editNameButton.touchAreaInsets = UIEdgeInsets(inset: 24)
         
-        notificationsContainerView.layerBorderWidth = 1
-        notificationsContainerView.layerBorderColor = UIColor.SmartYard.grayBorder
-        
-        logoutButton.layerBorderWidth = 1
-        logoutButton.layerBorderColor = UIColor.SmartYard.grayBorder
-        
-        deleteAccountButton.layerBorderWidth = 1
-        deleteAccountButton.layerBorderColor = UIColor.SmartYard.grayBorder
+        changeAppereanceButton.setTitle("Как в системе", for: .normal)
+
+        [
+            nameContainerView,
+            notificationsContainerView,
+            callsContainerView,
+            speakerContainerView,
+            displayContainerView,
+            logoutButton,
+            deleteAccountButton
+        ].forEach { $0.addBorder(dynamicColor: UIColor.SmartYard.grayBorder) }
         
         let notificationsTapGesture = UITapGestureRecognizer()
         notificationsHeader.addGestureRecognizer(notificationsTapGesture)
@@ -145,34 +153,19 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
             )
             .disposed(by: disposeBag)
         
-        let camerasTapGesture = UITapGestureRecognizer()
-        camerasHeader.addGestureRecognizer(camerasTapGesture)
+        let displayHeaderTapGesture = UITapGestureRecognizer()
+        displayHeader.addGestureRecognizer(displayHeaderTapGesture)
         
-        camerasTapGesture.rx.event
+        displayHeaderTapGesture.rx.event
             .subscribe(
                 onNext: { [weak self] _ in
-                    self?.toggleCamerasSection()
+                    self?.toggleDisplaySection()
                 }
             )
             .disposed(by: disposeBag)
-        
-        textNotificationsContainerView.addGestureRecognizer(textNotificationsTapGesture)
-        textNotificationsSwitch.isUserInteractionEnabled = false
-        
-        balanceWarningContainerView.addGestureRecognizer(balanceWarningTapGesture)
-        balanceWarningSwitch.isUserInteractionEnabled = false
-        
-        callkitContainerView.addGestureRecognizer(callkitTapGesture)
-        callkitSwitch.isUserInteractionEnabled = false
-        
-        speakerContainerView.addGestureRecognizer(speakerTapGesture)
-        speakerSwitch.isUserInteractionEnabled = false
-        
-        enableListContainerView.addGestureRecognizer(enableListTapGesture)
-        enableListSwitch.isUserInteractionEnabled = false
-        
+                
         if !Constants.showDeleteAccountButton {
-            deleteAccountButton.isHidden = true
+            deleteAccountButton.removeFromSuperview()
             deleteAccountBottomConstraint.isActive = false
         }
     }
@@ -221,12 +214,12 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
         )
     }
     
-    private func toggleCamerasSection() {
+    private func toggleDisplaySection() {
         toggleSection(
-            collapsedBottomConstraint: сollapsedCamerasBottomConstraint,
-            expandedBottomConstraint: expandedCamerasBottomConstaint,
-            headerArrowImageView: camerasHeaderArrowImageView,
-            containerView: camerasContainerView
+            collapsedBottomConstraint: сollapsedDisplayBottomConstraint,
+            expandedBottomConstraint: expandedDisplayBottomConstaint,
+            headerArrowImageView: displayHeaderArrowImageView,
+            containerView: displayContainerView
         )
     }
     
@@ -235,11 +228,12 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
         let input = CommonSettingsViewModel.Input(
             backTrigger: fakeNavBar.rx.backButtonTap.asDriver(),
             editNameTrigger: editNameButton.rx.tap.asDriver(),
-            enableTrigger: textNotificationsTapGesture.rx.event.asDriver().mapToVoid(),
-            moneyTrigger: balanceWarningTapGesture.rx.event.asDriver().mapToVoid(),
-            callkitTrigger: callkitTapGesture.rx.event.asDriver().mapToVoid(),
-            speakerTrigger: speakerTapGesture.rx.event.asDriver().mapToVoid(),
-            enableListTrigger: enableListTapGesture.rx.event.asDriver().mapToVoid(),
+            showNotificationTrigger: textNotificationsSwitch.rx.isOn.asDriver().mapToVoid(),
+            moneyTrigger: balanceWarningSwitch.rx.isOn.asDriver().mapToVoid(),
+            callkitTrigger: callkitSwitch.rx.isOn.asDriver().mapToVoid(),
+            speakerTrigger: speakerSwitch.rx.isOn.asDriver().mapToVoid(),
+            showCamerasOnMapTrigger: showCamerasOnMapSwitch.rx.isOn.asDriver().mapToVoid(),
+            showApereanceApert: changeAppereanceButton.rx.tap.asDriver().mapToVoid(),
             logoutTrigger: logoutButton.rx.tap.asDriver(),
             deleteAccountTrigger: deleteAccountButton.rx.tap.asDriver(),
             callKitHintTrigger: callkitQuestionMark.rx.tap.asDriver()
@@ -264,58 +258,51 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
             .disposed(by: disposeBag)
         
         output.enableNotifications
-            .drive(
-                onNext: { [weak self] state in
-                    self?.textNotificationsSwitch.setOn(state, animated: true)
-                }
-            )
+            .drive(textNotificationsSwitch.rx.isOn)
             .disposed(by: disposeBag)
         
         output.enableAccountBalanceWarning
-            .drive(
-                onNext: { [weak self] state in
-                    self?.balanceWarningSwitch.setOn(state, animated: true)
-                }
-            )
+            .drive(balanceWarningSwitch.rx.isOn)
             .disposed(by: disposeBag)
         
         output.enableCallkit
-            .drive(
-                onNext: { [weak self] state in
-                    self?.callkitSwitch.setOn(state, animated: true)
-                }
-            )
+            .drive(callkitSwitch.rx.isOn)
             .disposed(by: disposeBag)
         
         output.enableSpeakerByDefault
+            .drive(speakerSwitch.rx.isOn)
+            .disposed(by: disposeBag)
+        
+        output.showCamerasOnMap
+            .drive(showCamerasOnMapSwitch.rx.isOn)
+            .disposed(by: disposeBag)
+        
+        output.displaySettings
             .drive(
-                onNext: { [weak self] state in
-                    self?.speakerSwitch.setOn(state, animated: true)
+                onNext: {  [weak self] (showDisplaySettings: Bool, isChangeEnableListButtonVisible: Bool, isChangeAppearanceButtonVisible: Bool) in
+                    guard let self = self else { return }
+    
+                    configureViewVisibility(displayContainerView, isVisible: showDisplaySettings)
+                    configureViewVisibility(appearanceContainerView, isVisible: isChangeAppearanceButtonVisible)
+                    configureViewVisibility(enableListContainerView, isVisible: isChangeEnableListButtonVisible)
+                    
+                    appearanceHighSeparator.isHidden = isChangeEnableListButtonVisible
                 }
             )
             .disposed(by: disposeBag)
         
-        output.enableList
+        output.appereanceButtonText
             .drive(
-                onNext: { [weak self] state in
-                    self?.enableListSwitch.setOn(state, animated: true)
-                }
-            )
-            .disposed(by: disposeBag)
-        
-        output.showCameras
-            .drive(
-                onNext: {  [weak self] isHidden in
-                    self?.camerasContainerView.isHidden = !isHidden
-                    self?.camerasContainerView.heightAnchor.constraint(equalToConstant: 0).isActive = !isHidden
+                onNext: { [weak self] text in
+                    self?.changeAppereanceButton.setTitle(NSLocalizedString(text, comment: ""), for: .normal)
                 }
             )
             .disposed(by: disposeBag)
         
         output.isLoading
-            .debounce(.milliseconds(25))
+            .debounce(RxTimeInterval.milliseconds(25))
             .drive(
-                onNext: { [weak self] isLoading in
+                onNext: { [weak self] (isLoading: Bool) in
                     if isLoading {
                         self?.view.endEditing(true)
                     }
@@ -338,12 +325,12 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
         textNotificationsSwitch.isHidden = true
         textNotificationsTapGesture.isEnabled = false
         textNotificationsSkeleton.isHidden = false
-        textNotificationsSkeleton.showSkeletonAsynchronously()
+        textNotificationsSkeleton.showSkeletonAsynchronously(with: UIColor.SmartYard.backgroundColor)
         
         balanceWarningSwitch.isHidden = true
         balanceWarningTapGesture.isEnabled = false
         balanceWarningSkeleton.isHidden = false
-        balanceWarningSkeleton.showSkeletonAsynchronously()
+        balanceWarningSkeleton.showSkeletonAsynchronously(with: UIColor.SmartYard.backgroundColor)
     }
     
     private func finishInitialLoading() {
@@ -361,6 +348,29 @@ final class CommonSettingsViewController: BaseViewController, LoaderPresentable 
             self?.balanceWarningSkeleton.isHidden = true
             self?.balanceWarningSkeleton.hideSkeleton()
         }
+    }
+    
+    private func configureViewVisibility(_ view: UIView, isVisible: Bool, height: CGFloat = 0) {
+        view.isHidden = !isVisible
+        view.heightAnchor.constraint(equalToConstant: isVisible ? height : 0).isActive = !isVisible
+    }
+    
+}
+
+extension CommonSettingsViewController {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        [
+            nameContainerView,
+            notificationsContainerView,
+            callsContainerView,
+            speakerContainerView,
+            displayContainerView,
+            logoutButton,
+            deleteAccountButton
+        ].forEach { $0.addBorder(dynamicColor: UIColor.SmartYard.grayBorder) }
     }
     
 }

@@ -588,12 +588,14 @@
 		E9E4273A23F5609E00F5D593 /* ServiceSoonAvailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E4273823F5609E00F5D593 /* ServiceSoonAvailableViewController.swift */; };
 		E9E4273D23F560C400F5D593 /* ServiceSoonAvailableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E4273C23F560C400F5D593 /* ServiceSoonAvailableViewModel.swift */; };
 		F5E02CAE54455B8FE193BD51 /* Pods_SmartYardIntents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E605C0D449F3A06D9B23DDDF /* Pods_SmartYardIntents.framework */; };
+		FA1A22A12CE3893800B8F919 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1A22A02CE3893000B8F919 /* ThemeManager.swift */; };
 		FA991F3A2B95F947000B9C8E /* CallKitModalViewContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA991F392B95F947000B9C8E /* CallKitModalViewContent.xib */; };
 		FA9E30E92BBBEF420087E689 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E30E72BBBEF420087E689 /* CameraCollectionViewCell.swift */; };
 		FA9E30EA2BBBEF420087E689 /* CameraCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9E30E82BBBEF420087E689 /* CameraCollectionViewCell.xib */; };
 		FA9E30EC2BBBEFFA0087E689 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E30EB2BBBEFFA0087E689 /* UICollectionView+Extensions.swift */; };
 		FA9E30EE2BBBF01E0087E689 /* AutoRefreshingCachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E30ED2BBBF01E0087E689 /* AutoRefreshingCachedImageView.swift */; };
 		FA9E30F02BBBF0450087E689 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E30EF2BBBF0450087E689 /* CameraButton.swift */; };
+		FA9EEFA12D0B1160006933A3 /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9EEFA02D0B115B006933A3 /* FontHelper.swift */; };
 		FAC12F592C6114080016A9DC /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC12F582C6114080016A9DC /* UIDevice+Extensions.swift */; };
 		FAD4E0682D31CB3D00B0130C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4E0672D31CB3D00B0130C /* Message.swift */; };
 		FAD4E06C2D31CB4600B0130C /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4E06A2D31CB4600B0130C /* WebRTCClient.swift */; };
@@ -1540,12 +1542,14 @@
 		E9E4272E23F5417000F5D593 /* ServicesActivationRequestСell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "ServicesActivationRequestСell.xib"; sourceTree = "<group>"; };
 		E9E4273823F5609E00F5D593 /* ServiceSoonAvailableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSoonAvailableViewController.swift; sourceTree = "<group>"; };
 		E9E4273C23F560C400F5D593 /* ServiceSoonAvailableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSoonAvailableViewModel.swift; sourceTree = "<group>"; };
+		FA1A22A02CE3893000B8F919 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		FA991F392B95F947000B9C8E /* CallKitModalViewContent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallKitModalViewContent.xib; sourceTree = "<group>"; };
 		FA9E30E72BBBEF420087E689 /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA9E30E82BBBEF420087E689 /* CameraCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA9E30EB2BBBEFFA0087E689 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		FA9E30ED2BBBF01E0087E689 /* AutoRefreshingCachedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoRefreshingCachedImageView.swift; sourceTree = "<group>"; };
 		FA9E30EF2BBBF0450087E689 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
+		FA9EEFA02D0B115B006933A3 /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
 		FAC12F582C6114080016A9DC /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		FAD4E0672D31CB3D00B0130C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FAD4E0692D31CB4600B0130C /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
@@ -2355,8 +2359,8 @@
 				E99EA6CC23EAD0C800BECEE6 /* RoundedView */,
 				E94B6C3523FD728F00FD9F65 /* RoundedImageView */,
 				3A1F213226DF8EC7005FDB82 /* ModalViewController */,
-				E9E4271323F40D8100F5D593 /* SmartYardCheckBoxView */,
 				E9E426FC23F2B27300F5D593 /* SmartYardSegmentedControlView */,
+				E9E4271323F40D8100F5D593 /* SmartYardCheckBoxView */,
 				847CF7D3240689C400070007 /* Skeletons */,
 				E9A4D4A623ED9BED0070A591 /* WhiteButtonWithBorder */,
 				84CC15E023EC7FAB00A1CB95 /* CustomBorderCollectionViewCell.swift */,
@@ -3250,6 +3254,8 @@
 			isa = PBXGroup;
 			children = (
 				FAD4E0752D31D21500B0130C /* Logger.swift */,
+				FA9EEFA02D0B115B006933A3 /* FontHelper.swift */,
+				FA1A22A02CE3893000B8F919 /* ThemeManager.swift */,
 				3A3EF203271DFA9600B73B36 /* Swift.swift */,
 				84854B4023FA9A99001B44F2 /* ActivityTracker.swift */,
 				84854B3C23FA9918001B44F2 /* ErrorTracker.swift */,
@@ -5231,6 +5237,7 @@
 				E9A1D78323F27AE500234B2A /* AddressConfirmationViewController.swift in Sources */,
 				3A6D0F9C27072DB9007A9F66 /* Intents.intentdefinition in Sources */,
 				84854B3B23FA8C38001B44F2 /* LoaderPresentable.swift in Sources */,
+				FA9EEFA12D0B1160006933A3 /* FontHelper.swift in Sources */,
 				E94B6C4523FFFF5D00FD9F65 /* Date+Conversion.swift in Sources */,
 				84854B4323FAA266001B44F2 /* NavigationTransitions.swift in Sources */,
 				844AC3D523EBFDAF0066006D /* AddressesListViewModel.swift in Sources */,
@@ -5445,6 +5452,7 @@
 				3A03FD0125DD5D5700B8488A /* YTCollectionViewCell.swift in Sources */,
 				844AC3C323EB1CCF0066006D /* NSAttributedString+Extensions.swift in Sources */,
 				3AB41E0A25C200B900AEC8C3 /* CityMapViewModel.swift in Sources */,
+				FA1A22A12CE3893800B8F919 /* ThemeManager.swift in Sources */,
 				3AAB0D3D26E4035300A5AD75 /* HistoryCoordinator.swift in Sources */,
 				E92EFBC5242A22F2003AF7FE /* GeoCoderResponseData.swift in Sources */,
 				3A288199265D42AC00F42097 /* SafeCachedButton.swift in Sources */,
@@ -6594,7 +6602,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -6687,12 +6695,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = MJS3C63KA9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SmartYard/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6733,7 +6741,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SmartYard/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

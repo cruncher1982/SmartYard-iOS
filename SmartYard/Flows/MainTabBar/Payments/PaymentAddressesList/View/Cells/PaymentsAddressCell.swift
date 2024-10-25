@@ -34,7 +34,7 @@ final class PaymentsAddressCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backgroundColor = .white
+        backgroundColor = UIColor.SmartYard.secondBackgroundColor
         
         let dimensions = type(of: self).preferredHeight(
             for: bounds.width,
@@ -49,7 +49,7 @@ final class PaymentsAddressCell: UICollectionViewCell {
             .right()
             .vCenter()
         
-        arrowImageView.tintColor = UIColor(hex: 0x6D7A8A)?.withAlphaComponent(0.5)
+        arrowImageView.tintColor = UIColor.SmartYard.gray.withAlphaComponent(0.5)
         
         if dimensions.titleLabelHeight != 0 {
             titleLabel.pin.top().left().bottom().width(dimensions.titleLabelWidth)
@@ -57,7 +57,7 @@ final class PaymentsAddressCell: UICollectionViewCell {
         
         layer.cornerRadius = 12
         layer.borderWidth = 1
-        layer.borderColor = UIColor.SmartYard.grayBorder.cgColor
+        addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
     
     func configure(address: String?) {

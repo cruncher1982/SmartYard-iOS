@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ArrowUp.pdf",
+      "filename" : "ArrowUp_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "ArrowUp_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "ArrowUp_dark.pdf",
       "idiom" : "universal"
     }
   ],

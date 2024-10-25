@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -189,7 +190,7 @@
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8od-sE-j0B">
                             <rect key="frame" x="0.0" y="278" width="390" height="24"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="secondBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="0KH-ud-MwN"/>
                             </constraints>
@@ -263,7 +264,7 @@
                                                 <constraint firstAttribute="width" constant="68" id="HE7-P6-Rar"/>
                                                 <constraint firstAttribute="height" constant="68" id="iWE-uR-auM"/>
                                             </constraints>
-                                            <color key="tintColor" red="0.42745098040000001" green="0.47843137250000001" blue="0.54117647059999996" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" name="gray"/>
                                             <state key="normal" image="CameraIcon"/>
                                         </button>
                                     </subviews>
@@ -315,7 +316,7 @@
                             <state key="normal" title="Выбрать фрагмент"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="secondBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="Oe3-0L-wZ8" firstAttribute="top" secondItem="2Nk-mk-3jm" secondAttribute="top" constant="16" id="0JP-MM-KRk"/>
                         <constraint firstItem="jwK-tW-GMy" firstAttribute="top" secondItem="iCv-cW-g6T" secondAttribute="bottom" priority="900" constant="20" id="4cP-Z1-QTY"/>
@@ -338,7 +339,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="backgroundColor"/>
             <constraints>
                 <constraint firstItem="Dqz-l5-6XG" firstAttribute="top" secondItem="WOo-JF-vkg" secondAttribute="bottom" constant="12" id="5IW-Jq-Ho8"/>
                 <constraint firstItem="Dqz-l5-6XG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Buv-5M-w7z"/>
@@ -372,6 +373,15 @@
         <image name="Fullscreen" width="24" height="24"/>
         <image name="MainBackground" width="375" height="812"/>
         <image name="SoundOff" width="22" height="23"/>
+        <namedColor name="backgroundColor">
+            <color red="0.95294117647058818" green="0.95686274509803926" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="gray">
+            <color red="0.43529411764705883" green="0.47450980392156861" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="secondBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

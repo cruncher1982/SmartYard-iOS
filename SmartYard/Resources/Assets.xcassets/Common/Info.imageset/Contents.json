@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "Info.pdf",
+      "filename" : "InfoIcon_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "InfoIcon_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "InfoIcon_dark.pdf",
       "idiom" : "universal"
     }
   ],

@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "LogsBarrier.pdf",
+      "filename" : "LogsBarrier_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "LogsBarrier_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "LogsBarrier_dark.pdf",
       "idiom" : "universal"
     }
   ],

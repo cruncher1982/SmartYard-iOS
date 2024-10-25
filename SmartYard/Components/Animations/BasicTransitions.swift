@@ -15,8 +15,8 @@ extension Transition {
         return .present(alert)
     }
     
-    static func dialogTransition(title: String, message: String?, actions: [UIAlertAction]) -> Transition {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    static func dialogTransition(title: String, message: String?, actions: [UIAlertAction], style: UIAlertController.Style = .alert) -> Transition {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         
         actions.forEach {
             alert.addAction($0)

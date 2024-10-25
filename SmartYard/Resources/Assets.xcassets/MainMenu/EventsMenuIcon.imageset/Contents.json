@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ic_event_log.pdf",
+      "filename" : "EventsMenuIcon_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "EventsMenuIcon_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "EventsMenuIcon_dark.pdf",
       "idiom" : "universal"
     }
   ],

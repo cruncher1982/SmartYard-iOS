@@ -80,10 +80,12 @@ final class AvailableServicesViewModel: BaseViewModel {
                     case (false, true): self.router.trigger(.confirmAddress(address: address)) // 1
                     case (false, false): сonnectSelectedServicesTrigger.onNext((address, selectedServices)) // 2
                     case (true, false): сonnectOnlyNonHousesServicesTrigger.onNext((address, selectedServices)) // 3
-                    default: self.router.trigger(.alert(
-                        title: NSLocalizedString("No service selected", comment: ""),
-                        message: nil
-                    ))
+                    default: self.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("No service selected", comment: ""),
+                            message: nil
+                        )
+                    )
                     }
                 }
             )

@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ChatTabSelected.pdf",
+      "filename" : "ChatTabSelected_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "ChatTabSelected_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "ChatTabSelected_dark.pdf",
       "idiom" : "universal"
     }
   ],

@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ChatTabBadgeUnselected.pdf",
+      "filename" : "ChatTabBadgeUnselected_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "ChatTabBadgeUnselected_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "ChatTabBadgeUnselected_dark.pdf",
       "idiom" : "universal"
     }
   ],

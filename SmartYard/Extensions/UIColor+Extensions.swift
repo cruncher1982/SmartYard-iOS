@@ -12,27 +12,33 @@ import UIKit
 extension UIColor {
     
     enum SmartYard {
-        /// #1FBC62
-        static let darkGreen = UIColor(hex: 0x1FBC62)!
+        /// light: #1FBC62   :  dark: #6DC17D
+        static let darkGreen = UIColor(named: "darkGreen")!
         
-        /// #298BFF
-        static let blue = UIColor(hex: 0x298BFF)!
+        /// light: #298BFF   :  dark: #4399FF
+        static let blue = UIColor(named: "blue")!
         
-        /// #F0F0F1
-        static let grayBorder = UIColor(hex: 0xF0F0F1)!
+        /// light: #F0F0F1   :  dark: #1F1F1F
+        static let grayBorder = UIColor(named: "grayBorder")!
         
-        /// #FF3B30
-        static let incorrectDataRed = UIColor(hex: 0xFF3B30)!
+        /// light: #FF3B30   :  dark: #BB5146
+        static let incorrectDataRed = UIColor(named: "incorrectDataRed")!
         
-        /// #6D7A8A
-        static let gray = UIColor(hex: 0x6D7A8A)!
+        /// light: #6D7A8A   :  dark: #A0A0A0
+        static let gray = UIColor(named: "gray")!
         
-        /// #28323E
-        static let semiBlack = UIColor(hex: 0x28323E)!
+        /// light: #28323E   :  dark: #E0E0E0
+        static let semiBlack = UIColor(named: "semiBlack")!
         
-        /// #F3F4FA
-        static let backgroundColor = UIColor(hex: 0xF3F4FA)!
+        /// light: #F3F4FA   :  dark: #0A0A0A
+        static let backgroundColor = UIColor(named: "backgroundColor")!
+        
+        /// light: #FFFFFF   :  dark: #191919
+        static let secondBackgroundColor = UIColor(named: "secondBackgroundColor")!
     }
     
+    // TODO: - Заполнить остальные кастомные цвета сюда - 
+    // Используется также кастомные цвета:
+    //   1. Для ArrowIcons tintColor: #828282
 }
 

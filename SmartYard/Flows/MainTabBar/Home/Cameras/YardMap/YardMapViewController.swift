@@ -26,6 +26,7 @@ class YardMapViewController: BaseViewController, LoaderPresentable {
     private let cameraSelectedTrigger = PublishSubject<Int>()
     private let camerasProxy = BehaviorSubject<[CameraObject]>(value: [])
     private var annotationViews: [UIView] = []
+    private var styleURI: StyleURI!
     
     init(viewModel: YardMapViewModel) {
         self.viewModel = viewModel
@@ -44,9 +45,14 @@ class YardMapViewController: BaseViewController, LoaderPresentable {
             bearing: .zero,
             pitch: .zero
         )
+        if traitCollection.userInterfaceStyle == .dark {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/dark-v11")!)!
+        } else {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/streets-v11")!)!
+        }
         let options = MapInitOptions(
             cameraOptions: cameraOptions,
-            styleURI: StyleURI(url: URL(string: "mapbox://styles/mapbox/streets-v11")!)
+            styleURI: styleURI
         )
         mapView = MapView(frame: containerView.bounds, mapInitOptions: options)
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -136,4 +142,23 @@ class YardMapViewController: BaseViewController, LoaderPresentable {
     func removeAllAnnotations() {
         self.mapView.viewAnnotations.removeAll()
     }
+}
+
+extension YardMapViewController {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        updateMapStyle()
+    }
+    
+    func updateMapStyle() {
+        if traitCollection.userInterfaceStyle == .dark {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/dark-v11")!)!
+        } else {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/streets-v11")!)!
+        }
+        mapView.mapboxMap.loadStyle(styleURI)
+    }
+
 }

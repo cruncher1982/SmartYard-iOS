@@ -40,7 +40,7 @@ final class SimpleButton: UIButton {
         
         setTitleColor(UIColor.SmartYard.blue.darken(by: 0.1), for: .highlighted)
         
-        setTitleColor(.white, for: .disabled)
+        setTitleColor(.SmartYard.secondBackgroundColor, for: .disabled)
         
         updateAppearance()
     }
@@ -48,12 +48,12 @@ final class SimpleButton: UIButton {
     private func updateAppearance() {
         switch state {
         case .normal:
-            backgroundColor = .white
+            backgroundColor = .SmartYard.secondBackgroundColor
             layerBorderWidth = 1
             layerBorderColor = UIColor.SmartYard.blue
             
         case .highlighted:
-            backgroundColor = UIColor.white.darken(by: 0.1)
+            backgroundColor = UIColor.SmartYard.secondBackgroundColor.darken(by: 0.1)
             layerBorderWidth = 1
             layerBorderColor = UIColor.SmartYard.blue.darken(by: 0.1)
             

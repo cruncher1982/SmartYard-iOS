@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +23,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VU4-cc-TT2" customClass="PinNumberField" customModule="SmartYard" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="40" height="45"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="secondBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="7ae-Da-eUv"/>
                                         <constraint firstAttribute="height" constant="45" id="fcg-n5-zgI"/>
@@ -32,7 +31,7 @@
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifG-Yq-YtT" customClass="PinNumberField" customModule="SmartYard" customModuleProvider="target">
                                     <rect key="frame" x="46" y="0.0" width="40" height="45"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="secondBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="lT9-G0-1fO"/>
                                         <constraint firstAttribute="height" constant="45" id="yXc-xK-y81"/>
@@ -40,7 +39,7 @@
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJB-0Q-YM9" customClass="PinNumberField" customModule="SmartYard" customModuleProvider="target">
                                     <rect key="frame" x="138" y="0.0" width="40" height="45"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="secondBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="f58-Lw-GxQ"/>
                                         <constraint firstAttribute="height" constant="45" id="kmI-hW-f5w"/>
@@ -48,7 +47,7 @@
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBJ-OC-nrh" customClass="PinNumberField" customModule="SmartYard" customModuleProvider="target">
                                     <rect key="frame" x="92" y="0.0" width="40" height="45"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="secondBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="42F-dj-w6F"/>
                                         <constraint firstAttribute="height" constant="45" id="Isc-gA-CSD"/>
@@ -75,14 +74,14 @@
                                 <constraint firstAttribute="height" constant="5" id="5ug-bq-HN6"/>
                                 <constraint firstAttribute="width" constant="5" id="GN5-KT-jgs"/>
                             </constraints>
-                            <nil key="textColor"/>
+                            <color key="textColor" name="gray"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Неверный код. Попробуйте еще раз" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wey-f5-5Yq">
                             <rect key="frame" x="86" y="139.5" width="230" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" name="incorrectDataRed"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -97,6 +96,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="yz2-2I-dqA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Um8-kO-hWc"/>
@@ -105,7 +105,6 @@
                 <constraint firstItem="yz2-2I-dqA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dGU-Gm-OWG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="containerView" destination="yz2-2I-dqA" id="6kd-Ly-EOG"/>
                 <outlet property="fakeTextField" destination="oEB-e9-S3i" id="JLT-9J-n0a"/>
@@ -118,4 +117,15 @@
             <point key="canvasLocation" x="128.98550724637681" y="-122.54464285714285"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="gray">
+            <color red="0.43529411764705883" green="0.47450980392156861" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="incorrectDataRed">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

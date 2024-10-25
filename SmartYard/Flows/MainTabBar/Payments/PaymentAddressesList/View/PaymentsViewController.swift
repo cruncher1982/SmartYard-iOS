@@ -49,7 +49,7 @@ final class PaymentsViewController: BaseViewController, LoaderPresentable {
         super.viewWillAppear(animated)
         
         if skeletonContainer.sk.isSkeletonActive {
-            skeletonContainer.showSkeletonAsynchronously()
+            skeletonContainer.showSkeletonAsynchronously(with: UIColor.SmartYard.secondBackgroundColor)
         }
     }
     
@@ -93,7 +93,7 @@ final class PaymentsViewController: BaseViewController, LoaderPresentable {
                     self?.skeletonContainer.isHidden = !shouldBlockInteraction
                     
                     shouldBlockInteraction ?
-                        self?.skeletonContainer.showSkeletonAsynchronously() :
+                        self?.skeletonContainer.showSkeletonAsynchronously(with: UIColor.SmartYard.secondBackgroundColor) :
                         self?.skeletonContainer.hideSkeleton()
                 }
             )

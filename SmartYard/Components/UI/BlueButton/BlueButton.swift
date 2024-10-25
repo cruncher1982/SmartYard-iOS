@@ -24,8 +24,8 @@ final class BlueButton: UIButton {
     private func setupUI() {
         layerCornerRadius = 12
         backgroundColor = UIColor.SmartYard.blue
-        titleLabel?.textColor = .white
-        tintColor = .white
+        titleLabel?.textColor = UIColor.SmartYard.secondBackgroundColor
+        tintColor = UIColor.SmartYard.secondBackgroundColor
     }
     
     override var isEnabled: Bool {

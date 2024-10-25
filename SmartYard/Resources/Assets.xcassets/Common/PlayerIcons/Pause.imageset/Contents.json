@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "Pause.pdf",
+      "filename" : "Pause_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "Pause_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Pause_dark.pdf",
       "idiom" : "universal"
     }
   ],

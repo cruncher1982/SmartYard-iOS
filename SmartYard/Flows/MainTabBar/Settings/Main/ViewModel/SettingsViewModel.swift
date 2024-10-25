@@ -6,6 +6,8 @@
 //  Copyright © 2021 LanTa. All rights reserved.
 //
 
+// Нужно чтобы 1 адрес у ячейки был открытым в начальном состоянии
+
 import RxSwift
 import RxCocoa
 import XCoordinator
@@ -57,7 +59,12 @@ final class SettingsViewModel: BaseViewModel {
             .ignoreNil()
             .drive(
                 onNext: { [weak self] error in
-                    self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                    self?.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("Error", comment: ""),
+                            message: error.localizedDescription
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -114,15 +121,33 @@ final class SettingsViewModel: BaseViewModel {
                 }
             )
         
-        Driver
+        let mergedRefresh = Driver
             .merge(blockingRefresh, nonBlockingRefresh)
             .ignoreNil()
+        
+        mergedRefresh
             .drive(
                 onNext: { [weak self] result in
                     self?.loadedData.onNext(result)
                 }
             )
             .disposed(by: self.disposeBag)
+        
+        mergedRefresh
+            .withLatestFrom(areSectionsExpanded.asDriver(onErrorJustReturn: [:])) { (data: $0, expanded: $1) }
+            .flatMap { data, expanded -> Driver<[String: Bool]> in
+                guard expanded.isEmpty, let firstUniqueId = data.first?.uniqueId else {
+                    return Driver.empty()
+                }
+                
+                var newDict = [String: Bool]()
+                newDict[firstUniqueId] = true
+                return Driver.just(newDict)
+            }
+            .drive(onNext: { [weak self] newDict in
+                self?.areSectionsExpanded.onNext(newDict)
+            })
+            .disposed(by: disposeBag)
 
         // MARK: Обработчик кнопки Назад
         input.backTrigger

@@ -78,7 +78,12 @@ final class AddressAccessViewModel: BaseViewModel {
             .ignoreNil()
             .drive(
                 onNext: { [weak self] error in
-                    self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                    self?.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("Error", comment: ""),
+                            message: error.localizedDescription
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -278,7 +283,12 @@ final class AddressAccessViewModel: BaseViewModel {
                         return
                     }
                     
-                    self.router.trigger(.facesSettings(flatId: flatId, address: self.address))
+                    self.router.trigger(
+                        .facesSettings(
+                            flatId: flatId,
+                            address: self.address
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -305,7 +315,7 @@ final class AddressAccessViewModel: BaseViewModel {
                         .dialog(
                             title: NSLocalizedString("Guest information has been successfully sent!", comment: ""),
                             message: nil,
-                            actions: [UIAlertAction(title: "OK", style: .default, handler: nil)]
+                            actions: [UIAlertAction(title: "OK", style: .default, handler: nil)], style: .alert
                         )
                     )
                 }
@@ -334,7 +344,7 @@ final class AddressAccessViewModel: BaseViewModel {
                         .dialog(
                             title: NSLocalizedString("Guest information has been successfully sent!", comment: ""),
                             message: nil,
-                            actions: [UIAlertAction(title: "OK", style: .default, handler: nil)]
+                            actions: [UIAlertAction(title: "OK", style: .default, handler: nil)], style: .alert
                         )
                     )
                 }
@@ -354,7 +364,14 @@ final class AddressAccessViewModel: BaseViewModel {
                         self?.deleteTempAccessContact(index: index)
                     }
                     
-                    self.router.trigger(.dialog(title: NSLocalizedString("Are you sure?", comment: ""), message: nil, actions: [noAction, yesAction]))
+                    self.router.trigger(
+                        .dialog(
+                            title: NSLocalizedString("Are you sure?", comment: ""),
+                            message: nil,
+                            actions: [noAction, yesAction],
+                            style: .alert
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -372,7 +389,14 @@ final class AddressAccessViewModel: BaseViewModel {
                         self?.deletePermanentAccessContact(index: index)
                     }
                     
-                    self.router.trigger(.dialog(title: NSLocalizedString("Are you sure?", comment: ""), message: nil, actions: [noAction, yesAction]))
+                    self.router.trigger(
+                        .dialog(
+                            title: NSLocalizedString("Are you sure?", comment: ""),
+                            message: nil,
+                            actions: [noAction, yesAction],
+                            style: .alert
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -522,7 +546,8 @@ final class AddressAccessViewModel: BaseViewModel {
                 .dialog(
                     title: guestAccessAlertTitle,
                     message: guestAccessAlertText,
-                    actions: [cancelAction, okAction]
+                    actions: [cancelAction, okAction],
+                    style: .alert
                 )
             )
         }

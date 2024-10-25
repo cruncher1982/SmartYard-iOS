@@ -32,14 +32,17 @@
 /* Class = "UILabel"; text = "Александр Сергеевич"; ObjectID = "xe0-3V-fgv"; */
 "xe0-3V-fgv.text" = "Александър Сергеевич";
 
-/* Class = "UILabel"; text = "Камеры"; ObjectID = "MF8-vg-8uU"; */
-"MF8-vg-8uU.text" = "Камара";
+/* Class = "UILabel"; text = "Отображение"; ObjectID = "MF8-vg-8uU"; */
+"AmF-1g-Ii8.text" = "Показване";
 
 /* Class = "UILabel"; text = "Показать на карте"; ObjectID = "AmF-1g-Ii8"; */
 "AmF-1g-Ii8.text" = "Камара";
 
 /* Class = "UILabel"; text = "Показать на карте"; ObjectID = "mLP-oQ-Prc"; */
-"mLP-oQ-Prc.text" = "Покажи на картата";
+"mLP-oQ-Prc.text" = "Показване на картата";
+
+/* Class = "UILable"; text = "Тема"; ObjectID = "BAH-ga-Qff"; */
+"BAH-ga-Qff.text" = "Тема";
 
 /* Class = "UIButton"; normalTitle = "Удалить аккаунт"; ObjectID = "duv-cH-I0h"; */
 "duv-cH-I0h.normalTitle" = "Изтриване на акаунт";

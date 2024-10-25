@@ -42,7 +42,7 @@ final class CameraButton: UIButton {
         layerBorderColor = UIColor.SmartYard.blue
         layerBorderWidth = 1
         titleColorForNormal = UIColor.SmartYard.semiBlack
-        titleColorForSelected = .white
+        titleColorForSelected = UIColor.SmartYard.backgroundColor
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -58,7 +58,7 @@ final class CameraButton: UIButton {
         case true:
             backgroundColor = UIColor.SmartYard.blue
         case false:
-            backgroundColor = UIColor.white
+            backgroundColor = UIColor.clear
         }
     }
     

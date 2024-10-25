@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "HomeIcon.pdf",
+      "filename" : "HomeIcon_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "HomeIcon_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "HomeIcon_dark.pdf",
       "idiom" : "universal"
     }
   ],

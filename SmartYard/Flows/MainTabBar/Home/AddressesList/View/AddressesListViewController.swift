@@ -60,7 +60,7 @@ final class AddressesListViewController: BaseViewController, LoaderPresentable {
         super.viewWillAppear(animated)
         
         if skeletonContainer.sk.isSkeletonActive {
-            skeletonContainer.showSkeletonAsynchronously()
+            skeletonContainer.showSkeletonAsynchronously(with: UIColor.SmartYard.secondBackgroundColor)
         }
     }
     
@@ -187,7 +187,7 @@ final class AddressesListViewController: BaseViewController, LoaderPresentable {
                     self?.skeletonContainer.isHidden = !shouldBlockInteraction
                     
                     shouldBlockInteraction ?
-                        self?.skeletonContainer.showSkeletonAsynchronously() :
+                        self?.skeletonContainer.showSkeletonAsynchronously(with: UIColor.SmartYard.backgroundColor) :
                         self?.skeletonContainer.hideSkeleton()
                 }
             )
@@ -411,6 +411,16 @@ extension AddressesListViewController: UICollectionViewDelegateFlowLayout {
         }()
         
         return UIEdgeInsets(top: topInset, left: 16, bottom: bottomInset, right: 16)
+    }
+    
+}
+
+extension AddressesListViewController {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        collectionView.reloadData()
     }
     
 }

@@ -16,7 +16,7 @@ final class FacesSettingsViewController: BaseViewController, LoaderPresentable {
     @IBOutlet private weak var fakeNavBar: FakeNavBar!
     @IBOutlet private weak var mainContainerView: UIView!
     @IBOutlet private weak var facesCollectionView: UICollectionView!
-    
+    @IBOutlet private weak var scrollView: UIScrollView!
     private let viewModel: FacesSettingsViewModel
     
     var loader: JGProgressHUD?
@@ -51,6 +51,8 @@ final class FacesSettingsViewController: BaseViewController, LoaderPresentable {
     private func configureView() {
         mainContainerView.layerCornerRadius = 24
         mainContainerView.layer.maskedCorners = .topCorners
+        
+        scrollView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
         
         facesCollectionView.delegate = self
         facesCollectionView.dataSource = self
@@ -189,4 +191,14 @@ extension FacesSettingsViewController: UICollectionViewDataSource {
             return cell
         }
     }
+}
+
+extension FacesSettingsViewController {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        scrollView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
+    }
+    
 }

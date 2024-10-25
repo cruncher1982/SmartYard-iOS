@@ -37,6 +37,7 @@ class SafeCachedImageView: UIImageView {
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
             
+            // TODO: - сделать здесь скелетон -
             DispatchQueue.main.async {
                 self.loadingImageIndicator.stopAnimating()
                 self.backgroundColor = .black
@@ -106,7 +107,6 @@ class SafeCachedImageView: UIImageView {
         }
     }
 }
-
 
 // Понимаю что не относится к классу, пока что для первой реализации оставлю так.
 // В будущем нужно вынести отдельно

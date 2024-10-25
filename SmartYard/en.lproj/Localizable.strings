@@ -113,6 +113,11 @@
 "sec" = "sec";
 "Archive" = "Archive";
 "Online" = "Online";
+"Select Appearance" = "Select Appearance";
+"Please choose your preferred appearance theme." = "Please choose your preferred appearance theme.";
+"System" = "System";
+"Light" = "Light";
+"Dark" = "Dark";
 "Thank you" = "Thank you";
 "Video in progress" = "Video in progress";
 "As soon as the process is over..." = "As soon as the process is over, you will receive a message in the chat.\nDepending on the length of the video, the download process can take anywhere from a few minutes to several hours.";

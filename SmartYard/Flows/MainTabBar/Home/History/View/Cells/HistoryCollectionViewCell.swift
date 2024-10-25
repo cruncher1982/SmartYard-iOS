@@ -38,6 +38,7 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var callStatusLabel: UILabel!
     @IBOutlet private weak var actionsDescriptionLabel: UILabel!
     @IBOutlet private weak var questionMark: UIButton!
+    @IBOutlet private weak var descriptionContainer: UIView!
     
     /*private var videoURL: String? {
         guard let eventDate = event?.date else {
@@ -72,6 +73,7 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
         doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapOnVideo))
         doubleTap.numberOfTapsRequired = 2
         videoPlayerViewContainer.addGestureRecognizer(doubleTap)
+        descriptionContainer.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
     
     override func prepareForReuse() {
@@ -108,7 +110,7 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.frame = CGRect(x: 0, y: 0, width: 100, height: 21)
         label.center = CGPoint(x: videoPlayerViewContainer.width * ((offset > 0) ? 3 : 1) / 4, y: videoPlayerViewContainer.height / 2)
-        label.textColor = .white
+        label.textColor = .SmartYard.secondBackgroundColor
         label.backgroundColor = .clear
         videoPlayerViewContainer.view.addSubview(label)
         
@@ -318,4 +320,14 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
         }
     }
 
+}
+
+extension HistoryCollectionViewCell {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        descriptionContainer.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
+    }
+    
 }

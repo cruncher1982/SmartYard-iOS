@@ -52,7 +52,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         mainWindow.tintColor = UIColor(named: "blue")
         mainWindow.tintAdjustmentMode = .dimmed
-
+        
+        // MARK: - Настройка темы приложения
+        // Если есть поддержка темной темы, то тогда спрашиваем какую тему ставить после запуска
+        if Constants.isDarkModeEnabled {
+            ThemeManager.shared.applySavedTheme()
+        }
+        
         return true
     }
     
@@ -93,9 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         return true
                     }
                     return false
-            } else
-            // в противном случае даём OS обработать это событие самостоятельно
-            {
+            } else {
+                // в противном случае даём OS обработать это событие самостоятельно
                 return false
             }
             

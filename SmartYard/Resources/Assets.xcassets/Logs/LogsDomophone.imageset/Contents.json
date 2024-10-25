@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "LogsDomophone.pdf",
+      "filename" : "LogsDomophone_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "LogsDomophone_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "LogsDomophone_dark.pdf",
       "idiom" : "universal"
     }
   ],

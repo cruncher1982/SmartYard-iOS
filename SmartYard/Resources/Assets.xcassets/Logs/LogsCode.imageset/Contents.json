@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "LogsCode.pdf",
+      "filename" : "LogsCode_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "LogsCode_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "LogsCode_dark.pdf",
       "idiom" : "universal"
     }
   ],

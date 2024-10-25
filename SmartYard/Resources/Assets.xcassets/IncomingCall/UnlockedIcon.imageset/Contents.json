@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "UnlockIcon.pdf",
+      "filename" : "UnlockedIcon_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "UnlockedIcon_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "UnlockedIcon_dark.pdf",
       "idiom" : "universal"
     }
   ],

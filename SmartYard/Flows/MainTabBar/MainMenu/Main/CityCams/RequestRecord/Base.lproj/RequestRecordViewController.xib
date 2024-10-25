@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -83,10 +82,11 @@
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Время: чч" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="GRD-jm-9e7" customClass="SmartYardDropDownTextField" customModule="SmartYard" customModuleProvider="target">
                                             <rect key="frame" x="16" y="88" width="186.5" height="56"/>
-                                            <color key="backgroundColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="grayBorder"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="56" id="Wg0-Ta-72r"/>
                                             </constraints>
+                                            <color key="textColor" name="semiBlack"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <userDefinedRuntimeAttributes>
@@ -103,10 +103,11 @@
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Время: мм" adjustsFontSizeToFit="NO" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="9kJ-lO-X07" customClass="SmartYardDropDownTextField" customModule="SmartYard" customModuleProvider="target">
                                             <rect key="frame" x="211.5" y="88" width="186.5" height="56"/>
-                                            <color key="backgroundColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="grayBorder"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="56" id="4QB-q4-CpB"/>
                                             </constraints>
+                                            <color key="textColor" name="semiBlack"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <userDefinedRuntimeAttributes>
@@ -123,10 +124,11 @@
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Дата записи: 5.09.2020" adjustsFontSizeToFit="NO" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="LuE-DE-5IR" customClass="SmartYardDropDownTextField" customModule="SmartYard" customModuleProvider="target">
                                             <rect key="frame" x="16" y="16" width="382" height="56"/>
-                                            <color key="backgroundColor" red="0.95294117647058818" green="0.95686274509803915" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="grayBorder"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="56" id="mXi-o0-1P6"/>
                                             </constraints>
+                                            <color key="textColor" name="semiBlack"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <userDefinedRuntimeAttributes>
@@ -143,7 +145,7 @@
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Продолжительность: 10 мин" adjustsFontSizeToFit="NO" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="ppf-df-Gg8" customClass="SmartYardDropDownTextField" customModule="SmartYard" customModuleProvider="target">
                                             <rect key="frame" x="16" y="160" width="382" height="56"/>
-                                            <color key="backgroundColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="grayBorder"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="56" id="Yaw-96-OPE"/>
                                             </constraints>
@@ -163,10 +165,11 @@
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Комментарий" adjustsFontSizeToFit="NO" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="h8p-pN-Ahl" customClass="SmartYardTextField" customModule="SmartYard" customModuleProvider="target">
                                             <rect key="frame" x="16" y="232" width="382" height="56"/>
-                                            <color key="backgroundColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="grayBorder"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="56" id="XiF-dZ-RRc"/>
                                             </constraints>
+                                            <color key="textColor" name="semiBlack"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <userDefinedRuntimeAttributes>
@@ -175,21 +178,14 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wid-oj-Tsc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wid-oj-Tsc">
                                             <rect key="frame" x="16" y="300" width="382" height="41"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="41" id="7pE-uY-WxO"/>
                                             </constraints>
-                                            <attributedString key="attributedText">
-                                                <fragment>
-                                                    <string key="content">Вы можете запросить фрагмент продолжительностью не более 1 часа. Наш сервис позволяет хранить видеозаписи не более 10 суток, после этого видео из архива безвозвратно удаляется. </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.42745098039215684" green="0.47843137254901957" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="system" size="10"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="1" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <string key="text">Вы можете запросить фрагмент продолжительностью не более 1 часа. Наш сервис позволяет хранить видеозаписи не более 10 суток, после этого видео из архива безвозвратно удаляется. </string>
+                                            <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="10"/>
+                                            <color key="textColor" name="gray"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Продолжительность обработки запроса может составлять до 1 рабочего дня." textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51d-1h-aop">
@@ -198,7 +194,7 @@
                                                 <constraint firstAttribute="height" constant="13" id="rSf-id-Vm4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="10"/>
-                                            <color key="textColor" red="0.42745098040000001" green="0.47843137250000001" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" name="gray"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4j-9z-B66" userLabel="Кнопка">
@@ -226,7 +222,7 @@
                                         </button>
                                     </subviews>
                                     <viewLayoutGuide key="safeArea" id="YlI-b7-3Ol"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" name="secondBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="ppf-df-Gg8" secondAttribute="trailing" constant="16" id="2Si-Hd-W9o"/>
                                         <constraint firstAttribute="trailing" secondItem="9kJ-lO-X07" secondAttribute="trailing" constant="16" id="8mi-Dq-naA"/>
@@ -270,7 +266,7 @@
                             <viewLayoutGuide key="frameLayoutGuide" id="l8S-b5-EKM"/>
                         </scrollView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="secondBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="1dd-aG-0qo" secondAttribute="trailing" id="0bq-uv-Sef"/>
                         <constraint firstItem="1dd-aG-0qo" firstAttribute="top" secondItem="YT7-xC-EWd" secondAttribute="top" id="b6v-OC-biY"/>
@@ -280,7 +276,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="secondBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="42p-0G-vHT" secondAttribute="bottom" id="65A-VR-wvW"/>
                 <constraint firstItem="MXz-Le-IUg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6eC-ee-5Xi"/>
@@ -309,13 +305,19 @@
     <resources>
         <image name="MainBackground" width="375" height="812"/>
         <namedColor name="blue">
-            <color red="0.16078431372549021" green="0.54509803921568623" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.27843137254901962" green="0.53725490196078429" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="gray">
+            <color red="0.43529411764705883" green="0.47450980392156861" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="grayBorder">
-            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="secondBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="semiBlack">
+            <color red="0.15686274509803921" green="0.19607843137254902" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>

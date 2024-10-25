@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,23 +36,23 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUG-Ae-ZBc">
-                    <rect key="frame" x="16" y="223.5" width="382" height="449"/>
+                    <rect key="frame" x="16" y="214.33333333333334" width="361" height="448.66666666666663"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Укажите причину" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh9-uz-hcE">
-                            <rect key="frame" x="24" y="25" width="334" height="35.5"/>
+                            <rect key="frame" x="24" y="25.000000000000004" width="313" height="35.333333333333343"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Bold" family="Source Sans Pro" pointSize="28"/>
                             <color key="textColor" red="0.15686274509803921" green="0.19607843137254902" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXU-Jw-Yhb" userLabel="Checkboxes Container">
-                            <rect key="frame" x="24" y="90.5" width="334" height="86"/>
+                            <rect key="frame" x="24" y="90.333333333333343" width="313" height="86"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pho-qA-MzB">
-                                    <rect key="frame" x="0.0" y="0.0" width="334" height="28"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="313" height="28"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="olY-aM-R5Y" customClass="SmartYardCheckBoxView" customModule="SmartYard" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
@@ -60,13 +63,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Хочу расторгнуть договор" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EG4-P3-gKW">
-                                            <rect key="frame" x="44" y="0.0" width="290" height="28"/>
+                                            <rect key="frame" x="44" y="0.0" width="269" height="28"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
-                                            <color key="textColor" red="0.15686274510000001" green="0.1960784314" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" name="semiBlack"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="secondBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="EG4-P3-gKW" firstAttribute="top" secondItem="pho-qA-MzB" secondAttribute="top" id="2sc-eg-6Ku"/>
                                         <constraint firstItem="EG4-P3-gKW" firstAttribute="centerY" secondItem="pho-qA-MzB" secondAttribute="centerY" id="HAL-dF-9Y9"/>
@@ -78,7 +81,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NtQ-K7-nkS">
-                                    <rect key="frame" x="0.0" y="58" width="334" height="28"/>
+                                    <rect key="frame" x="0.0" y="58" width="313" height="28"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2k-u4-brK" customClass="SmartYardCheckBoxView" customModule="SmartYard" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
@@ -89,13 +92,13 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Другое" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNu-fF-o5e">
-                                            <rect key="frame" x="44" y="0.0" width="290" height="28"/>
+                                            <rect key="frame" x="44" y="0.0" width="269" height="28"/>
                                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="16"/>
-                                            <color key="textColor" red="0.15686274510000001" green="0.1960784314" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" name="semiBlack"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="secondBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="dNu-fF-o5e" secondAttribute="trailing" id="F4b-HH-sgX"/>
                                         <constraint firstItem="O2k-u4-brK" firstAttribute="centerY" secondItem="NtQ-K7-nkS" secondAttribute="centerY" id="GCS-Ly-1gi"/>
@@ -107,7 +110,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="secondBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="NtQ-K7-nkS" secondAttribute="trailing" id="13v-gz-foh"/>
                                 <constraint firstAttribute="bottom" secondItem="NtQ-K7-nkS" secondAttribute="bottom" id="1tN-hO-zr0"/>
@@ -119,26 +122,26 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-x3-CiT" userLabel="Custom Text Container">
-                            <rect key="frame" x="24" y="201.5" width="334" height="32"/>
+                            <rect key="frame" x="24" y="201.33333333333334" width="313" height="32"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r7k-AQ-FUa">
-                                    <rect key="frame" x="0.0" y="0.0" width="334" height="20"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="313" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="iL4-l6-GE3"/>
                                     </constraints>
-                                    <color key="textColor" red="0.15686274509803921" green="0.19607843137254902" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="semiBlack"/>
                                     <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSS-wI-JVP" userLabel="Separator">
-                                    <rect key="frame" x="0.0" y="31" width="334" height="1"/>
-                                    <color key="backgroundColor" red="0.95294117647058818" green="0.95686274509803915" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <rect key="frame" x="0.0" y="31" width="313" height="1"/>
+                                    <color key="backgroundColor" name="backgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="OZk-8b-5Bb"/>
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="secondBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="32" id="1p8-aM-TbQ"/>
                                 <constraint firstAttribute="bottom" secondItem="r7k-AQ-FUa" secondAttribute="bottom" constant="12" id="4fq-rN-vPv"/>
@@ -151,18 +154,19 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="При удалении адреса вам будет недоступно управление услугами адреса" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ej-st-xQH">
-                            <rect key="frame" x="24" y="258.5" width="334" height="35.5"/>
+                            <rect key="frame" x="24" y="258.33333333333337" width="313" height="35.333333333333314"/>
                             <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
+                            <color key="textColor" name="semiBlack"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puN-ny-jxO" customClass="BlueButton" customModule="SmartYard" customModuleProvider="target">
-                            <rect key="frame" x="24" y="319" width="334" height="60"/>
+                            <rect key="frame" x="24" y="318.66666666666663" width="313" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="scQ-6P-G1C"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
                             <state key="normal" title="Удалить">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleColor" name="secondBackgroundColor"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
@@ -171,17 +175,17 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlH-Pd-ANd">
-                            <rect key="frame" x="24" y="404" width="334" height="20"/>
+                            <rect key="frame" x="24" y="403.66666666666663" width="313" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="9IK-ed-0zW"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SourceSansPro-Semibold" family="Source Sans Pro" pointSize="18"/>
                             <state key="normal" title="Отмена">
-                                <color key="titleColor" red="0.42745098039215684" green="0.47843137254901957" blue="0.54117647058823526" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="gray"/>
                             </state>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="secondBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="XXU-Jw-Yhb" firstAttribute="leading" secondItem="RUG-Ae-ZBc" secondAttribute="leading" constant="24" id="3MA-1T-QRu"/>
                         <constraint firstAttribute="bottom" secondItem="nlH-Pd-ANd" secondAttribute="bottom" constant="25" id="9G9-kB-0oV"/>
@@ -223,4 +227,18 @@
             <point key="canvasLocation" x="137.68115942028987" y="128.57142857142856"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="backgroundColor">
+            <color red="0.95294117647058818" green="0.95686274509803926" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="gray">
+            <color red="0.42745098039215684" green="0.47843137254901963" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="semiBlack">
+            <color red="0.15686274509803921" green="0.19607843137254902" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

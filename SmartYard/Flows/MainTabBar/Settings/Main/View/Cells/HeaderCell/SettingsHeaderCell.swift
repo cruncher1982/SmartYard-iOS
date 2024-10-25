@@ -52,7 +52,7 @@ final class SettingsHeaderCell: CustomBorderCollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backgroundColor = .white
+        backgroundColor = UIColor.SmartYard.secondBackgroundColor
         
         let dimensions = type(of: self).preferredHeight(
             for: bounds.width,
@@ -68,7 +68,7 @@ final class SettingsHeaderCell: CustomBorderCollectionViewCell {
             .right()
             .vCenter()
         
-        arrowImageView.tintColor = UIColor(hex: 0x6D7A8A)?.withAlphaComponent(0.5)
+        arrowImageView.tintColor = UIColor.SmartYard.gray.withAlphaComponent(0.5)
         
         centeringContainer.pin.top().left().bottom().width(dimensions.centeringContainerWidth)
         
@@ -139,7 +139,8 @@ extension SettingsHeaderCell {
         label.text = title
         
         return label.sizeThatFits(
-            CGSize(width: width - mainContainerMargins * 2 - arrowWidth - arrowSpacing, height: 1000)
+            CGSize(width: width - mainContainerMargins * 2 - arrowWidth - arrowSpacing,
+                   height: 1000)
         ).height
     }
     
@@ -155,7 +156,8 @@ extension SettingsHeaderCell {
         label.text = subtitle
         
         return label.sizeThatFits(
-            CGSize(width: width - mainContainerMargins * 2 - arrowWidth - arrowSpacing, height: 1000)
+            CGSize(width: width - mainContainerMargins * 2 - arrowWidth - arrowSpacing,
+                   height: 1000)
         ).height
     }
     

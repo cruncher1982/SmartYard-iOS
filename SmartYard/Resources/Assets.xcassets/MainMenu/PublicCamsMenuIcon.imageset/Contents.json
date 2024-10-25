@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "PublicCamsMenuIcon.svg",
+      "filename" : "PublicCamsMenuIcon_any.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "PublicCamsMenuIcon_light.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "PublicCamsMenuIcon_dark.pdf",
       "idiom" : "universal"
     }
   ],

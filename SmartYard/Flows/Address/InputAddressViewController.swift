@@ -209,10 +209,10 @@ final class InputAddressViewController: BaseViewController {
         tapGestureReconizer.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGestureReconizer)
         
-        cityTextField.theme.bgColor = .white
-        streetTextField.theme.bgColor = .white
-        buildingTextField.theme.bgColor = .white
-        flatTextField.theme.bgColor = .white
+        cityTextField.theme.bgColor = .SmartYard.secondBackgroundColor
+        streetTextField.theme.bgColor = .SmartYard.secondBackgroundColor
+        buildingTextField.theme.bgColor = .SmartYard.secondBackgroundColor
+        flatTextField.theme.bgColor = .SmartYard.secondBackgroundColor
     }
     
     @objc private func dismissKeyboard() {

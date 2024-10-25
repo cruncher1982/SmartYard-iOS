@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "SettingsMenuIcon.svg",
+      "filename" : "SettingsMenuIcon_any.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "SettingsMenuIcon_light.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "SettingsMenuIcon_dark.svg",
       "idiom" : "universal"
     }
   ],
@@ -10,6 +30,6 @@
     "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "template"
+    "template-rendering-intent" : "original"
   }
 }

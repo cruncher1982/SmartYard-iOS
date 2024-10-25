@@ -63,12 +63,11 @@ final class ObjectLockButton: UIButton {
         setTitleColor(UIColor.SmartYard.blue.darken(by: 0.1), for: .highlighted)
         setTitle(NSLocalizedString("Open", comment: ""), for: .highlighted)
         
-        setTitleColor(.white, for: .disabled)
+        setTitleColor(.SmartYard.secondBackgroundColor, for: .disabled)
         setTitle(NSLocalizedString("hasOpened", comment: ""), for: .disabled)
         
-        setTitleColor(.white, for: .selected)
+        setTitleColor(.SmartYard.secondBackgroundColor, for: .selected)
         setTitle(NSLocalizedString("Disable", comment: ""), for: .selected)
-        
         
         updateAppearance()
     }
@@ -76,12 +75,12 @@ final class ObjectLockButton: UIButton {
     private func updateAppearance() {
         switch state {
         case .normal:
-            backgroundColor = .white
+            backgroundColor = .SmartYard.secondBackgroundColor
             layerBorderWidth = 1
             layerBorderColor = UIColor.SmartYard.blue
             
         case .highlighted:
-            backgroundColor = UIColor.white.darken(by: 0.1)
+            backgroundColor = UIColor.SmartYard.secondBackgroundColor.darken(by: 0.1)
             layerBorderWidth = 1
             layerBorderColor = UIColor.SmartYard.blue.darken(by: 0.1)
             

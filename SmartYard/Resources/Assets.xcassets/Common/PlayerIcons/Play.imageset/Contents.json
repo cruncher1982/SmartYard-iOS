@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "Play.pdf",
+      "filename" : "Play_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "Play_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Play_dark.pdf",
       "idiom" : "universal"
     }
   ],

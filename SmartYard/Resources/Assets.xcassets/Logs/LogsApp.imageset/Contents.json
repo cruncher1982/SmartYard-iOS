@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ic_el_app.pdf",
+      "filename" : "LogsApp_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "LogsApp_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "LogsApp_dark.pdf",
       "idiom" : "universal"
     }
   ],

@@ -104,7 +104,7 @@ class SimpleVideoProgressSlider: UIView, UIGestureRecognizerDelegate {
             thumbnailsContainer.addSubview(imageView)
             thumbnailsContainer.sendSubviewToBack(imageView)
             
-            activityIndicator.color = .white
+            activityIndicator.color = .SmartYard.secondBackgroundColor
             
             thumbnailsContainer.addSubview(activityIndicator)
         }

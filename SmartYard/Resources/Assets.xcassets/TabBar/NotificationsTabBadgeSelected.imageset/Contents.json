@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "Group.pdf",
+      "filename" : "NotificationsTabBadgeSelected_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "NotificationsTabBadgeSelected_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "NotificationsTabBadgeSelected_dark.pdf",
       "idiom" : "universal"
     }
   ],

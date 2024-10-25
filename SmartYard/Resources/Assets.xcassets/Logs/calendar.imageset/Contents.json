@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "calendar.pdf",
+      "filename" : "Сalendar_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "Сalendar_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Сalendar_dark.pdf",
       "idiom" : "universal"
     }
   ],

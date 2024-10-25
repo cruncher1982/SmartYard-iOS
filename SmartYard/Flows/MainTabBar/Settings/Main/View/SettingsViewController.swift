@@ -60,7 +60,7 @@ final class SettingsViewController: BaseViewController, LoaderPresentable {
         super.viewWillAppear(animated)
         
         if skeletonContainer.sk.isSkeletonActive {
-            skeletonContainer.showSkeletonAsynchronously()
+            skeletonContainer.showSkeletonAsynchronously(with: UIColor.SmartYard.secondBackgroundColor)
         }
     }
     
@@ -174,7 +174,7 @@ final class SettingsViewController: BaseViewController, LoaderPresentable {
                     self?.skeletonContainer.isHidden = !shouldBlockInteraction
                     
                     shouldBlockInteraction ?
-                        self?.skeletonContainer.showSkeletonAsynchronously() :
+                    self?.skeletonContainer.showSkeletonAsynchronously(with: UIColor.SmartYard.backgroundColor) :
                         self?.skeletonContainer.hideSkeleton()
                 }
             )
@@ -429,3 +429,12 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+extension SettingsViewController {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        collectionView.reloadData()
+    }
+    
+}

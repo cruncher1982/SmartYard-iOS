@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ic_el_key.pdf",
+      "filename" : "LogsKey_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "LogsKey_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "LogsKey_dark.pdf",
       "idiom" : "universal"
     }
   ],

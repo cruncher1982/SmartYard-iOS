@@ -113,6 +113,11 @@
 "sec" = "sek";
 "Archive" = "Arxiv";
 "Online" = "Onlayn";
+"Select Appearance" = "Ko‘rinishni tanlang";
+"Please choose your preferred appearance theme." = "O‘zingizga qulay mavzuni tanlang.";
+"System" = "Tizimiy";
+"Light" = "Yorug‘";
+"Dark" = "Qorong‘i";
 "Thank you" = "Rahmat";
 "Video in progress" = "Video tayyorlanmoqda";
 "As soon as the process is over..." = "Jarayon tugagach, sizga chatda xabar keladi.\nVideo uzunligiga qarab, yuklash jarayoni bir necha daqiqadan bir necha soatgacha davom etishi mumkin.";

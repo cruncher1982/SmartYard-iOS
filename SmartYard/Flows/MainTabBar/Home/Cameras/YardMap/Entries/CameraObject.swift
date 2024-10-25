@@ -65,7 +65,7 @@ struct CameraObject: Equatable {
             default:
                 return .mp4
             }
-        } ()
+        }()
         return imageType
     }
     

@@ -14,7 +14,7 @@ final class LoadingButton: UIButton {
         let activityIndicator = UIActivityIndicatorView()
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = .white
+        activityIndicator.color = .SmartYard.secondBackgroundColor
         activityIndicator.style = .whiteLarge
         
         self.addSubview(activityIndicator)

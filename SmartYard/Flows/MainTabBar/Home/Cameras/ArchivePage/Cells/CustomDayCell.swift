@@ -29,10 +29,10 @@ final class CustomDayCell: JTACDayCell {
         
         let textColor: UIColor? = {
             guard !state.isSelected else {
-                return .white
+                return .SmartYard.secondBackgroundColor
             }
             
-            return isValidDate ? .black : UIColor(hex: 0xBEBEBE)
+            return isValidDate ? .SmartYard.semiBlack : .SmartYard.semiBlack.withAlphaComponent(0.5)
         }()
         
         dayLabel.textColor = textColor

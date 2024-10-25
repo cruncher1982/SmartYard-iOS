@@ -12,6 +12,7 @@ import XCoordinator
 import SmartYardSharedDataFramework
 import WebKit
 import FirebaseMessaging
+import SkeletonView
 
 final class CommonSettingsViewModel: BaseViewModel {
     
@@ -59,7 +60,12 @@ final class CommonSettingsViewModel: BaseViewModel {
             .ignoreNil()
             .drive(
                 onNext: { [weak self] error in
-                    self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                    self?.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("Error", comment: ""),
+                            message: error.localizedDescription
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -74,8 +80,31 @@ final class CommonSettingsViewModel: BaseViewModel {
         let enableAccountBalanceWarningSubject = BehaviorSubject<Bool>(value: false)
         let enableCallkitSubject = BehaviorSubject<Bool>(value: accessService.prefersVoipForCalls)
         let enableSpeakerByDefaultSubject = BehaviorSubject<Bool>(value: accessService.prefersSpeakerForCalls)
-        let enableListSubject = BehaviorSubject<Bool>(value: accessService.showList)
-        let showCamerasSettingsSubject = BehaviorSubject<Bool>(value: accessService.cctvView == "userDefined")
+        let showCamerasOnMapSubject = BehaviorSubject<Bool>(value: accessService.showList)
+        let isChangeEnableListButtonVisible = accessService.cctvView == "userDefined"
+        let isChangeAppearanceButtonVisible = Constants.isDarkModeEnabled
+        let showDisplaySettings = isChangeEnableListButtonVisible || isChangeAppearanceButtonVisible
+        let displaySettingsSubject = BehaviorSubject<(Bool, Bool, Bool)>(value: (showDisplaySettings, isChangeEnableListButtonVisible, isChangeAppearanceButtonVisible))
+        let appereanceButtonTextSubject = BehaviorSubject<String>(value: NSLocalizedString("System", comment: ""))
+
+        ThemeManager.shared.currentTheme
+            .subscribe(
+                onNext: { style in
+                    switch style {
+                    case .unspecified:
+                        appereanceButtonTextSubject.onNext(NSLocalizedString("System", comment: ""))
+                    case .light:
+                        appereanceButtonTextSubject.onNext(NSLocalizedString("Light", comment: ""))
+                    case .dark:
+                        appereanceButtonTextSubject.onNext(NSLocalizedString("Dark", comment: ""))
+                    @unknown default:
+                        Logger.logWarning("!! Unknown UIUserInterfaceStyle encountered: \(style)")
+                        
+                        appereanceButtonTextSubject.onNext(NSLocalizedString("System", comment: ""))
+                    }
+                }
+            )
+            .disposed(by: disposeBag)
         
         apiWrapper
             .getCurrentNotificationState()
@@ -93,7 +122,8 @@ final class CommonSettingsViewModel: BaseViewModel {
         
         // MARK: Нажатие на "Показывать уведомления"
         
-        input.enableTrigger
+        input.showNotificationTrigger
+            .skip(1)
             .withLatestFrom(enableNotificationsSubject.asDriver(onErrorJustReturn: false))
             .flatMapLatest { [weak self] isEnabled -> Driver<NotificationResponseData?> in
                 guard let self = self else {
@@ -117,6 +147,7 @@ final class CommonSettingsViewModel: BaseViewModel {
         // MARK: Нажатие на "Оповестить о недостатке средств"
         
         input.moneyTrigger
+            .skip(1)
             .withLatestFrom(enableAccountBalanceWarningSubject.asDriver(onErrorJustReturn: false))
             .flatMapLatest { [weak self] isActive -> Driver<NotificationResponseData?> in
                 guard let self = self else {
@@ -140,6 +171,7 @@ final class CommonSettingsViewModel: BaseViewModel {
         // MARK: Нажатие на "Использовать CallKit"
         
         input.callkitTrigger
+            .skip(1)
             .withLatestFrom(enableCallkitSubject.asDriver(onErrorJustReturn: false))
             .flatMapLatest { [weak self] isActive -> Driver<Bool?> in
                 guard let self = self else {
@@ -173,7 +205,10 @@ final class CommonSettingsViewModel: BaseViewModel {
             )
             .disposed(by: disposeBag)
         
+        // MARK: Нажатие на "Громкоговоритель по умолчанию"
+        
         input.speakerTrigger
+            .skip(1)
             .filter { [weak self] in
                 self?.accessService.prefersVoipForCalls == false
             }
@@ -190,15 +225,20 @@ final class CommonSettingsViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         // MARK: - Обработка нажатия "Показывать на карте"
-        input.enableListTrigger
-            .withLatestFrom(enableListSubject.asDriverOnErrorJustComplete())
+        
+        input.showCamerasOnMapTrigger
+            .skip(1)
+            .withLatestFrom(showCamerasOnMapSubject.asDriver(onErrorJustReturn: false))
             .drive(
                 onNext: { [weak self] state in
+                    guard state == self?.accessService.showList else {
+                        return
+                    }
+                    
                     let newState = !state
 
                     self?.accessService.showList = newState
-                    enableListSubject.onNext(newState)
-                    print(">>> enableListTrigger: ", self?.accessService.showList)
+                    showCamerasOnMapSubject.onNext(newState)
                 }
             )
             .disposed(by: disposeBag)
@@ -274,7 +314,41 @@ final class CommonSettingsViewModel: BaseViewModel {
                         .dialog(
                             title: NSLocalizedString("Exiting the application", comment: ""),
                             message: NSLocalizedString("Are you sure you want to log out of your account?", comment: ""),
-                            actions: [noAction, yesAction]
+                            actions: [noAction, yesAction],
+                            style: .alert
+                        )
+                    )
+                }
+            )
+            .disposed(by: disposeBag)
+        
+        // MARK: - Показ Alert'а для выбора режима Appereance -
+        // Обработаем здесь и SkeletonApereance так как он не предназначен для изменения appereance.
+        // Мы будем строго указывать когда ему менять tint и gradient color!
+
+        input.showApereanceApert
+            .drive(
+                onNext: { [weak self] in
+                    let systemAction = UIAlertAction(title: NSLocalizedString("System", comment: ""), style: .default) { _ in
+                        ThemeManager.shared.setTheme(.unspecified)
+                        appereanceButtonTextSubject.onNext(NSLocalizedString("System", comment: ""))
+                    }
+                    let lightAction = UIAlertAction(title: NSLocalizedString("Light", comment: ""), style: .default) { _ in
+                        ThemeManager.shared.setTheme(.light)
+                        appereanceButtonTextSubject.onNext(NSLocalizedString("Light", comment: ""))
+                    }
+                    let darkAction = UIAlertAction(title: NSLocalizedString("Dark", comment: ""), style: .default) { _ in
+                        ThemeManager.shared.setTheme(.dark)
+                        appereanceButtonTextSubject.onNext(NSLocalizedString("Dark", comment: ""))
+                    }
+                    let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .destructive)
+
+                    self?.router.trigger(
+                        .dialog(
+                            title: NSLocalizedString("Select Appearance", comment: ""),
+                            message: NSLocalizedString("Please choose your preferred appearance theme.", comment: ""),
+                            actions: [systemAction, lightAction, darkAction, cancelAction],
+                            style: .actionSheet
                         )
                     )
                 }
@@ -294,7 +368,7 @@ final class CommonSettingsViewModel: BaseViewModel {
                         self.apiWrapper.deleteAccount()
                             .subscribe(
                                 onSuccess: { [weak self] _ in
-                                    print("DEBUG: Account deleted on backend")
+                                    Logger.logDebug("Account deleted on backend")
                                     self?.pushNotificationService.resetInstanceId()
                                         .trackActivity(activityTracker)
                                         .trackError(errorTracker)
@@ -309,7 +383,7 @@ final class CommonSettingsViewModel: BaseViewModel {
                                         .disposed(by: self?.disposeBag ?? DisposeBag())
                                 },
                                 onFailure: { error in
-                                    print("DEBUG: Error delete account: \(error)")
+                                    Logger.logDebug("Error delete account: \(error)")
                                 }
                             )
                             .disposed(by: self.disposeBag)
@@ -319,7 +393,8 @@ final class CommonSettingsViewModel: BaseViewModel {
                         .dialog(
                             title: NSLocalizedString("Account deleting", comment: ""),
                             message: NSLocalizedString("Are you sure you want to delete your account? All previously added addresses will be deleted", comment: ""),
-                            actions: [noAction, yesAction]
+                            actions: [noAction, yesAction],
+                            style: .alert
                         )
                     )
                 }
@@ -341,8 +416,9 @@ final class CommonSettingsViewModel: BaseViewModel {
             enableAccountBalanceWarning: enableAccountBalanceWarningSubject.asDriverOnErrorJustComplete(),
             enableCallkit: enableCallkitSubject.asDriverOnErrorJustComplete(),
             enableSpeakerByDefault: enableSpeakerByDefaultSubject.asDriverOnErrorJustComplete(), 
-            enableList: enableListSubject.asDriverOnErrorJustComplete(), 
-            showCameras: showCamerasSettingsSubject.asDriverOnErrorJustComplete(),
+            showCamerasOnMap: showCamerasOnMapSubject.asDriverOnErrorJustComplete(),
+            displaySettings: displaySettingsSubject.asDriverOnErrorJustComplete(),
+            appereanceButtonText: appereanceButtonTextSubject.asDriverOnErrorJustComplete(),
             isLoading: activityTracker.asDriver(),
             shouldShowInitialLoading: initialLoadingTracker.asDriver()
         )
@@ -355,11 +431,12 @@ extension CommonSettingsViewModel {
     struct Input {
         let backTrigger: Driver<Void>
         let editNameTrigger: Driver<Void>
-        let enableTrigger: Driver<Void>
+        let showNotificationTrigger: Driver<Void>
         let moneyTrigger: Driver<Void>
         let callkitTrigger: Driver<Void>
         let speakerTrigger: Driver<Void>
-        let enableListTrigger: Driver<Void>
+        let showCamerasOnMapTrigger: Driver<Void>
+        let showApereanceApert: Driver<Void>
         let logoutTrigger: Driver<Void>
         let deleteAccountTrigger: Driver<Void>
         let callKitHintTrigger: Driver<Void>
@@ -372,8 +449,9 @@ extension CommonSettingsViewModel {
         let enableAccountBalanceWarning: Driver<Bool>
         let enableCallkit: Driver<Bool>
         let enableSpeakerByDefault: Driver<Bool>
-        let enableList: Driver<Bool>
-        let showCameras: Driver<Bool>
+        let showCamerasOnMap: Driver<Bool>
+        let displaySettings: Driver<(Bool, Bool, Bool)>
+        let appereanceButtonText: Driver<String>
         let isLoading: Driver<Bool>
         let shouldShowInitialLoading: Driver<Bool>
     }

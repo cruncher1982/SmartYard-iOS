@@ -28,5 +28,6 @@ enum Constants {
     static let defaultPhonePattern = "(###) ###-##-##"
     static let defaultTimeZone = "Europe/Moscow"
     static let showDeleteAccountButton = false
+    static let isDarkModeEnabled = false // set 'true' if you have Dark Mode
     
 }

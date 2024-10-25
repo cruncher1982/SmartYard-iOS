@@ -65,7 +65,25 @@ final class SmartYardSearchTextField: SearchTextField {
     }
     
     private func configureUI() {
-        tintColor = UIColor.SmartYard.semiBlack
+        var theme = SearchTextFieldTheme.lightTheme()
+        theme.bgColor = UIColor.SmartYard.secondBackgroundColor
+        theme.borderColor = UIColor.SmartYard.grayBorder
+        theme.separatorColor = UIColor.SmartYard.grayBorder
+        theme.font = UIFont.SourceSansPro.semibold(size: 12)
+        theme.fontColor = UIColor.SmartYard.semiBlack
+        
+        self.theme = theme
     }
     
 }
+
+extension SmartYardSearchTextField {
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        configureUI()
+    }
+    
+}
+

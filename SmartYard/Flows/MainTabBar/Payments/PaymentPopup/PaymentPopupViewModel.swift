@@ -18,7 +18,6 @@ final class PaymentPopupViewModel: BaseViewModel {
     private let clientId: String
     private var router: WeakRouter<PaymentsRoute>
     
-    
     private let recommendedSum: BehaviorSubject<Double?>
     private let contractNumber: BehaviorSubject<String?>
     

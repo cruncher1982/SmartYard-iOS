@@ -67,8 +67,7 @@ final class AccessView: PMNibLinkableView {
             )
         )
         
-        tableView.layerBorderWidth = 1
-        tableView.layerBorderColor = UIColor.SmartYard.grayBorder
+        tableView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
         
         let dataSource = RxTableViewSectionedAnimatedDataSource<AllowedPersonSectionModel>(
             configureCell: { [weak self] _, tableView, indexPath, item in
@@ -153,6 +152,16 @@ extension AccessView: UITableViewDelegate {
         deleteButton.title = NSLocalizedString("Delete", comment: "")
         
         return [deleteButton]
+    }
+    
+}
+
+extension AccessView {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        tableView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
     
 }

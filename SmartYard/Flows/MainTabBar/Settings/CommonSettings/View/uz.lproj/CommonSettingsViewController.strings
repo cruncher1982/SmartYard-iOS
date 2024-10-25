@@ -32,11 +32,14 @@
 /* Class = "UILabel"; text = "Александр Сергеевич"; ObjectID = "xe0-3V-fgv"; */
 "xe0-3V-fgv.text" = "Aleksandr Sergeyevich";
 
-/* Class = "UILabel"; text = "Камеры"; ObjectID = "AmF-1g-Ii8"; */
-"AmF-1g-Ii8.text" = "Kameralar";
+/* Class = "UILabel"; text = "Отображение"; ObjectID = "AmF-1g-Ii8"; */
+"AmF-1g-Ii8.text" = "Ko‘rsatish";
 
 /* Class = "UILabel"; text = "Показать на карте"; ObjectID = "mLP-oQ-Prc"; */
 "mLP-oQ-Prc.text" = "Xaritada ko'rsatish";
+
+/* Class = "UILable"; text = "Тема"; ObjectID = "BAH-ga-Qff"; */
+"BAH-ga-Qff.text" = "Mavzu";
 
 /* Class = "UIButton"; normalTitle = "Удалить аккаунт"; ObjectID = "duv-cH-I0h"; */
 "duv-cH-I0h.normalTitle" = "Hisobni o'chirish";

@@ -22,18 +22,18 @@ class SimpleVideoTimeView: UIView {
         )
         
         super.init(frame: frame)
-        
+        // TODO: - посмотреть почему тут цвет меняется два раза
         // Add Background View
         backgroundView.frame = bounds
         backgroundView.backgroundColor = .yellow
         addSubview(backgroundView)
         
-        backgroundView.backgroundColor = .white
+        backgroundView.backgroundColor = UIColor.SmartYard.secondBackgroundColor
         backgroundView.layerCornerRadius = 3
         
         // Add time label
         timeLabel.textAlignment = .center
-        timeLabel.textColor = UIColor(hex: 0x333333)
+        timeLabel.textColor = UIColor.SmartYard.semiBlack
         timeLabel.font = UIFont.SourceSansPro.semibold(size: 12)
         addSubview(timeLabel)
     }
@@ -57,3 +57,4 @@ class SimpleVideoTimeView: UIView {
     }
 
 }
+

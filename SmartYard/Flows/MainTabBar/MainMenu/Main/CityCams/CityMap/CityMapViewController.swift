@@ -46,9 +46,15 @@ final class CityMapViewController: BaseViewController, LoaderPresentable {
             bearing: .zero,
             pitch: .zero
         )
+        let styleURI: StyleURI
+        if traitCollection.userInterfaceStyle == .dark {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/dark-v11")!)!
+        } else {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/streets-v11")!)!
+        }
         let options = MapInitOptions(
             cameraOptions: cameraOptions,
-            styleURI: StyleURI(url: URL(string: "mapbox://styles/mapbox/streets-v11")!)
+            styleURI: styleURI
         )
         mapView = MapView(frame: containerView.bounds, mapInitOptions: options)
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -138,4 +144,24 @@ final class CityMapViewController: BaseViewController, LoaderPresentable {
             )
             .disposed(by: disposeBag)
     }
+}
+
+extension CityMapViewController {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        updateMapStyle()
+    }
+    
+    func updateMapStyle() {
+        let styleURI: StyleURI
+        if traitCollection.userInterfaceStyle == .dark {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/dark-v11")!)!
+        } else {
+            styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/streets-v11")!)!
+        }
+        mapView.mapboxMap.loadStyle(styleURI)
+    }
+
 }

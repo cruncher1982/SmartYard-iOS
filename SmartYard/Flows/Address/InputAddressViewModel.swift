@@ -87,12 +87,22 @@ final class InputAddressViewModel: BaseViewModel {
                     if nsError == NSError.PermissionError.noCameraPermission {
                         let msg = NSLocalizedString("To use this feature, go to settings and grant access to the camera", comment: "")
                         
-                        self?.router.trigger(.appSettings(title: NSLocalizedString("Can't access camera", comment: ""), message: msg))
+                        self?.router.trigger(
+                            .appSettings(
+                                title: NSLocalizedString("Can't access camera", comment: ""),
+                                message: msg
+                            )
+                        )
                         
                         return
                     }
                     
-                    self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                    self?.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("Error", comment: ""),
+                            message: error.localizedDescription
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)

@@ -102,7 +102,7 @@ final class AppCoordinator: NavigationCoordinator<AppRoute> {
         observeOrientationChanges()
     }
     
-    // swiftlint:disable:next function_body_length
+    // swiftlint:disable cyclomatic_complexity function_body_length
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
         case .main:
@@ -219,6 +219,31 @@ final class AppCoordinator: NavigationCoordinator<AppRoute> {
             self.incomingCallPortraitVC = portraitVC
             
             incomingCallWindow = UIWindow()
+            
+            if Constants.isDarkModeEnabled {
+                let currentTheme = ThemeManager.shared.currentTheme.value
+                let userInterfaceStyle: UIUserInterfaceStyle
+                
+                switch currentTheme {
+                case .unspecified:
+                    switch UITraitCollection.current.userInterfaceStyle {
+                    case .dark:
+                        userInterfaceStyle = .dark
+                    case .light:
+                        userInterfaceStyle = .light
+                    default:
+                        userInterfaceStyle = .unspecified
+                    }
+                case .light:
+                    userInterfaceStyle = .light
+                case .dark:
+                    userInterfaceStyle = .dark
+                @unknown default:
+                    userInterfaceStyle = .unspecified
+                }
+                
+                incomingCallWindow?.overrideUserInterfaceStyle = userInterfaceStyle
+            }
             
             // MARK: Если вызов пришёл обычным пуш-уведомлением, то показываем экран входящего вызова
             if !isCallKitUsed {

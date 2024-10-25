@@ -47,10 +47,20 @@ final class PinCodeViewModel: BaseViewModel {
                         
                     case 429:
                         let message = NSLocalizedString("You are requesting a code too often. Please try again later", comment: "")
-                        self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: message))
+                        self?.router.trigger(
+                            .alert(
+                                title: NSLocalizedString("Error", comment: ""),
+                                message: message
+                            )
+                        )
                         
                     default:
-                        self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                        self?.router.trigger(
+                            .alert(
+                                title: NSLocalizedString("Error", comment: ""),
+                                message: error.localizedDescription
+                            )
+                        )
                     }
                 }
             )

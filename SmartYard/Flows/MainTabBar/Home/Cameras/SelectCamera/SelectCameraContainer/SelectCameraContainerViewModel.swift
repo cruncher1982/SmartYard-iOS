@@ -64,7 +64,13 @@ final class SelectCameraContainerViewModel: BaseViewModel {
                         return
                     }
                     
-                    self?.router.trigger(.playArchiveVideo(camera: uCamera, date: date, availableRanges: uRanges))
+                    self?.router.trigger(
+                        .playArchiveVideo(
+                            camera: uCamera,
+                            date: date,
+                            availableRanges: uRanges
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)

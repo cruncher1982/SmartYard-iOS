@@ -93,7 +93,7 @@ final class CamerasListViewController: BaseViewController, LoaderPresentable {
                     self?.skeletonContainer.isHidden = !shouldBlockInteraction
                     
                     shouldBlockInteraction ?
-                        self?.skeletonContainer.showSkeletonAsynchronously() :
+                    self?.skeletonContainer.showSkeletonAsynchronously(with: UIColor.SmartYard.secondBackgroundColor) :
                         self?.skeletonContainer.hideSkeleton()
                 }
             )

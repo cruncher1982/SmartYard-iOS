@@ -15,7 +15,7 @@ final class WhiteButtonWithBorder: UIButton {
         super.layoutSubviews()
         
         layerCornerRadius = 12
-        backgroundColor = .white
+        backgroundColor = .SmartYard.secondBackgroundColor
         layerBorderWidth = 1
         updateAppearance()
     }

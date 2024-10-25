@@ -39,10 +39,20 @@ final class InputPhoneNumberViewModel: BaseViewModel {
                     switch nsError.code {
                     case 429:
                         let message = NSLocalizedString("You are requesting a code too often. Please try again later", comment: "")
-                        self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: message))
+                        self?.router.trigger(
+                            .alert(
+                                title: NSLocalizedString("Error", comment: ""),
+                                message: message
+                            )
+                        )
                         
                     default:
-                        self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                        self?.router.trigger(
+                            .alert(
+                                title: NSLocalizedString("Error", comment: ""),
+                                message: error.localizedDescription
+                            )
+                        )
                     }
                 }
             )
@@ -105,11 +115,27 @@ final class InputPhoneNumberViewModel: BaseViewModel {
                             ))
                             return
                         }
-                        self.router.trigger(.authByOutgoingCall(phoneNumber: phone, confirmPhoneNumber: confirmNumber))
+                        self.router.trigger(
+                            .authByOutgoingCall(
+                                phoneNumber: phone,
+                                confirmPhoneNumber: confirmNumber
+                            )
+                        )
                     case .flashCall:
-                        self.router.trigger(.pinCode(phoneNumber: phone, isInitial: true, useFlashCall: true))
+                        self.router.trigger(
+                            .pinCode(phoneNumber: phone,
+                                     isInitial: true,
+                                     useFlashCall: true
+                                    )
+                        )
                     case .otp:
-                        self.router.trigger(.pinCode(phoneNumber: phone, isInitial: true, useFlashCall: false))
+                        self.router.trigger(
+                            .pinCode(
+                                phoneNumber: phone,
+                                isInitial: true,
+                                useFlashCall: false
+                            )
+                        )
                     }
                     
                 }

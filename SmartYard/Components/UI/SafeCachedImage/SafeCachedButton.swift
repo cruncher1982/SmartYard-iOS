@@ -34,13 +34,14 @@ final class SafeCachedButton: UIButton {
         }
         
         if loadingImageIndicator == nil {
-            loadingImageIndicator = UIActivityIndicatorView(style: .gray)
+            loadingImageIndicator = UIActivityIndicatorView(style: .medium)
+            loadingImageIndicator?.color = .SmartYard.gray
         }
         
         loadingImageIndicator!.center = view.center
         view.addSubview(loadingImageIndicator!)
         loadingImageIndicator!.startAnimating()
-        self.backgroundColor = UIColor(named: "backgroundColor")
+        self.backgroundColor = UIColor.SmartYard.backgroundColor
         
         URLSession.shared.dataTask(
             with: url,
@@ -73,8 +74,7 @@ final class SafeCachedButton: UIButton {
                     cache.setObject(loadedImage, forKey: NSString(string: urlString))
                 }
             }
-        )
-            .resume()
+        ).resume()
         
     }
 

@@ -33,11 +33,9 @@
 		<string>bank110000000005</string>
 		<string>bank100000000008</string>
 		<string>bank100000000007</string>
-		<string>bank100000000015</string>
 		<string>bank100000000001</string>
 		<string>bank100000000010</string>
 		<string>bank100000000013</string>
-		<string>bank100000000012</string>
 		<string>bank100000000020</string>
 		<string>bank100000000025</string>
 		<string>bank100000000030</string>
@@ -144,18 +142,15 @@
 		<string>bank100000000205</string>
 		<string>bank100000000059</string>
 		<string>bank100000000070</string>
-		<string>bank100000000112</string>
 		<string>bank100000000223</string>
 		<string>bank100000000148</string>
 		<string>bank100000000199</string>
 		<string>bank100000000045</string>
 		<string>bank100000000217</string>
 		<string>bank100000000169</string>
-		<string>bank100000000227</string>
 		<string>bank100000000125</string>
 		<string>bank100000000176</string>
 		<string>bank100000000144</string>
-		<string>bank100000000128</string>
 		<string>bank100000000181</string>
 		<string>bank100000000026</string>
 		<string>bank100000000078</string>
@@ -217,6 +212,11 @@
 		<string>bank100000000293</string>
 		<string>bank100000000288</string>
 		<string>bank100000000108</string>
+		<string>bank100000000259</string>
+		<string>bank100000000198</string>
+		<string>bank100000000267</string>
+		<string>bank100000000271</string>
+		<string>bank100000000015</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -258,8 +258,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>

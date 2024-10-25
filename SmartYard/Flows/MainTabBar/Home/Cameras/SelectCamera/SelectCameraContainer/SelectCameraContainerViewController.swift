@@ -71,6 +71,7 @@ final class SelectCameraContainerViewController: BaseViewController {
         pagingController.font = UIFont.SourceSansPro.regular(size: 18)
         pagingController.selectedFont = UIFont.SourceSansPro.semibold(size: 18)
         
+        pagingController.menuBackgroundColor = UIColor.SmartYard.secondBackgroundColor
         pagingController.textColor = UIColor.SmartYard.gray
         pagingController.selectedTextColor = UIColor.SmartYard.semiBlack
         

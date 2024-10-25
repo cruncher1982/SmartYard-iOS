@@ -1,13 +1,27 @@
 {
   "images" : [
     {
-      "alignment-insets" : {
-        "bottom" : 0,
-        "left" : 0,
-        "right" : 0,
-        "top" : -4
-      },
-      "filename" : "MissedCall.pdf",
+      "filename" : "MissedCall_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "MissedCall_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "MissedCall_dark.pdf",
       "idiom" : "universal"
     }
   ],

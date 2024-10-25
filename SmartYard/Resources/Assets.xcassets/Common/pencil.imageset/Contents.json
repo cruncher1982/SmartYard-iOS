@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "pencil.svg",
+      "filename" : "pencil_any.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "pencil_light.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "pencil_dark.pdf",
       "idiom" : "universal"
     }
   ],

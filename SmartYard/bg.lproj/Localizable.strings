@@ -106,6 +106,11 @@
 "sec" = "сек";
 "Archive" = "Архив";
 "Online" = "Онлайн";
+"Select Appearance" = "Изберете външен вид";
+"Please choose your preferred appearance theme." = "Моля, изберете предпочитана тема.";
+"System" = "Системен";
+"Light" = "Светъл";
+"Dark" = "Тъмен";
 "Thank you" = "Благодаря";
 "Video in progress" = "Видеото е в ход";
 "As soon as the process is over..." = "Щом процесът приключи...";

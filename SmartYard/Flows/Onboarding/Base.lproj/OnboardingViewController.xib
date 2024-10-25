@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -33,24 +33,24 @@
                     <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ru-dw-B3a">
-                    <rect key="frame" x="280" y="70" width="94" height="33"/>
+                    <rect key="frame" x="280" y="73" width="94" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Пропустить">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppNameLogo" translatesAutoresizingMaskIntoConstraints="NO" id="51a-hg-BG2">
-                    <rect key="frame" x="117" y="128" width="156" height="56"/>
+                    <rect key="frame" x="117" y="131" width="156" height="56"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j85-Mo-g0D" customClass="TopRoundedView" customModule="SmartYard" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="224" width="390" height="620"/>
+                    <rect key="frame" x="0.0" y="227" width="390" height="617"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agb-R0-2l1">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="400"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="397"/>
                             <subviews>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWO-8N-NQs">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="400"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="397"/>
+                                    <color key="backgroundColor" name="secondBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="Zve-tR-wfe"/>
                                     </constraints>
@@ -68,10 +68,10 @@
                             <viewLayoutGuide key="frameLayoutGuide" id="UrW-vq-4ty"/>
                         </scrollView>
                         <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="bcd-oJ-Tyo">
-                            <rect key="frame" x="134.33333333333334" y="538.66666666666663" width="121.33333333333334" height="27.333333333333371"/>
+                            <rect key="frame" x="158.66666666666666" y="537.33333333333337" width="73" height="25.666666666666629"/>
                         </pageControl>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWk-WM-mDC" customClass="WhiteButtonWithBorder" customModule="SmartYard" customModuleProvider="target">
-                            <rect key="frame" x="40" y="438.66666666666663" width="310" height="60"/>
+                            <rect key="frame" x="40" y="437.33333333333337" width="310" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="PD9-tI-96j"/>
                             </constraints>
@@ -79,7 +79,7 @@
                             <state key="normal" title="Далее"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9px-IB-3Uc" customClass="BlueButton" customModule="SmartYard" customModuleProvider="target">
-                            <rect key="frame" x="40" y="438.66666666666663" width="310" height="60"/>
+                            <rect key="frame" x="40" y="437.33333333333337" width="310" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="mRo-ej-Kvx"/>
                             </constraints>
@@ -87,7 +87,7 @@
                             <state key="normal" title="Класс, давайте начнём!"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="secondBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Agb-R0-2l1" secondAttribute="trailing" id="6sE-hn-7hc"/>
                         <constraint firstAttribute="trailing" secondItem="gWk-WM-mDC" secondAttribute="trailing" constant="40" id="8MY-il-4XE"/>
@@ -105,7 +105,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Vzb-hM-7pq"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="secondBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="51a-hg-BG2" secondAttribute="trailing" constant="117" id="0hH-PS-qkZ"/>
                 <constraint firstItem="iU2-yd-VtN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1W4-Sl-7S7"/>
@@ -127,10 +127,10 @@
         </view>
     </objects>
     <resources>
-        <image name="AppNameLogo" width="187" height="74"/>
+        <image name="AppNameLogo" width="199" height="128"/>
         <image name="MainBackground" width="375" height="812"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="secondBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

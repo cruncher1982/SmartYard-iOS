@@ -41,8 +41,7 @@ final class IntercomTemporaryAccessView: PMNibLinkableView {
         super.awakeFromNib()
         
         openButton.modeOnOnly = AccessService.shared.guestAccessModeOnOnly
-        containerView.layerBorderWidth = 1
-        containerView.layerBorderColor = UIColor.SmartYard.grayBorder
+        containerView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
     
 }
@@ -61,4 +60,14 @@ extension Reactive where Base: IntercomTemporaryAccessView {
         return base.waitingGuestsQuestionMark.rx.tap
     }
 
+}
+
+extension IntercomTemporaryAccessView {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        containerView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
+    }
+    
 }

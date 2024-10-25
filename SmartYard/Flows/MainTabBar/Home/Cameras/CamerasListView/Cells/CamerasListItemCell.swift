@@ -45,7 +45,7 @@ final class CamerasListItemCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backgroundColor = .white
+        backgroundColor = .SmartYard.secondBackgroundColor
         
         let titleDimensions = type(of: self).preferredHeight(
             for: bounds.width,
@@ -69,7 +69,7 @@ final class CamerasListItemCell: UICollectionViewCell {
             .right()
             .vCenter()
         
-        rightImageView.tintColor = UIColor(named: "gray")?.withAlphaComponent(0.5)
+        rightImageView.tintColor = UIColor.SmartYard.gray.withAlphaComponent(0.5)
         
         if titleDimensions.titleLabelHeight != 0 {
             titleLabel.pin.top().marginLeft(16).bottom().width(titleDimensions.titleLabelWidth)
@@ -86,7 +86,7 @@ final class CamerasListItemCell: UICollectionViewCell {
         
         layer.cornerRadius = 12
         layer.borderWidth = isHeader ? 1 : 0
-        layer.borderColor = UIColor.SmartYard.grayBorder.cgColor
+        addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
     
     func configure(item: CamerasListItem) {

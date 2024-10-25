@@ -115,6 +115,11 @@
 "sec" = "сек";
 "Archive" = "Архив";
 "Online" = "Онлайн";
+"Select Appearance" = "Көріністі таңдаңыз";
+"Please choose your preferred appearance theme." = "Өзіңізге ыңғайлы тақырыпты таңдаңыз.";
+"System" = "Жүйелік";
+"Light" = "Жарық";
+"Dark" = "Қараңғы";
 "Thank you" = "Рахмет";
 "Video in progress" = "Видео жүргізілімдегі";
 "As soon as the process is over..." = "Процесс аяқталған соң...";

@@ -400,7 +400,7 @@ private func getOptionsSync(apiWrapper: APIWrapper, accessService: AccessService
                     accessService.timeZone = timeZone
                 }
                 
-                var shouldShowList = accessService.cctvView == "list" || accessService.cctvView == "userDefined"
+                let shouldShowList = accessService.cctvView == "list" || accessService.cctvView == "userDefined"
                 
                 accessService.issuesVersion = response.issuesVersion ?? "1"
                 accessService.cctvView = response.cctvView.rawValue

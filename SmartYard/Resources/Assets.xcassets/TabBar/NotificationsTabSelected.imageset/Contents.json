@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ic_notification_active.pdf",
+      "filename" : "NotificationsTabSelected_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "NotificationsTabSelected_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "NotificationsTabSelected_dark.pdf",
       "idiom" : "universal"
     }
   ],

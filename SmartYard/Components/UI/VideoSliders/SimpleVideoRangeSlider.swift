@@ -134,8 +134,8 @@ class SimpleVideoRangeSlider: UIView, UIGestureRecognizerDelegate {
         
         // Setup previews
         
-        startCropBlurView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
-        endCropBlurView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        startCropBlurView.backgroundColor = UIColor.SmartYard.secondBackgroundColor.withAlphaComponent(0.7)
+        endCropBlurView.backgroundColor = UIColor.SmartYard.secondBackgroundColor.withAlphaComponent(0.7)
         
         thumbnailsContainer.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         thumbnailsContainer.addSubview(startCropBlurView)
@@ -162,7 +162,7 @@ class SimpleVideoRangeSlider: UIView, UIGestureRecognizerDelegate {
             thumbnailsContainer.addSubview(imageView)
             thumbnailsContainer.sendSubviewToBack(imageView)
             
-            activityIndicator.color = .white
+            activityIndicator.color = .SmartYard.secondBackgroundColor
             
             thumbnailsContainer.insertSubview(activityIndicator, aboveSubview: imageView)
         }

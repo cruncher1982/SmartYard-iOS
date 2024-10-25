@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MapboxMaps
 import PinLayout
 
 final class CityCamerasMapPointView: UIView {

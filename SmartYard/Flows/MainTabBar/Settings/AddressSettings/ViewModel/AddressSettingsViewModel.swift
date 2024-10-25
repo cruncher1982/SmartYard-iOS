@@ -68,7 +68,12 @@ final class AddressSettingsViewModel: BaseViewModel {
             .ignoreNil()
             .drive(
                 onNext: { [weak self] error in
-                    self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                    self?.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("Error", comment: ""),
+                            message: error.localizedDescription
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -357,7 +362,14 @@ final class AddressSettingsViewModel: BaseViewModel {
                 .disposed(by: self.disposeBag)
         }
         
-        router.trigger(.dialog(title: NSLocalizedString("Are you sure?", comment: ""), message: nil, actions: [noAction, yesAction]))
+        self.router.trigger(
+            .dialog(
+                title: NSLocalizedString("Are you sure?", comment: ""),
+                message: nil,
+                actions: [noAction, yesAction],
+                style: .alert
+            )
+        )
     }
     
 }

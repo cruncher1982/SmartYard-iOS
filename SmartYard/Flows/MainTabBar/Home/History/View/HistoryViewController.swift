@@ -100,6 +100,7 @@ final class HistoryViewController: BaseViewController, LoaderPresentable, UIAdap
     }
     
     fileprivate func setupShadows() {
+        toolbar.view.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
         toolbar.view.layer.shadowPath = UIBezierPath(rect: toolbar.view.bounds).cgPath
         toolbar.view.layer.shadowRadius = 32
         toolbar.view.layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -505,4 +506,14 @@ extension HistoryViewController: UITableViewDelegate {
         self.lastContentOffset = scrollView.contentOffset.y
         // конец "магии" тулбара
     }
+}
+
+extension HistoryViewController {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        toolbar.view.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
+    }
+    
 }

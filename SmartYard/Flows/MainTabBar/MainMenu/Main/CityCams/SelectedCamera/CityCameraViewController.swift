@@ -103,7 +103,7 @@ final class CityCameraViewController: BaseViewController {
         cameraAddress.text = cameraAddressString
         
         // настраиваем градиент между кнопкой и CollectionView
-        let gradientBackgroundColors = [UIColor.white.cgColor, UIColor.white.withAlphaComponent(0).cgColor]
+        let gradientBackgroundColors = [UIColor.SmartYard.secondBackgroundColor.cgColor, UIColor.SmartYard.secondBackgroundColor.withAlphaComponent(0).cgColor]
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = gradientBackgroundColors
@@ -194,7 +194,7 @@ final class CityCameraViewController: BaseViewController {
                         
                         self.button.setTitle(NSLocalizedString("Request a record", comment: ""), for: .normal)
                         self.button.backgroundColor = UIColor.SmartYard.blue
-                        self.button.setTitleColor(UIColor.white, for: .normal)
+                        self.button.setTitleColor(UIColor.SmartYard.secondBackgroundColor, for: .normal)
                         
                         self.buttonState = .requestRec
                         
@@ -311,7 +311,7 @@ final class CityCameraViewController: BaseViewController {
                         if videos.isEmpty {
                             self.button.setTitle(NSLocalizedString("Request a record", comment: ""), for: .normal)
                             self.button.backgroundColor = UIColor.SmartYard.blue
-                            self.button.setTitleColor(UIColor.white, for: .normal)
+                            self.button.setTitleColor(UIColor.SmartYard.secondBackgroundColor, for: .normal)
                             self.buttonState = .requestRec
                             
                         } else {
@@ -319,7 +319,7 @@ final class CityCameraViewController: BaseViewController {
                                 "\(NSLocalizedString("Incidents", comment: "")) (" + String(self.videos?.count ?? 0) + ")",
                                 for: .normal
                             )
-                            self.button.backgroundColor = UIColor.white
+                            self.button.backgroundColor = UIColor.SmartYard.secondBackgroundColor
                             self.button.setTitleColor(UIColor.SmartYard.blue, for: .normal)
                             self.buttonState = .incidents
                         }
@@ -360,7 +360,7 @@ final class CityCameraViewController: BaseViewController {
         if self.buttonState == .requestRec {
             self.button.setTitle(NSLocalizedString("Request a record", comment: ""), for: .normal)
             self.button.backgroundColor = UIColor.SmartYard.blue
-            self.button.setTitleColor(UIColor.white, for: .normal)
+            self.button.setTitleColor(UIColor.SmartYard.secondBackgroundColor, for: .normal)
             self.buttonState = .requestRec
             
         } else {
@@ -368,7 +368,7 @@ final class CityCameraViewController: BaseViewController {
                 "\(NSLocalizedString("Incidents", comment: "")) (" + String(self.videos?.count ?? 0) + ")",
                 for: .normal
             )
-            self.button.backgroundColor = UIColor.white
+            self.button.backgroundColor = UIColor.SmartYard.secondBackgroundColor
             self.button.setTitleColor(UIColor.SmartYard.blue, for: .normal)
             self.buttonState = .incidents
         }

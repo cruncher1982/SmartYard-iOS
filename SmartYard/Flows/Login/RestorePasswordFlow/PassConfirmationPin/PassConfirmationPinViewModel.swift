@@ -67,7 +67,12 @@ final class PassConfirmationPinViewModel: BaseViewModel {
                         isPinCorrect.onNext(false)
                         
                     default:
-                        self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                        self?.router.trigger(
+                            .alert(
+                                title: NSLocalizedString("Error", comment: ""),
+                                message: error.localizedDescription
+                            )
+                        )
                     }
                 }
             )
@@ -115,7 +120,13 @@ final class PassConfirmationPinViewModel: BaseViewModel {
                     let passDestination = self.selectedRestoreMethod.contact.contains("@") ? "email" : NSLocalizedString("phone", comment: "")
                     let dialogText = "\(NSLocalizedString("The password for the specified entry has been sent to the specified", comment: "")) \(passDestination)"
                     
-                    self.router.trigger(.dialog(title: "", message: dialogText, actions: [okAction]))
+                    self.router.trigger(
+                        .dialog(
+                            title: "",
+                            message: dialogText,
+                            actions: [okAction]
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)

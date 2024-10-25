@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "BurgerUnselected.svg",
+      "filename" : "MenuTabUnselected_any.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "MenuTabUnselected_light.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "MenuTabUnselected_dark.pdf",
       "idiom" : "universal"
     }
   ],

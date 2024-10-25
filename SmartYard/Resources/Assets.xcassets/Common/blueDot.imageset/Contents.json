@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "blueDot.pdf",
+      "filename" : "blueDot_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "blueDot_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "blueDot_dark.pdf",
       "idiom" : "universal"
     }
   ],

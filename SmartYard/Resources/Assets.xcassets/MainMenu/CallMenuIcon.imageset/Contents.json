@@ -3,6 +3,26 @@
     {
       "filename" : "CallMenuIcon.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "CallMenuIcon 1.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "call_support_burger.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

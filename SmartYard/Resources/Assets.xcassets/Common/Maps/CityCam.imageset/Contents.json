@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "CityCam.svg",
+      "filename" : "CityCam_any.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "CityCam_light.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Group 161.pdf",
       "idiom" : "universal"
     }
   ],

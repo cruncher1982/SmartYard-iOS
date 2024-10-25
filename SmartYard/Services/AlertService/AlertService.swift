@@ -42,7 +42,7 @@ class AlertService {
         showDialog(title: title, message: message, actions: [okAction], priority: priority)
     }
     
-    func showDialog(title: String, message: String?, actions: [UIAlertAction], priority: Int) {
+    func showDialog(title: String, message: String?, preferredStyle: UIAlertController.Style = .alert, actions: [UIAlertAction], priority: Int) {
         // MARK: Проверяем, есть ли вообще VC, от которого можно показать alert
         
         guard let topVc = UIApplication.shared.keyWindow?.rootViewController?.topViewController else {
@@ -51,7 +51,7 @@ class AlertService {
         
         // MARK: Создаем alert
         
-        let newAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let newAlert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         
         actions.forEach {
             newAlert.addAction($0)

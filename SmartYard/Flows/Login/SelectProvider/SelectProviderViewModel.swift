@@ -48,9 +48,19 @@ final class SelectProviderViewModel: BaseViewModel {
                     switch nsError.code {
                     case 422, 404:
                         let message = NSLocalizedString("Failed to load provider list, please try again later.", comment: "")
-                        self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: message))
+                        self?.router.trigger(
+                            .alert(
+                                title: NSLocalizedString("Error", comment: ""),
+                                message: message
+                            )
+                        )
                     default:
-                        self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                        self?.router.trigger(
+                            .alert(
+                                title: NSLocalizedString("Error", comment: ""),
+                                message: error.localizedDescription
+                            )
+                        )
                     }
                 }
             )

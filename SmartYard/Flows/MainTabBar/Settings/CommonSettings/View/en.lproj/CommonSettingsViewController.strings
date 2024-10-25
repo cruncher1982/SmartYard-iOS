@@ -34,11 +34,14 @@ gets close to zero";
 /* Class = "UILabel"; text = "Александр Сергеевич"; ObjectID = "xe0-3V-fgv"; */
 "xe0-3V-fgv.text" = "Александр Сергеевич";
 
-/* Class = "UILabel"; text = "Камеры"; ObjectID = "AmF-1g-Ii8"; */
-"AmF-1g-Ii8.text" = "Cameras";
+/* Class = "UILabel"; text = "Отображение"; ObjectID = "AmF-1g-Ii8"; */
+"AmF-1g-Ii8.text" = "Appereance";
 
 /* Class = "UILabel"; text = "Показать на карте"; ObjectID = "mLP-oQ-Prc"; */
-"mLP-oQ-Prc.text" = "Show on map";
+"mLP-oQ-Prc.text" = "Show cameras on the map";
+
+/* Class = "UILable"; text = "Тема"; ObjectID = "BAH-ga-Qff"; */
+"BAH-ga-Qff.text" = "Theme";
 
 /* Class = "UIButton"; normalTitle = "Удалить аккаунт"; ObjectID = "duv-cH-I0h"; */
 "duv-cH-I0h.normalTitle" = "Delete account";

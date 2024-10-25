@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SkeletonView
 
 extension UIView {
 
@@ -72,17 +73,36 @@ extension UIView {
 
 extension UIView {
     
-    func showSkeletonAsynchronously() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else {
-                return
+    func showSkeletonAsynchronously(with color: UIColor) {
+        let lightColor = color.resolvedColor(with: UITraitCollection(userInterfaceStyle: .light))
+        let darkColor = color.resolvedColor(with: UITraitCollection(userInterfaceStyle: .dark))
+        
+        let themeColor: UIColor
+        switch ThemeManager.shared.currentTheme.value {
+        case .unspecified:
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                themeColor = darkColor
+            case .light:
+                themeColor = lightColor
+            default:
+                themeColor = color
             }
-            
+        case .light:
+            themeColor = lightColor
+        case .dark:
+            themeColor = darkColor
+        @unknown default:
+            print("Unknown ThemeManager style encountered: \(ThemeManager.shared.currentTheme.value)")
+            themeColor = color
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self, self.isSkeletonable else { return }
             self.hideSkeleton()
             
-            if self.isSkeletonable {
-                self.showAnimatedGradientSkeleton()
-            }
+            let gradient = SkeletonGradient(baseColor: themeColor, secondaryColor: themeColor.withAlphaComponent(0.2))
+            showAnimatedGradientSkeleton(usingGradient: gradient)
         }
     }
     
@@ -98,5 +118,12 @@ extension UIView {
                 self.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: 0)
             ]
         )
+    }
+}
+
+extension UIView {
+    func addBorder(dynamicColor: UIColor, width: CGFloat = 1.0) {
+        self.layer.borderColor = dynamicColor.cgColor
+        self.layer.borderWidth = width
     }
 }

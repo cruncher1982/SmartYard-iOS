@@ -31,9 +31,7 @@ final class FaceIdAccessView: PMNibLinkableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        containerView.layerBorderWidth = 1
-        containerView.layerBorderColor = UIColor.SmartYard.grayBorder
-        
+        containerView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
     
 }
@@ -42,6 +40,16 @@ extension Reactive where Base: FaceIdAccessView {
     
     var configureButtonTapped: ControlEvent<Void> {
         return base.button.rx.tap
+    }
+    
+}
+
+extension FaceIdAccessView {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        containerView.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
     
 }

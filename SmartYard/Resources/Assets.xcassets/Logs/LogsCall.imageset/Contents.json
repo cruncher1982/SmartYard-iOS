@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "LogsCall.pdf",
+      "filename" : "LogsCall_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "LogsCall_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "LogsCall_dark.pdf",
       "idiom" : "universal"
     }
   ],

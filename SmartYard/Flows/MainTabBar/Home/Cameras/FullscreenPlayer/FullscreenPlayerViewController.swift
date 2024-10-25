@@ -133,7 +133,7 @@ final class FullscreenPlayerViewController: UIViewController {
         label.textAlignment = .center
         label.frame = CGRect(x: 0, y: 0, width: 100, height: 21)
         label.center = CGPoint(x: view.width * ((offset > 0) ? 3 : 1) / 4, y: view.height / 2)
-        label.textColor = .white
+        label.textColor = .SmartYard.secondBackgroundColor
         label.backgroundColor = .clear
         view.addSubview(label)
         

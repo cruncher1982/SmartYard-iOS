@@ -46,7 +46,12 @@ final class FacesSettingsViewModel: BaseViewModel {
         errorTracker.asDriver()
             .drive(
                 onNext: { [weak self] error in
-                    self?.router.trigger(.alert(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription))
+                    self?.router.trigger(
+                        .alert(
+                            title: NSLocalizedString("Error", comment: ""),
+                            message: error.localizedDescription
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -85,7 +90,12 @@ final class FacesSettingsViewModel: BaseViewModel {
                     guard let self = self else {
                         return
                     }
-                    self.router.trigger(.addFace(flatId: self.flatId, address: self.address))
+                    self.router.trigger(
+                        .addFace(
+                            flatId: self.flatId,
+                            address: self.address
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)
@@ -96,7 +106,13 @@ final class FacesSettingsViewModel: BaseViewModel {
                     guard let self = self else {
                         return
                     }
-                    self.router.trigger(.deleteFace(image: image, flatId: self.flatId, faceId: faceId))
+                    self.router.trigger(
+                        .deleteFace(
+                            image: image,
+                            flatId: self.flatId,
+                            faceId: faceId
+                        )
+                    )
                 }
             )
             .disposed(by: disposeBag)

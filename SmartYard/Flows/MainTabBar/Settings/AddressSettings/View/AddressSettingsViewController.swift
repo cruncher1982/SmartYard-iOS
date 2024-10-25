@@ -86,7 +86,7 @@ final class AddressSettingsViewController: BaseViewController, LoaderPresentable
         super.viewWillAppear(animated)
         
         if skeletonView.sk.isSkeletonActive {
-            skeletonView.showSkeletonAsynchronously()
+            skeletonView.showSkeletonAsynchronously(with: UIColor.SmartYard.backgroundColor)
         }
     }
     
@@ -101,14 +101,12 @@ final class AddressSettingsViewController: BaseViewController, LoaderPresentable
     }
     
     private func configureView() {
-        addressContainerView.layerBorderWidth = 1
-        addressContainerView.layerBorderColor = UIColor.SmartYard.grayBorder
         
-        notificationsContainerView.layerBorderWidth = 1
-        notificationsContainerView.layerBorderColor = UIColor.SmartYard.grayBorder
-        
-        deleteAddressButton.layerBorderWidth = 1
-        deleteAddressButton.layerBorderColor = UIColor.SmartYard.grayBorder
+        [
+            addressContainerView,
+            notificationsContainerView,
+            deleteAddressButton
+        ].forEach { $0.addBorder(dynamicColor: UIColor.SmartYard.grayBorder) }
         
         let expansionTapGesture = UITapGestureRecognizer()
         notificationsHeader.addGestureRecognizer(expansionTapGesture)
@@ -292,7 +290,7 @@ final class AddressSettingsViewController: BaseViewController, LoaderPresentable
                     let showSkeleton = {
                         self?.mainContainerView.isHidden = true
                         self?.skeletonView.isHidden = false
-                        self?.skeletonView.showSkeletonAsynchronously()
+                        self?.skeletonView.showSkeletonAsynchronously(with: UIColor.SmartYard.backgroundColor)
                     }
                     
                     let hideSkeleton = {
@@ -328,6 +326,21 @@ final class AddressSettingsViewController: BaseViewController, LoaderPresentable
                 }
             )
             .disposed(by: disposeBag)
+    }
+    
+}
+
+extension AddressSettingsViewController {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        [
+            addressContainerView,
+            notificationsContainerView,
+            deleteAddressButton
+        ].forEach { $0.addBorder(dynamicColor: UIColor.SmartYard.grayBorder) }
+        
     }
     
 }

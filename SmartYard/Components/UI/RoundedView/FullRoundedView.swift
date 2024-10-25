@@ -16,7 +16,17 @@ final class FullRoundedView: UIView {
             
         layerCornerRadius = 12
         layerBorderWidth = 1
-        layerBorderColor = UIColor.SmartYard.grayBorder
+        addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
+    }
+    
+}
+
+extension FullRoundedView {
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        self.addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
     
 }

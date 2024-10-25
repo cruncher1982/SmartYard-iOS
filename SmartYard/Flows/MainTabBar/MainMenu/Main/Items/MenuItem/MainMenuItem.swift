@@ -35,7 +35,7 @@ final class MainMenuItem: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backgroundColor = .white
+        backgroundColor = .SmartYard.secondBackgroundColor
         
         let dimensions = type(of: self).preferredHeight(
             for: bounds.width,
@@ -56,15 +56,14 @@ final class MainMenuItem: UICollectionViewCell {
             .left()
             .vCenter()
         
-        arrowImageView.tintColor = UIColor(hex: 0x6D7A8A)?.withAlphaComponent(0.5)
+        arrowImageView.tintColor = UIColor.SmartYard.gray.withAlphaComponent(0.5)
         
         if dimensions.titleLabelHeight != 0 {
             titleLabel.pin.top().right(of: iconImageView).marginLeft(16).bottom().width(dimensions.titleLabelWidth)
         }
         
         layer.cornerRadius = 12
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.SmartYard.grayBorder.cgColor
+        addBorder(dynamicColor: UIColor.SmartYard.grayBorder)
     }
     
     func configure(name: String?, iconName: String? = nil, icon: UIImage? = nil) {

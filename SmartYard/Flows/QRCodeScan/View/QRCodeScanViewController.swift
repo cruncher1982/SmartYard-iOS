@@ -27,7 +27,7 @@ final class QRCodeScanViewController: BaseViewController {
     private var captureSession: AVCaptureSession?
     private var previewLayer: AVCaptureVideoPreviewLayer?
     private var blurLayer: CAShapeLayer?
-    private var whiteFrameLayer: CAShapeLayer?
+    private var frameLayer: CAShapeLayer?
     
     init(viewModel: QRCodeScanViewModel) {
         self.viewModel = viewModel
@@ -62,8 +62,8 @@ final class QRCodeScanViewController: BaseViewController {
         blurLayer?.path = createBlurPath(for: view.bounds)
         blurLayer?.frame = view.bounds
         
-        whiteFrameLayer?.path = UIBezierPath(roundedRect: scanningArea.frame, cornerRadius: 20).cgPath
-        whiteFrameLayer?.frame = view.bounds
+        frameLayer?.path = UIBezierPath(roundedRect: scanningArea.frame, cornerRadius: 20).cgPath
+        frameLayer?.frame = view.bounds
     }
     
     private func configureView() {
@@ -173,15 +173,16 @@ final class QRCodeScanViewController: BaseViewController {
     // MARK: Белая рамка вокруг дыры для сканирования
     
     private func configureWhiteFrameLayer() {
-        let whiteFrameLayer = CAShapeLayer()
+        let frameLayer = CAShapeLayer()
         
-        whiteFrameLayer.path = UIBezierPath(roundedRect: scanningArea.frame, cornerRadius: 20).cgPath
-        whiteFrameLayer.lineWidth = 4
-        whiteFrameLayer.strokeColor = UIColor.white.cgColor
-        whiteFrameLayer.fillColor = UIColor.clear.cgColor
+        frameLayer.path = UIBezierPath(roundedRect: scanningArea.frame,
+                                       cornerRadius: 20).cgPath
+        frameLayer.lineWidth = 4
+        frameLayer.strokeColor = UIColor.white.cgColor
+        frameLayer.fillColor = UIColor.clear.cgColor
         
-        previewContainer.layer.addSublayer(whiteFrameLayer)
-        self.whiteFrameLayer = whiteFrameLayer
+        previewContainer.layer.addSublayer(frameLayer)
+        self.frameLayer = frameLayer
     }
     
     /// Включение / выключение фонаря

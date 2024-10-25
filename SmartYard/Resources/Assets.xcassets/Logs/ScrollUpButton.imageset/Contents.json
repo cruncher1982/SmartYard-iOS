@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "ScrollUpButton.pdf",
+      "filename" : "ScrollUpButton_any.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "ScrollUpButton_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "ScrollUpButton_dark.pdf",
       "idiom" : "universal"
     }
   ],
