@@ -171,22 +171,6 @@ final class IncomingCallLandscapeViewController: BaseViewController {
                 }
             )
             .disposed(by: disposeBag)
-        
-        output.isSIPHasVideo
-            .drive(
-                onNext: { [weak self] hasVideo in
-                    self?.SIPHasVideo = hasVideo
-                }
-            )
-            .disposed(by: disposeBag)
-        
-        output.isWebRTCHasVideo
-            .drive(
-                onNext: { [weak self] hasVideo in
-                    self?.webRTCHasVideo = hasVideo
-                }
-            )
-            .disposed(by: disposeBag)
 
         output.isDoorBeingOpened
             .debounce(.milliseconds(25))
@@ -207,44 +191,59 @@ final class IncomingCallLandscapeViewController: BaseViewController {
     }
     
     private func applyState(_ state: IncomingCallStateContainer, hasImage: Bool) {
-        view.isUserInteractionEnabled = state.callState != .callFinished
+        let callState = state.callState
+        let previewState = state.previewState
+        let doorState = state.doorState
+        let videoState = state.videoState
+        let soundOutputState = state.soundOutputState
         
-        previewButton.isSelected = state.previewState == .video && state.doorState == .notDetermined
-        callButton.isSelected = (state.callState == .establishingConnection || state.callState == .callActive)
-            && state.doorState == .notDetermined
-        speakerButton.isSelected = state.soundOutputState == .speaker
+        view.isUserInteractionEnabled = callState != .callFinished
         
-        let shouldShowVideo = (state.callState == .callActive || state.callState == .callReceived) && state.previewState == .video
+        // Buttons visibility
+        previewButton.isSelected = previewState == .video && doorState == .notDetermined
+        callButton.isSelected = (callState == .establishingConnection || callState == .callActive) && doorState == .notDetermined
+        speakerButton.isSelected = soundOutputState == .speaker
         
-        videoPreview.isHidden = !shouldShowVideo || (!SIPHasVideo && webRTCHasVideo)
-        webRTCView.isHidden = !shouldShowVideo || (SIPHasVideo && !webRTCHasVideo)
-
-        imageView.isHidden = !(state.previewState == .staticImage || (state.previewState == .video && !SIPHasVideo && !webRTCHasVideo))
+        // Video preview and WebRTC view logic
+        let shouldShowVideo = (callState == .callActive || callState == .callReceived) && previewState == .video
+        let isWebRTC = videoState == .webrtc
+        let isInband = videoState == .inband
+        videoPreview.isHidden = !shouldShowVideo || (!isInband && isWebRTC)
+        webRTCView.isHidden = !shouldShowVideo || (isInband && !isWebRTC)
+        
+        // Image view visibility
+        imageView.isHidden = !(previewState == .staticImage) || (previewState == .video && !isInband && !isWebRTC)
         imageViewActivityIndicator.isHidden = shouldShowVideo || hasImage
         
-        callButton.isHidden = [.callActive, .callFinished].contains(state.callState)
-        speakerButton.isHidden = [.callReceived, .establishingConnection].contains(state.callState)
+        // Button containers visibility
+        callButton.isHidden = [.callActive, .callFinished].contains(callState)
+        speakerButton.isHidden = [.callReceived, .establishingConnection].contains(callState)
         
-        alreadyOpenedButton.isHidden = state.doorState != .opened
-        openButton.isHidden = state.doorState == .opened
-        ignoreButton.isHidden = state.doorState == .opened
+        alreadyOpenedButton.isHidden = doorState != .opened
+        openButton.isHidden = doorState == .opened
+        ignoreButton.isHidden = doorState == .opened
+        
+        // Title label
+        let titleText: String
         
         switch (state.callState, state.previewState) {
         case (.callReceived, .staticImage):
-            titleLabel.text = NSLocalizedString("Call to intercom", comment: "")
+            titleText = NSLocalizedString("Call to intercom", comment: "")
             
         case (.callReceived, .video):
-            titleLabel.text = NSLocalizedString("Peephole on", comment: "")
+            titleText = NSLocalizedString("Peephole on", comment: "")
             
         case (.establishingConnection, _):
-            titleLabel.text = NSLocalizedString("Connecting...", comment: "")
+            titleText = NSLocalizedString("Connecting...", comment: "")
             
         case (.callActive, _):
-            titleLabel.text = NSLocalizedString("Conversation", comment: "")
+            titleText = NSLocalizedString("Conversation", comment: "")
             
         case (.callFinished, _):
-            titleLabel.text = NSLocalizedString("Call completed", comment: "")
+            titleText = NSLocalizedString("Call completed", comment: "")
         }
+        
+        titleLabel.text = titleText
     }
 
 }

@@ -26,7 +26,9 @@ public extension UIDevice {
 #endif
         
         switch identifier {
-            // MARK: - iPhone
+            
+            // MARK: - iPhone -
+            
         case "i386", "x86_64", "arm64": return "iPhone Simulator"
         case "iPhone1,1": return "1"
         case "iPhone1,2": return "3G"
@@ -82,7 +84,8 @@ public extension UIDevice {
         case "iPhone16,1": return "15 Pro"
         case "iPhone16,2": return "15 Pro Max"
         
-        // MARK: - iPod
+        // MARK: - iPod -
+            
         case "iPod1,1": return "1st Gen iPod"
         case "iPod2,1": return "2nd Gen iPod"
         case "iPod3,1": return "3rd Gen iPod"
@@ -91,7 +94,8 @@ public extension UIDevice {
         case "iPod7,1": return "6th Gen iPod"
         case "iPod9,1": return "7th Gen iPod"
         
-        // MARK: - iPad
+        // MARK: - iPad -
+            
         case "iPad1,1": return "iPad"
         case "iPad1,2": return "iPad 3G"
         case "iPad2,1": return "2nd Gen iPad"
@@ -175,7 +179,8 @@ public extension UIDevice {
         case "iPad14,5": return "iPad Pro 12.9 inch 6th Gen"
         case "iPad14,6": return "iPad Pro 12.9 inch 6th Gen"
         
-        // MARK: - Watch
+        // MARK: - Watch -
+            
         case "Watch1,1": return "Apple Watch 38mm case"
         case "Watch1,2": return "Apple Watch 42mm case"
         case "Watch2,6": return "Apple Watch Series 1 38mm case"
@@ -216,15 +221,18 @@ public extension UIDevice {
         case "Watch6,17": return "Apple Watch Series 8 45mm case (GPS+Cellular)"
         case "Watch6,18": return "Apple Watch Ultra"
         
-        // MARK: - Apple TV
+        // MARK: - Apple TV -
+            
         case "AppleTV5,3": return "Apple TV"
         case "AppleTV6,2": return "Apple TV 4K"
         
-        // MARK: - HomePod
+        // MARK: - HomePod -
+            
         case "AudioAccessory1,1": return "HomePod"
         case "AudioAccessory5,1": return "HomePod mini"
         
-        // MARK: - Unrecognized
+        // MARK: - Unrecognized -
+            
         default: return identifier
         }
     }

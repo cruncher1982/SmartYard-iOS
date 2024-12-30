@@ -24,7 +24,7 @@ final class WebRTCService: NSObject {
             if stateConnected, let containerView = _containerView {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
                     containerView.removeSubviews()
-                    print("Binding to containerView while already connected")
+                    Logger.logInfo("Binding to containerView while already connected.")
                     self?.bindView(containerView)
                 }
             }
@@ -76,13 +76,18 @@ final class WebRTCService: NSObject {
         containerView.sendSubviewToBack(remoteRenderer)
     }
     
+    func captureFrame(completion: @escaping (UIImage?) -> Void) {
+        self.webRTCClient.captureFrame(completion: completion)
+    }
+    
     func setRemoteSDP(sdp: RTCSessionDescription) {
-        self.webRTCClient.set(remoteSdp: sdp) { (error) in
+        self.webRTCClient.set(remoteSdp: sdp) { error in
             if let error = error {
                 print(error.localizedDescription)
             }
         }
     }
+    
 }
 
 extension WebRTCService: SignalClientDelegate {
@@ -99,8 +104,8 @@ extension WebRTCService: SignalClientDelegate {
     }
     
     func signalClient(_ signalClient: SignalingClient, didReceiveRemoteSdp sdp: RTCSessionDescription) {
-        print("Received remote sdp")
-        print(sdp.sdp.debugDescription)
+        Logger.logInfo("Received remote sdp")
+        Logger.logDebug(sdp.sdp.debugDescription)
         setRemoteSDP(sdp: sdp)
     }
 }
@@ -118,7 +123,7 @@ extension WebRTCService: WebRTCClientDelegate {
         print("didChangeConnectionState: \(state.description)")
         stateConnected = state == .connected
         if stateConnected, let containerView = self.containerView {
-            DispatchQueue.main.async() { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 print("Binding to containerView right after connected")
                 self?.bindView(containerView)
             }
@@ -129,3 +134,4 @@ extension WebRTCService: WebRTCClientDelegate {
         print("didReceiveData")
     }
 }
+

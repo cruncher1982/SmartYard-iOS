@@ -39,9 +39,6 @@ final class IncomingCallPortraitViewController: BaseViewController {
     
     @IBOutlet private weak var fullscreenButton: UIButton!
     
-    private var SIPHasVideo = false
-    private var webRTCHasVideo = false
-    
     private let viewModel: IncomingCallViewModel
     
     init(viewModel: IncomingCallViewModel) {
@@ -158,22 +155,6 @@ final class IncomingCallPortraitViewController: BaseViewController {
             )
             .disposed(by: disposeBag)
         
-        output.isSIPHasVideo
-            .drive(
-                onNext: { [weak self] hasVideo in
-                    self?.SIPHasVideo = hasVideo
-                }
-            )
-            .disposed(by: disposeBag)
-        
-        output.isWebRTCHasVideo
-            .drive(
-                onNext: { [weak self] hasVideo in
-                    self?.webRTCHasVideo = hasVideo
-                }
-            )
-            .disposed(by: disposeBag)
-        
         fullscreenButton.rx.tap
             .subscribe(
                 onNext: {
@@ -184,54 +165,75 @@ final class IncomingCallPortraitViewController: BaseViewController {
     }
     
     private func applyState(_ state: IncomingCallStateContainer, hasImage: Bool) {
-        view.isUserInteractionEnabled = state.callState != .callFinished
+        let callState = state.callState
+        let previewState = state.previewState
+        let doorState = state.doorState
+        let videoState = state.videoState
+        let soundOutputState = state.soundOutputState
         
-        previewButton.isSelected = state.previewState == .video && state.doorState == .notDetermined
-        callButton.isSelected = (state.callState == .establishingConnection || state.callState == .callActive)
-            && state.doorState == .notDetermined
-        speakerButton.isSelected = state.soundOutputState == .speaker
+        view.isUserInteractionEnabled = callState != .callFinished
         
-        let shouldShowVideo = (state.callState == .callActive || state.callState == .callReceived) && state.previewState == .video
+        // Buttons visibility
+        previewButton.isSelected = previewState == .video && doorState == .notDetermined
+        callButton.isSelected = (callState == .establishingConnection || callState == .callActive) && doorState == .notDetermined
+        speakerButton.isSelected = soundOutputState == .speaker
         
+        let shouldShowVideo = (callState == .callActive || callState == .callReceived) && previewState == .video
         videoBackgroundBlur.isHidden = !shouldShowVideo
         
-        videoPreview.isHidden = !shouldShowVideo || (!SIPHasVideo && webRTCHasVideo)
-        webRTCView.isHidden = !shouldShowVideo || (SIPHasVideo && !webRTCHasVideo)
+        // Video preview and WebRTC view logic
+        let isWebRTC = videoState == .webrtc
+        let isInband = videoState == .inband
+        videoPreview.isHidden = !shouldShowVideo || (!isInband && isWebRTC)
+        webRTCView.isHidden = !shouldShowVideo || (isInband && !isWebRTC)
         
-        imageView.isHidden = !(state.previewState == .staticImage || (state.previewState == .video && !SIPHasVideo && !webRTCHasVideo))
+        // Image view visibility
+        imageView.isHidden = !(previewState == .staticImage) || (previewState == .video && !isInband && !isWebRTC)
         imageViewActivityIndicator.isHidden = shouldShowVideo || hasImage
         
-        callButtonContainer.isHidden = [.callActive, .callFinished].contains(state.callState)
-        speakerButtonContainer.isHidden = [.callReceived, .establishingConnection].contains(state.callState)
+        // Button containers visibility
+        callButtonContainer.isHidden = [.callActive, .callFinished].contains(callState)
+        speakerButtonContainer.isHidden = [.callReceived, .establishingConnection].contains(callState)
         
-        alreadyOpenedButtonContainer.isHidden = state.doorState != .opened
-        openButtonContainer.isHidden = state.doorState == .opened
-        ignoreButtonContainer.isHidden = state.doorState == .opened
+        alreadyOpenedButtonContainer.isHidden = doorState != .opened
+        openButtonContainer.isHidden = doorState == .opened
+        ignoreButtonContainer.isHidden = doorState == .opened
         
-        switch (state.callState, state.previewState) {
+        // Title and button labels
+        let titleText: String
+        let ignoreLabelText: String
+        let previewLabelText: String
+        
+        switch (callState, previewState) {
         case (.callReceived, .staticImage):
-            titleLabel.text = NSLocalizedString("Call to intercom", comment: "")
-            ignoreButtonLabel.text = NSLocalizedString("Ignore", comment: "")
-            previewButtonLabel.text = NSLocalizedString("Peephole", comment: "")
+            titleText = NSLocalizedString("Call to intercom", comment: "")
+            ignoreLabelText = NSLocalizedString("Ignore", comment: "")
+            previewLabelText = NSLocalizedString("Peephole", comment: "")
             
         case (.callReceived, .video):
-            titleLabel.text = NSLocalizedString("Peephole on", comment: "")
-            ignoreButtonLabel.text = NSLocalizedString("Ignore", comment: "")
-            previewButtonLabel.text = NSLocalizedString("Peephole", comment: "")
+            titleText = NSLocalizedString("Peephole on", comment: "")
+            ignoreLabelText = NSLocalizedString("Ignore", comment: "")
+            previewLabelText = NSLocalizedString("Peephole", comment: "")
             
         case (.establishingConnection, _):
-            titleLabel.text = NSLocalizedString("Connecting...", comment: "")
-            ignoreButtonLabel.text = NSLocalizedString("Decline", comment: "")
-            previewButtonLabel.text = NSLocalizedString("Video", comment: "")
+            titleText = NSLocalizedString("Connecting...", comment: "")
+            ignoreLabelText = NSLocalizedString("Decline", comment: "")
+            previewLabelText = NSLocalizedString("Video", comment: "")
             
         case (.callActive, _):
-            titleLabel.text = NSLocalizedString("Conversation", comment: "")
-            ignoreButtonLabel.text = NSLocalizedString("Decline", comment: "")
-            previewButtonLabel.text = NSLocalizedString("Video", comment: "")
+            titleText = NSLocalizedString("Conversation", comment: "")
+            ignoreLabelText = NSLocalizedString("Decline", comment: "")
+            previewLabelText = NSLocalizedString("Video", comment: "")
             
         case (.callFinished, _):
-            titleLabel.text = NSLocalizedString("Call completed", comment: "")
+            titleText = NSLocalizedString("Call completed", comment: "")
+            ignoreLabelText = ""
+            previewLabelText = ""
         }
+        
+        titleLabel.text = titleText
+        ignoreButtonLabel.text = ignoreLabelText
+        previewButtonLabel.text = previewLabelText
     }
-    
+
 }

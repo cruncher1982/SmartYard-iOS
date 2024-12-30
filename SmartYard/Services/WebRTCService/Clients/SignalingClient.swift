@@ -45,7 +45,7 @@ final class SignalingClient {
         
         request.httpBody = postBody
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { data, _, _ in
             guard let data = data else { return }
             
             let sdpAnswer = String(decoding: data, as: UTF8.self)

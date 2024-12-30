@@ -30,8 +30,6 @@ extension IncomingCallViewModel {
         let subtitle: Driver<String?>
         let image: Driver<UIImage?>
         let isDoorBeingOpened: Driver<Bool>
-        let isSIPHasVideo: Driver<Bool>
-        let isWebRTCHasVideo: Driver<Bool>
     }
     
 }

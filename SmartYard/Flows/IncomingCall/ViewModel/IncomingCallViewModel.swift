@@ -16,7 +16,7 @@ import AVFoundation
 import CallKit
 import WebRTC
 
-// swiftlint:disable:next type_body_length
+// swiftlint:disable type_body_length file_length
 final class IncomingCallViewModel: BaseViewModel {
     
     private let providerProxy: CXProviderProxy
@@ -39,9 +39,7 @@ final class IncomingCallViewModel: BaseViewModel {
     private let incomingCallAcceptedByUser = BehaviorSubject<Bool>(value: false)
     private let doorOpeningRequestedByUser = BehaviorSubject<Bool>(value: false)
     private let isDoorBeingOpened = BehaviorSubject<Bool>(value: false)
-    private let isSIPHasVideo = BehaviorSubject<Bool>(value: false)
-    private let isWebRTCHasVideo = BehaviorSubject<Bool>(value: false)
- 
+    
     // MARK: По умолчанию звонок принятый через CallKit должен показываться со статичной картинкой
     // Чтобы показалось видео - нужно, чтобы пользователь нажал на кнопку "Video" в коллките
     // Если CallKit выключен, то всегда по умолчанию показывается видео
@@ -89,29 +87,21 @@ final class IncomingCallViewModel: BaseViewModel {
         
         subtitleSubject = BehaviorSubject<String?>(value: callPayload.callerId)
         
-        if callPayload.videoType == .webrtc,
-           let stun = callPayload.stun,
-           let urlString = callPayload.videoUrl,
-           let endpointUrl = URL(string: urlString) {
-            self.webRTCService = WebRTCService(iceServers: [ stun ], endpointUrl: endpointUrl)
-            self.isWebRTCHasVideo.onNext(true)
-        } else {
-            self.isWebRTCHasVideo.onNext(false)
-            self.webRTCService = nil
-        }
-        
         let defaultSpeakerMode = IncomingCallStateContainer.getDefaultSpeakerMode(isCallKitUsed, apiWrapper: apiWrapper)
         
         let initialCallState = IncomingCallStateContainer(
             callState: defaultSpeakerMode.callState,
             doorState: defaultSpeakerMode.doorState,
             previewState: defaultSpeakerMode.previewState,
-            soundOutputState: defaultSpeakerMode.soundOutputState
+            soundOutputState: defaultSpeakerMode.soundOutputState,
+            videoState: defaultSpeakerMode.videoState
         )
         
         currentStateSubject = BehaviorSubject<IncomingCallStateContainer>(value: initialCallState)
         
         super.init()
+        
+        self.startWebRTC()
         
         linphoneService.delegate = self
         linphoneService.connect(config: callPayload.sipConfig)
@@ -169,8 +159,8 @@ final class IncomingCallViewModel: BaseViewModel {
                 let (currentState, isDoorOpeningRequested) = args
                 
                 return currentState.callState == .callActive &&
-                    currentState.doorState == .notDetermined &&
-                    isDoorOpeningRequested
+                       currentState.doorState == .notDetermined &&
+                       isDoorOpeningRequested
             }
             .mapToVoid()
             .withLatestFrom(incomingCall.asDriver(onErrorJustReturn: nil))
@@ -216,7 +206,7 @@ final class IncomingCallViewModel: BaseViewModel {
                 incomingCallAcceptedByUser.asDriver(onErrorJustReturn: false),
                 doorOpeningRequestedByUser.asDriver(onErrorJustReturn: false)
             )
-            .flatMap { [weak self] args -> Driver<(Call, CallParams)> in
+            .flatMap { args -> Driver<(Call, CallParams)> in
                 let (incomingCall, isAccepted, isDoorOpeningRequested) = args
                 
                 guard let unwrappedIncomingCall = incomingCall, (isAccepted || isDoorOpeningRequested) else {
@@ -228,10 +218,6 @@ final class IncomingCallViewModel: BaseViewModel {
                 if isDoorOpeningRequested {
                     call.speakerMuted = true
                     call.microphoneMuted = true
-                }
-                 
-                if let remoteParams = call.remoteParams {
-                    self?.isSIPHasVideo.onNext(remoteParams.videoEnabled)
                 }
                 
                 return .just((call, callParams))
@@ -267,14 +253,21 @@ final class IncomingCallViewModel: BaseViewModel {
                             
                             return currentState.soundOutputState
                         }()
-                        let newState = IncomingCallStateContainer(
-                            callState: .callActive,
-                            doorState: currentState.doorState,
-                            previewState: previewMode,
-                            soundOutputState: soundOutputState
-                        )
                         
-                        self.currentStateSubject.onNext(newState)
+                        let videoState: IncomingCallVideoState = {
+                            if call.remoteParams?.videoEnabled ?? false {
+                                return .inband
+                            }
+                            
+                            return currentState.videoState
+                        }()
+                        
+                        self.updateState(
+                            callState: .callActive,
+                            previewState: previewMode,
+                            soundOutputState: soundOutputState,
+                            videoState: videoState
+                        )
                     } catch {
                         self.providerProxy.endCall(uuid: self.callPayload.uuid)
                         self.completionHandler?()
@@ -297,18 +290,16 @@ final class IncomingCallViewModel: BaseViewModel {
             .do(
                 onNext: { [weak self] currentState in
                     guard let self = self,
-                        currentState.callState != .callFinished,
-                        currentState.doorState == .notDetermined else {
+                          currentState.callState != .callFinished,
+                          currentState.doorState == .notDetermined else {
                         return
                     }
                     
-                    let newState = IncomingCallStateContainer(
+                    self.updateState(
                         callState: .callFinished,
-                        doorState: currentState.doorState,
                         previewState: .staticImage,
                         soundOutputState: .disabled
                     )
-                    self.currentStateSubject.onNext(newState)
                     
                     self.linphoneService.stop()
                     self.linphoneService.hasEnqueuedCalls = false
@@ -343,19 +334,12 @@ final class IncomingCallViewModel: BaseViewModel {
                     
                     switch currentState.callState {
                         
-                    // MARK: Если звонок активен - то принудительно запускаем видео
-                    
+                        // MARK: Если звонок активен - то принудительно запускаем видео
+                        
                     case .callActive:
-                        let newState = IncomingCallStateContainer(
-                            callState: currentState.callState,
-                            doorState: currentState.doorState,
-                            previewState: .video,
-                            soundOutputState: currentState.soundOutputState
-                        )
+                        self.updateState(previewState: .video)
                         
-                        self.currentStateSubject.onNext(newState)
-                        
-                    // MARK: Если звонок только пришел, устанавливается соединение - обновляем предпочтение
+                        // MARK: Если звонок только пришел, устанавливается соединение - обновляем предпочтение
                         
                     default:
                         self.preferredPreviewModeForActiveCall.onNext(.video)
@@ -403,19 +387,33 @@ final class IncomingCallViewModel: BaseViewModel {
         let initialImageSubject = BehaviorSubject<UIImage?>(value: nil)
         let initialImage = initialImageSubject.asDriver(onErrorJustReturn: nil)
         
-        // MARK: Здесь вместо URL liveImage должен использоваться просто image, но он иногда приходит кривой
-        // TODO: Поменять на обычный image, когда его будут присылать нормально
-        
-        if let url = URL(string: callPayload.liveImage) {
-            KingfisherManager.shared.retrieveImage(with: url) { result in
-                guard let imageResult = try? result.get() else {
-                    return
+        if let url = URL(string: callPayload.image) {
+            KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
+                switch result {
+                case .success(let imageResult):
+                    initialImageSubject.onNext(imageResult.image)
+                    
+                case .failure:
+                    // Если не получили image из payload и это webrtc, то достаем картинку из webrtc-потока.
+                    guard let self = self, let webRTCService = self.webRTCService else {
+                        Logger.logWarning("Failed to retrieve image and WebRTC service is unavailable.")
+                        return
+                    }
+                    
+                    webRTCService.captureFrame { capturedImage in
+                        guard let image = capturedImage else {
+                            // Если не получили image из webrtc, то показываем webrtc-поток.
+                            Logger.logWarning("Captured frame is nil. Update state to .video")
+                            self.updateState(previewState: .video)
+                            return
+                        }
+                        
+                        initialImageSubject.onNext(image)
+                    }
                 }
-                
-                initialImageSubject.onNext(imageResult.image)
             }
         }
-        
+
         // MARK: Если загрузили изначальную превьюху, то ее же используем и как первую картинку лайва
         
         initialImage
@@ -508,14 +506,7 @@ final class IncomingCallViewModel: BaseViewModel {
                         return
                     }
                     
-                    let newState = IncomingCallStateContainer(
-                        callState: .establishingConnection,
-                        doorState: currentState.doorState,
-                        previewState: currentState.previewState,
-                        soundOutputState: currentState.soundOutputState
-                    )
-                    self.currentStateSubject.onNext(newState)
-                    
+                    self.updateState(callState: .establishingConnection)
                     self.incomingCallAcceptedByUser.onNext(true)
                 }
             )
@@ -537,14 +528,12 @@ final class IncomingCallViewModel: BaseViewModel {
                         return
                     }
                     
-                    let newState = IncomingCallStateContainer(
+                    self.updateState(
                         callState: .callFinished,
                         doorState: .notDetermined,
                         previewState: .staticImage,
                         soundOutputState: .disabled
                     )
-                    
-                    self.currentStateSubject.onNext(newState)
                 }
             )
             .withLatestFrom(incomingCall.asDriver(onErrorJustReturn: nil))
@@ -599,6 +588,7 @@ final class IncomingCallViewModel: BaseViewModel {
             .withLatestFrom(currentState)
             .drive(
                 onNext: { [weak self] currentState in
+                    Logger.logInfo("Audio route change detected. Current state: \(currentState.soundOutputState)")
                     guard currentState.doorState == .notDetermined,
                         currentState.soundOutputState != .disabled else {
                         return
@@ -607,13 +597,8 @@ final class IncomingCallViewModel: BaseViewModel {
                     let outputs = AVAudioSession.sharedInstance().currentRoute.outputs
                     let isSpeakerEnabled = outputs.contains { output in output.portType == .builtInSpeaker }
                     
-                    let newState = IncomingCallStateContainer(
-                        callState: currentState.callState,
-                        doorState: currentState.doorState,
-                        previewState: currentState.previewState,
-                        soundOutputState: isSpeakerEnabled ? .speaker : .regular
-                    )
-                    self?.currentStateSubject.onNext(newState)
+                    self?.updateState(soundOutputState: isSpeakerEnabled ? .speaker : .regular)
+                    Logger.logDebug("Updated sound output state to \(isSpeakerEnabled ? "speaker" : "regular").")
                 }
             )
             .disposed(by: disposeBag)
@@ -633,14 +618,7 @@ final class IncomingCallViewModel: BaseViewModel {
                         return
                     }
                     
-                    let newState = IncomingCallStateContainer(
-                        callState: currentState.callState,
-                        doorState: currentState.doorState,
-                        previewState: currentState.previewState,
-                        soundOutputState: .regular
-                    )
-                    
-                    self?.currentStateSubject.onNext(newState)
+                    self?.updateState(soundOutputState: .regular)
                 }
             )
             .disposed(by: disposeBag)
@@ -704,14 +682,9 @@ final class IncomingCallViewModel: BaseViewModel {
             .withLatestFrom(currentState)
             .drive(
                 onNext: { [weak self] currentState in
+                    Logger.logInfo("User tapped 'Open'. Current state: \(currentState.callState)")
                     if currentState.callState == .callReceived {
-                        let newState = IncomingCallStateContainer(
-                            callState: .establishingConnection,
-                            doorState: currentState.doorState,
-                            previewState: currentState.previewState,
-                            soundOutputState: currentState.soundOutputState
-                        )
-                        self?.currentStateSubject.onNext(newState)
+                        self?.updateState(callState: .establishingConnection)
                     }
                     
                     self?.doorOpeningRequestedByUser.onNext(true)
@@ -748,6 +721,7 @@ final class IncomingCallViewModel: BaseViewModel {
         input.ignoreTrigger
             .drive(
                 onNext: { [weak self] in
+                    Logger.logInfo("User tapped 'Ignore'. Ending call...")
                     self?.endCallProxySubject.onNext(())
                 }
             )
@@ -762,15 +736,14 @@ final class IncomingCallViewModel: BaseViewModel {
                     guard let self = self, currentState.doorState == .notDetermined else {
                         return
                     }
+                    let isWebRTC = callPayload.videoType == .webrtc
                     
-                    let newState = IncomingCallStateContainer(
-                        callState: currentState.callState,
-                        doorState: currentState.doorState,
-                        previewState: currentState.previewState == .staticImage ? .video : .staticImage,
-                        soundOutputState: currentState.soundOutputState
-                    )
-                    
-                    self.currentStateSubject.onNext(newState)
+                    switch currentState.previewState {
+                    case .staticImage:
+                        self.updateState(previewState: .video)
+                    case .video:
+                        self.updateState(previewState: .staticImage)
+                    }
                 }
             )
             .disposed(by: disposeBag)
@@ -786,14 +759,7 @@ final class IncomingCallViewModel: BaseViewModel {
                         return
                     }
                     
-                    let newState = IncomingCallStateContainer(
-                        callState: currentState.callState,
-                        doorState: currentState.doorState,
-                        previewState: currentState.previewState,
-                        soundOutputState: currentState.soundOutputState == .regular ? .speaker : .regular
-                    )
-                    
-                    self?.currentStateSubject.onNext(newState)
+                    self?.updateState(soundOutputState: currentState.soundOutputState == .regular ? .speaker : .regular)
                 }
             )
             .disposed(by: disposeBag)
@@ -812,14 +778,7 @@ final class IncomingCallViewModel: BaseViewModel {
                         return
                     }
                     
-                    let newState = IncomingCallStateContainer(
-                        callState: currentState.callState,
-                        doorState: currentState.doorState,
-                        previewState: currentState.previewState,
-                        soundOutputState: .speaker
-                    )
-                    
-                    self?.currentStateSubject.onNext(newState)
+                    self?.updateState(soundOutputState: .speaker)
                 }
             )
             .disposed(by: disposeBag)
@@ -828,9 +787,7 @@ final class IncomingCallViewModel: BaseViewModel {
             state: currentState,
             subtitle: subtitleSubject.asDriverOnErrorJustComplete(),
             image: imageSubject.asDriverOnErrorJustComplete(),
-            isDoorBeingOpened: isDoorBeingOpened.asDriver(onErrorJustReturn: false), 
-            isSIPHasVideo: isSIPHasVideo.asDriverOnErrorJustComplete(),
-            isWebRTCHasVideo: isWebRTCHasVideo.asDriverOnErrorJustComplete()
+            isDoorBeingOpened: isDoorBeingOpened.asDriver(onErrorJustReturn: false)
         )
     }
     
@@ -838,11 +795,12 @@ final class IncomingCallViewModel: BaseViewModel {
         do {
             try AVAudioSession.sharedInstance().overrideOutputAudioPort(enabled ? .speaker : .none)
         } catch {
-            print("Couldn't switch output port")
+            Logger.logError("Failed to switch output audio port. Error: \(error.localizedDescription)")
         }
     }
     
     private func openTheDoor(call: Call) {
+        Logger.logInfo("Attempting to open the door...")
         isDoorBeingOpened.onNext(true)
         
         // MARK: Поскольку доставка тонового сигнала вообще не гарантируется, решено отправлять их несколько раз
@@ -855,15 +813,16 @@ final class IncomingCallViewModel: BaseViewModel {
             .filter { $0 < 3 }
             .drive(
                 onNext: { [weak self] _ in
-                    guard let self = self,
-                          call.state == .StreamsRunning
-                    else {
+                    guard let self = self, call.state == .StreamsRunning else {
+                        Logger.logWarning("Cannot send DTMF. Call is not in StreamsRunning state.")
                         return
                     }
                     
                     do {
                         try call.sendDtmfs(dtmfs: self.callPayload.dtmf)
+                        Logger.logSuccess("DTMF sent successfully.")
                     } catch {
+                        Logger.logError("Failed to send DTMF. Error: \(error.localizedDescription)")
                         self.isDoorBeingOpened.onNext(false)
                         return
                     }
@@ -876,17 +835,16 @@ final class IncomingCallViewModel: BaseViewModel {
             .throttle(.never)
             .drive(
                 onNext: { [weak self] _ in
-                    print("DTMF code was sent. Delivery is not guaranteed tho")
+                    Logger.logInfo("DTMF code was sent. Delivery is not guaranteed tho")
                     
                     self?.isDoorBeingOpened.onNext(false)
                     
-                    let newState = IncomingCallStateContainer(
+                    self?.updateState(
                         callState: .callFinished,
                         doorState: .opened,
                         previewState: .staticImage,
                         soundOutputState: .disabled
                     )
-                    self?.currentStateSubject.onNext(newState)
                     
                     do {
                         try call.terminate()
@@ -911,17 +869,21 @@ final class IncomingCallViewModel: BaseViewModel {
 
 extension IncomingCallViewModel: LinphoneDelegate {
     func onAccountRegistrationStateChanged(lc core: Core, account: Account, state: RegistrationState, message: String) {
-        print("DEBUG / REGISTRATION STATE: \(state)")
-        
+        Logger.logDebug("Account registration state changed: \(state), message: \(message)")
+
         if state == .Ok {
+            Logger.logInfo("Registration completed successfully.")
             registrationFinished.onNext(true)
+        } else {
+            Logger.logWarning("Registration state is not OK: \(state). Message: \(message)")
         }
     }
     
     func onCallStateChanged(lc: Core, call: Call, cstate: Call.State, message: String) {
-        print("DEBUG / CALL STATE: \(cstate)")
-        
+        Logger.logDebug("CALL STATE: \(cstate)")
+                
         // обновляем режим вывода звука согласно текущего состояния, т.к. оно затирается при снятии трубки linphone-ом
+        Logger.logInfo("Call streams running. Updating sound output state...")
         if cstate == .StreamsRunning,
             let soundOutputState = try? currentStateSubject.value().soundOutputState {
             setSpeakerEnabled(soundOutputState == .speaker)
@@ -935,15 +897,13 @@ extension IncomingCallViewModel: LinphoneDelegate {
         }
         
         if cstate == .End {
-            if let currentState = try? currentStateSubject.value() {
-                let newState = IncomingCallStateContainer(
+            Logger.logInfo("Call ended. Cleaning up...")
+            if (try? currentStateSubject.value()) != nil {
+                updateState(
                     callState: .callFinished,
-                    doorState: currentState.doorState,
                     previewState: .staticImage,
                     soundOutputState: .disabled
                 )
-                
-                currentStateSubject.onNext(newState)
             }
             
             providerProxy.endCall(uuid: callPayload.uuid)
@@ -978,5 +938,54 @@ extension IncomingCallViewModel: CXProviderProxyDelegate {
         linphoneService.core?.activateAudioSession(activated: false)
     }
     
-    // swiftlint:disable:next file_length
+}
+
+// MARK: - Private functions
+
+extension IncomingCallViewModel {
+    
+    private func updateState(
+        callState: IncomingCallState? = nil,
+        doorState: IncomingCallDoorState? = nil,
+        previewState: IncomingCallPreviewState? = nil,
+        soundOutputState: IncomingCallSoundOutputState? = nil,
+        videoState: IncomingCallVideoState? = nil
+    ) {
+        guard let currentState = try? self.currentStateSubject.value() else { return }
+
+        let newState = IncomingCallStateContainer(
+            callState: callState ?? currentState.callState,
+            doorState: doorState ?? currentState.doorState,
+            previewState: previewState ?? currentState.previewState,
+            soundOutputState: soundOutputState ?? currentState.soundOutputState,
+            videoState: videoState ?? currentState.videoState
+        )
+        
+        self.currentStateSubject.onNext(newState)
+    }
+    
+    private func startWebRTC() {
+        Logger.logInfo("Starting WebRTC setup...")
+        
+        guard callPayload.videoType == .webrtc else {
+            Logger.logDebug("Video type is not WebRTC. Exiting startWebRTC.")
+            return
+        }
+        
+        guard let stun = callPayload.stun, let urlString = callPayload.videoUrl, let endpointUrl = URL(string: urlString) else {
+            Logger.logError("""
+            WebRTC Service setup failed:
+            stun: \(callPayload.stun ?? "nil"),
+            urlString: \(callPayload.videoUrl ?? "nil"),
+            endpointUrl: \(callPayload.videoUrl ?? "nil")
+            """)
+            self.webRTCService = nil
+            return
+        }
+        
+        Logger.logDebug("WebRTC Service setup parameters are valid. Initializing WebRTCService...")
+        self.webRTCService = WebRTCService(iceServers: [stun], endpointUrl: endpointUrl)
+        self.updateState(videoState: .webrtc)
+    }
+
 }

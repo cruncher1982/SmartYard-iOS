@@ -102,9 +102,7 @@ extension NSError {
         }
         
         static let accessTokenMissingError: NSError = {
-            let errorUserInfo = [NSLocalizedDescriptionKey:
-                NSLocalizedString("Access token not found. Request cannot be completed", comment: "")
-            ]
+            let errorUserInfo = [NSLocalizedDescriptionKey: NSLocalizedString("Access token not found. Request cannot be completed", comment: "")]
             
             return NSError(
                 domain: domain,
@@ -114,9 +112,7 @@ extension NSError {
         }()
         
         static let clientIdMissingError: NSError = {
-            let errorUserInfo = [NSLocalizedDescriptionKey:
-                NSLocalizedString("Client id not found. Request cannot be completed", comment: "")
-            ]
+            let errorUserInfo = [NSLocalizedDescriptionKey: NSLocalizedString("Client id not found. Request cannot be completed", comment: "")]
             
             return NSError(
                 domain: domain,
@@ -136,9 +132,7 @@ extension NSError {
         }()
         
         static let houseIdMissingError: NSError = {
-            let errorUserInfo = [NSLocalizedDescriptionKey:
-                NSLocalizedString("House id not found. Request cannot be completed", comment: "")
-            ]
+            let errorUserInfo = [NSLocalizedDescriptionKey: NSLocalizedString("House id not found. Request cannot be completed", comment: "")]
             
             return NSError(
                 domain: domain,
@@ -158,9 +152,7 @@ extension NSError {
         }
         
         static let userPhoneMissing: NSError = {
-            let errorUserInfo = [NSLocalizedDescriptionKey:
-                NSLocalizedString("Current user's phone number not found", comment: "")
-            ]
+            let errorUserInfo = [NSLocalizedDescriptionKey: NSLocalizedString("Current user's phone number not found", comment: "")]
             
             return NSError(
                 domain: domain,
@@ -180,9 +172,7 @@ extension NSError {
         }
         
         static let contractNumberMissingError: NSError = {
-            let errorUserInfo = [NSLocalizedDescriptionKey:
-                NSLocalizedString("The contract number was not found. It is impossible to complete the request", comment: "")
-            ]
+            let errorUserInfo = [NSLocalizedDescriptionKey: NSLocalizedString("The contract number was not found. It is impossible to complete the request", comment: "")]
             
             return NSError(
                 domain: domain,
@@ -229,18 +219,14 @@ extension NSError {
         static let pushDisabledInSystem = NSError(
             domain: domain,
             code: 5001,
-            userInfo: [NSLocalizedDescriptionKey:
-                NSLocalizedString("Push notifications are disabled for the application at the system level", comment: "")
-            ]
+            userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Push notifications are disabled for the application at the system level", comment: "")]
         )
         
         /// Push-уведомления выключены в настройках приложения
         static let pushDisabledInApp = NSError(
             domain: domain,
             code: 5002,
-            userInfo: [NSLocalizedDescriptionKey:
-                NSLocalizedString("Push notifications are disabled in the app settings", comment: "")
-            ]
+            userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Push notifications are disabled in the app settings", comment: "")]
         )
         
         /// Отсутствует FCM токен
