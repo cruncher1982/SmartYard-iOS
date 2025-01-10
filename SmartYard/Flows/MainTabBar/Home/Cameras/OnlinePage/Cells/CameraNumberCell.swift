@@ -32,9 +32,7 @@ final class CameraNumberCell: UICollectionViewCell {
                     equalTo: contentView.trailingAnchor,
                     constant: -20
                ),
-               containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-               containerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-               containerView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+               containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
          ])
           
          return containerView
