@@ -244,8 +244,9 @@ final class HistoryViewController: BaseViewController, LoaderPresentable, UIAdap
         self.topToolbarPositon.constant = 0
         self.view.layoutIfNeeded()
         lockToolbar = true
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-        
+        if tableView.numberOfSections > 0 && tableView.numberOfRows(inSection: 0) > 0 {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.stopDynamicLoading = false
             self?.lockToolbar = false
@@ -440,12 +441,13 @@ extension HistoryViewController: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // управление скрытием кнопки scrollUp
-        
-        if scrollView.contentOffset.y > 0 && scrollUpButton.alpha == 0 {
-            scrollUpButton.view.fadeIn(duration: 0.5, completion: { _ in self.scrollUpButton.isHidden = false })
-        }
-        if scrollView.contentOffset.y <= 0 && scrollUpButton.alpha == 1 {
-            scrollUpButton.view.fadeOut(duration: 0.5, completion: { _ in self.scrollUpButton.isHidden = true })
+        if let dataSource = dataSource, !dataSource.sectionModels.isEmpty {
+            if scrollView.contentOffset.y > 0 && scrollUpButton.alpha == 0 {
+                scrollUpButton.view.fadeIn(duration: 0.5, completion: { _ in self.scrollUpButton.isHidden = false })
+            }
+            if scrollView.contentOffset.y <= 0 && scrollUpButton.alpha == 1 {
+                scrollUpButton.view.fadeOut(duration: 0.5, completion: { _ in self.scrollUpButton.isHidden = true })
+            }
         }
         
         // не скрывать тулбар, если контент умещается без скрола
