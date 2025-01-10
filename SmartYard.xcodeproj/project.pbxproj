@@ -208,9 +208,6 @@
 		3AEFB474264C2C95000F37D0 /* FaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEFB472264C2C95000F37D0 /* FaceCell.swift */; };
 		3AEFB47C264C346A000F37D0 /* FaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AEFB473264C2C95000F37D0 /* FaceCell.xib */; };
 		3AEFB483264D1ADE000F37D0 /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEFB481264D1ADE000F37D0 /* FaceViewController.swift */; };
-		3AF99FBC2AFCFF9D007B7ECA /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF99FBB2AFCFF9D007B7ECA /* WebRTCClient.swift */; };
-		3AF99FBE2AFCFFD2007B7ECA /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF99FBD2AFCFFD2007B7ECA /* SignalingClient.swift */; };
-		3AF99FC02AFD008D007B7ECA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF99FBF2AFD008D007B7ECA /* Message.swift */; };
 		3AF99FC52AFD0374007B7ECA /* RTCStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF99FC22AFD0374007B7ECA /* RTCStates.swift */; };
 		3AF99FC62AFD0374007B7ECA /* SessionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF99FC32AFD0374007B7ECA /* SessionDescription.swift */; };
 		3AF99FC72AFD0374007B7ECA /* IceCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF99FC42AFD0374007B7ECA /* IceCandidate.swift */; };
@@ -598,6 +595,12 @@
 		FA9E30EE2BBBF01E0087E689 /* AutoRefreshingCachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E30ED2BBBF01E0087E689 /* AutoRefreshingCachedImageView.swift */; };
 		FA9E30F02BBBF0450087E689 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E30EF2BBBF0450087E689 /* CameraButton.swift */; };
 		FAC12F592C6114080016A9DC /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC12F582C6114080016A9DC /* UIDevice+Extensions.swift */; };
+		FAD4E0682D31CB3D00B0130C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4E0672D31CB3D00B0130C /* Message.swift */; };
+		FAD4E06C2D31CB4600B0130C /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4E06A2D31CB4600B0130C /* WebRTCClient.swift */; };
+		FAD4E06D2D31CB4600B0130C /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4E0692D31CB4600B0130C /* SignalingClient.swift */; };
+		FAD4E0702D31CB4D00B0130C /* WebRTCFrameCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4E06E2D31CB4D00B0130C /* WebRTCFrameCapture.swift */; };
+		FAD4E0722D31CDFC00B0130C /* IncomingCallVideoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4E0712D31CDFC00B0130C /* IncomingCallVideoState.swift */; };
+		FAD4E0762D31D21500B0130C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4E0752D31D21500B0130C /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1146,9 +1149,6 @@
 		3AEFB472264C2C95000F37D0 /* FaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCell.swift; sourceTree = "<group>"; };
 		3AEFB473264C2C95000F37D0 /* FaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FaceCell.xib; sourceTree = "<group>"; };
 		3AEFB481264D1ADE000F37D0 /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
-		3AF99FBB2AFCFF9D007B7ECA /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
-		3AF99FBD2AFCFFD2007B7ECA /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
-		3AF99FBF2AFD008D007B7ECA /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3AF99FC22AFD0374007B7ECA /* RTCStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCStates.swift; sourceTree = "<group>"; };
 		3AF99FC32AFD0374007B7ECA /* SessionDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDescription.swift; sourceTree = "<group>"; };
 		3AF99FC42AFD0374007B7ECA /* IceCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceCandidate.swift; sourceTree = "<group>"; };
@@ -1547,6 +1547,12 @@
 		FA9E30ED2BBBF01E0087E689 /* AutoRefreshingCachedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoRefreshingCachedImageView.swift; sourceTree = "<group>"; };
 		FA9E30EF2BBBF0450087E689 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		FAC12F582C6114080016A9DC /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
+		FAD4E0672D31CB3D00B0130C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FAD4E0692D31CB4600B0130C /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingClient.swift; sourceTree = "<group>"; };
+		FAD4E06A2D31CB4600B0130C /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
+		FAD4E06E2D31CB4D00B0130C /* WebRTCFrameCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCFrameCapture.swift; sourceTree = "<group>"; };
+		FAD4E0712D31CDFC00B0130C /* IncomingCallVideoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingCallVideoState.swift; sourceTree = "<group>"; };
+		FAD4E0752D31D21500B0130C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2131,10 +2137,9 @@
 		3AF99FBA2AFCFE22007B7ECA /* WebRTCService */ = {
 			isa = PBXGroup;
 			children = (
+				FAD4E06F2D31CB4D00B0130C /* Functionality */,
+				FAD4E06B2D31CB4600B0130C /* Clients */,
 				3AF99FCA2AFD5FBC007B7ECA /* Extensions */,
-				3AF99FBB2AFCFF9D007B7ECA /* WebRTCClient.swift */,
-				3AF99FBD2AFCFFD2007B7ECA /* SignalingClient.swift */,
-				3AF99FBF2AFD008D007B7ECA /* Message.swift */,
 				3AF99FC82AFD08C9007B7ECA /* WebRTCService.swift */,
 			);
 			path = WebRTCService;
@@ -2143,6 +2148,7 @@
 		3AF99FCA2AFD5FBC007B7ECA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FAD4E0672D31CB3D00B0130C /* Message.swift */,
 				3AF99FC22AFD0374007B7ECA /* RTCStates.swift */,
 				3AF99FC32AFD0374007B7ECA /* SessionDescription.swift */,
 				3AF99FC42AFD0374007B7ECA /* IceCandidate.swift */,
@@ -2546,6 +2552,7 @@
 		844AC40423EC22140066006D /* Entries */ = {
 			isa = PBXGroup;
 			children = (
+				FAD4E0712D31CDFC00B0130C /* IncomingCallVideoState.swift */,
 				844AC3B023EAD0930066006D /* IncomingCallState.swift */,
 				844AC3B223EAD09B0066006D /* IncomingCallDoorState.swift */,
 				84D29BAA24BDCB6900CFBE6B /* IncomingCallPreviewState.swift */,
@@ -3242,6 +3249,7 @@
 		84B9EC8723E0844A00979C39 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FAD4E0752D31D21500B0130C /* Logger.swift */,
 				3A3EF203271DFA9600B73B36 /* Swift.swift */,
 				84854B4023FA9A99001B44F2 /* ActivityTracker.swift */,
 				84854B3C23FA9918001B44F2 /* ErrorTracker.swift */,
@@ -4495,6 +4503,23 @@
 			path = CameraButton;
 			sourceTree = "<group>";
 		};
+		FAD4E06B2D31CB4600B0130C /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				FAD4E0692D31CB4600B0130C /* SignalingClient.swift */,
+				FAD4E06A2D31CB4600B0130C /* WebRTCClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		FAD4E06F2D31CB4D00B0130C /* Functionality */ = {
+			isa = PBXGroup;
+			children = (
+				FAD4E06E2D31CB4D00B0130C /* WebRTCFrameCapture.swift */,
+			);
+			path = Functionality;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -5110,6 +5135,7 @@
 				844AC3EF23EBFF5E0066006D /* SettingsCoordinator.swift in Sources */,
 				E92EFBE8242A24D2003AF7FE /* RestoreRequest.swift in Sources */,
 				E9B9EAC72421FCB8000A92B3 /* RestorePasswordViewController.swift in Sources */,
+				FAD4E0702D31CB4D00B0130C /* WebRTCFrameCapture.swift in Sources */,
 				3A7CD5482857790B003CDDC7 /* SelectProviderViewController.swift in Sources */,
 				84CD304724D305F500CC079E /* IncomingCallScreenType.swift in Sources */,
 				3A3B8B9525A5CD2500BFB72E /* MainMenuCoordinator.swift in Sources */,
@@ -5154,7 +5180,6 @@
 				84AF095D24ADF9AF005CEECE /* AlertService.swift in Sources */,
 				84898A9823F1556B00E6B78E /* SettingsSectionModel.swift in Sources */,
 				3A4A4A782704826600C5B609 /* SharedFunctions.swift in Sources */,
-				3AF99FBE2AFCFFD2007B7ECA /* SignalingClient.swift in Sources */,
 				E9A4D49523EC2CC20070A591 /* PinCodeViewController.swift in Sources */,
 				849F2AD72448687C005693B3 /* AddressesListEmptyStateCell.swift in Sources */,
 				E9BB83D323F6B1E70071F91E /* AccessViewModel.swift in Sources */,
@@ -5178,6 +5203,7 @@
 				846DC6C024B33DC600A11914 /* PaymentPopupViewModel.swift in Sources */,
 				3AD968DC25E976C5000EEB4E /* SmartYardDropDownTextField.swift in Sources */,
 				3A897A5F2BA99A4600A06B15 /* PayRegisterRequest.swift in Sources */,
+				FAD4E0722D31CDFC00B0130C /* IncomingCallVideoState.swift in Sources */,
 				E92EFBE1242A22F2003AF7FE /* APITarget.swift in Sources */,
 				84898AA323F1A3A500E6B78E /* JumpAvoidingFlowLayout.swift in Sources */,
 				845E9EE024895AE4000CBBC6 /* SimpleVideoEndIndicator.swift in Sources */,
@@ -5237,7 +5263,6 @@
 				3A003CE625E0466D002F193B /* RequestRecordViewModel.swift in Sources */,
 				3A1BDEC626285DB60075410B /* HistoryHelpers.swift in Sources */,
 				E9A4D47C23EC19110070A591 /* Constants.swift in Sources */,
-				3AF99FC02AFD008D007B7ECA /* Message.swift in Sources */,
 				3AFBA73E26383A2F00C7DEB6 /* CamMapCCTVRequest.swift in Sources */,
 				E92EFBBF242A22F2003AF7FE /* GetServicesRequest.swift in Sources */,
 				84F6494B24740E90000C0028 /* YardMapViewModel.swift in Sources */,
@@ -5295,6 +5320,8 @@
 				846DC6DD24B33DEA00A11914 /* SberbankPayData.swift in Sources */,
 				E92EFB4A2428B83A003AF7FE /* PassConfirmationPinViewController+Timer.swift in Sources */,
 				848D1B8923F29D6100D6E368 /* AddressSettingsViewController.swift in Sources */,
+				FAD4E06C2D31CB4600B0130C /* WebRTCClient.swift in Sources */,
+				FAD4E06D2D31CB4600B0130C /* SignalingClient.swift in Sources */,
 				3A200B0927297B250022A0EC /* SimpleButton.swift in Sources */,
 				3AEFB45B264C12E9000F37D0 /* FacesSettingsViewController.swift in Sources */,
 				844AC3F823EBFF9B0066006D /* SettingsViewModel.swift in Sources */,
@@ -5316,6 +5343,7 @@
 				3A3B8BBA25A5E8DA00BFB72E /* MainMenuItem.swift in Sources */,
 				E92EFBC0242A22F2003AF7FE /* GetServicesResponseData.swift in Sources */,
 				846DC6D924B33DEA00A11914 /* APIWrapper+Payment.swift in Sources */,
+				FAD4E0762D31D21500B0130C /* Logger.swift in Sources */,
 				3AEFB44D264C0D14000F37D0 /* GetPersonFacesRequest.swift in Sources */,
 				843C38D5242A57B70035BF80 /* MessageType.swift in Sources */,
 				84854B5A23FC31AD001B44F2 /* IncomingCallViewModel+Extensions.swift in Sources */,
@@ -5491,12 +5519,12 @@
 				3AC5C6012608943E008D74DE /* PlogResponseData.swift in Sources */,
 				843C38D0242A577C0035BF80 /* UnreadedRequest.swift in Sources */,
 				E92EFBC1242A22F2003AF7FE /* APIWrapper+Geo.swift in Sources */,
+				FAD4E0682D31CB3D00B0130C /* Message.swift in Sources */,
 				84CC15EF23ED75B100A1CB95 /* TabBarTransitions.swift in Sources */,
 				84854B5323FBFDD6001B44F2 /* PushNotificationService.swift in Sources */,
 				3AEB886927E0CF3400B19925 /* GetExtensionsListResponseData.swift in Sources */,
 				84CC15D123EC409500A1CB95 /* AddressesListObjectCell.swift in Sources */,
 				E92EFBCB242A22F2003AF7FE /* RequestCodeRequest.swift in Sources */,
-				3AF99FBC2AFCFF9D007B7ECA /* WebRTCClient.swift in Sources */,
 				E940581123F682EA00623746 /* AllowedPersonCell.swift in Sources */,
 				84CC15DC23EC6AA800A1CB95 /* AddressesListCameraCell.swift in Sources */,
 				849FF08E24CEE3C900C234BC /* LinearGradientView.swift in Sources */,
