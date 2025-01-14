@@ -1,110 +1,111 @@
 {
   "images" : [
     {
-      "filename" : "SmartYardIcon40.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "40 1.png",
+      "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "SmartYardMinIcon60.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "60.png",
+      "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "SmartYardIcon58.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "58 1.png",
+      "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "SmartYardMinIcon87.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "87.png",
+      "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "SmartYardIcon76.png",
-      "idiom" : "universal",
-      "platform" : "ios",
-      "scale" : "2x",
-      "size" : "38x38"
-    },
-    {
-      "idiom" : "universal",
-      "platform" : "ios",
-      "scale" : "3x",
-      "size" : "38x38"
-    },
-    {
-      "filename" : "SmartYardIcon80.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "80 1.png",
+      "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "SmartYardIcon120-1.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "120 1.png",
+      "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "SmartYardIcon120-1 1.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "120.png",
+      "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "SmartYardIcon180.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "180.png",
+      "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "20.png",
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "size" : "20x20"
+    },
+    {
+      "filename" : "40.png",
+      "idiom" : "ipad",
       "scale" : "2x",
-      "size" : "64x64"
+      "size" : "20x20"
     },
     {
-      "idiom" : "universal",
-      "platform" : "ios",
-      "scale" : "3x",
-      "size" : "64x64"
+      "filename" : "29.png",
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "size" : "29x29"
     },
     {
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "58.png",
+      "idiom" : "ipad",
       "scale" : "2x",
-      "size" : "68x68"
+      "size" : "29x29"
     },
     {
-      "filename" : "SmartYardIcon152.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "40 2.png",
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "size" : "40x40"
+    },
+    {
+      "filename" : "80.png",
+      "idiom" : "ipad",
+      "scale" : "2x",
+      "size" : "40x40"
+    },
+    {
+      "filename" : "76.png",
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "size" : "76x76"
+    },
+    {
+      "filename" : "152.png",
+      "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "SmartYardIcon167.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "167.png",
+      "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "SmartYardIcon1024.png",
-      "idiom" : "universal",
-      "platform" : "ios",
+      "filename" : "1024.png",
+      "idiom" : "ios-marketing",
+      "scale" : "1x",
       "size" : "1024x1024"
     }
   ],
