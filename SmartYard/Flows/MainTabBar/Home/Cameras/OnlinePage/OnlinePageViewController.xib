@@ -25,7 +25,7 @@
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pHO-FP-93T" userLabel="Cameras Colllection View">
                     <rect key="frame" x="0.0" y="59" width="390" height="379.66666666666669"/>
-                    <color key="backgroundColor" name="secondBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="sz6-b7-T2Q">
                         <size key="itemSize" width="348" height="128"/>
