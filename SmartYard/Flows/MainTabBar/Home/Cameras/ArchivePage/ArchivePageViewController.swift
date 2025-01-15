@@ -111,6 +111,8 @@ final class ArchivePageViewController: BaseViewController, LoaderPresentable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        calendarView.deselectAllDates()
+        
         guard shouldReloadOnAppear else {
             return
         }
