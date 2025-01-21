@@ -9,6 +9,7 @@
 struct CheckPhoneRequest {
     
     let userPhone: String
+    let deviceToken: String
     
 }
 
@@ -16,7 +17,8 @@ extension CheckPhoneRequest {
     
     var requestParameters: [String: Any] {
         return [
-            "userPhone": userPhone
+            "userPhone": userPhone,
+            "deviceToken": deviceToken
         ]
     }
     

@@ -10,6 +10,7 @@ struct ConfirmCodeRequest {
     
     let userPhone: String
     let smsCode: String
+    let deviceToken: String
     
 }
 
@@ -18,7 +19,8 @@ extension ConfirmCodeRequest {
     var requestParameters: [String: Any] {
         return [
             "userPhone": userPhone,
-            "smsCode": smsCode
+            "smsCode": smsCode,
+            "deviceToken": deviceToken
         ]
     }
     

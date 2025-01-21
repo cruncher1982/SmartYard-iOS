@@ -124,7 +124,8 @@ extension APIWrapper {
             return .error(NSError.APIWrapperError.alreadyLoggedInError)
         }
         
-        let request = ConfirmCodeRequest(userPhone: userPhone, smsCode: smsCode)
+        let deviceToken = UIDevice.current.identifierForVendor?.uuidString ?? "unknown_device"
+        let request = ConfirmCodeRequest(userPhone: userPhone, smsCode: smsCode, deviceToken: deviceToken)
         
         return provider.rx
             .request(.confirmCode(request: request))
@@ -141,7 +142,8 @@ extension APIWrapper {
             return .error(NSError.APIWrapperError.alreadyLoggedInError)
         }
         
-        let request = CheckPhoneRequest(userPhone: userPhone)
+        let deviceToken = UIDevice.current.identifierForVendor?.uuidString ?? "unknown_device"
+        let request = CheckPhoneRequest(userPhone: userPhone, deviceToken: deviceToken)
         
         return provider.rx
             .request(.checkPhone(request: request))
