@@ -12,6 +12,7 @@ import RxCocoa
 
 private let appearanceModeKey = "themeAppearanceKey"
 
+@available(iOS 13.0, *)
 final class ThemeManager {
     static let shared = ThemeManager()
     private let disposeBag = DisposeBag()

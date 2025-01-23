@@ -220,31 +220,37 @@ final class AppCoordinator: NavigationCoordinator<AppRoute> {
             
             incomingCallWindow = UIWindow()
             
-            if Constants.isDarkModeEnabled {
-                let currentTheme = ThemeManager.shared.currentTheme.value
-                let userInterfaceStyle: UIUserInterfaceStyle
-                
-                switch currentTheme {
-                case .unspecified:
-                    switch UITraitCollection.current.userInterfaceStyle {
-                    case .dark:
-                        userInterfaceStyle = .dark
+            if #available(iOS 13.0, *) {
+                if Constants.isDarkModeEnabled {
+                    let currentTheme = ThemeManager.shared.currentTheme.value
+                    let userInterfaceStyle: UIUserInterfaceStyle
+                    
+                    switch currentTheme {
+                    case .unspecified:
+                        switch UITraitCollection.current.userInterfaceStyle {
+                        case .dark:
+                            userInterfaceStyle = .dark
+                        case .light:
+                            userInterfaceStyle = .light
+                        default:
+                            userInterfaceStyle = .unspecified
+                        }
                     case .light:
                         userInterfaceStyle = .light
-                    default:
+                    case .dark:
+                        userInterfaceStyle = .dark
+                    @unknown default:
                         userInterfaceStyle = .unspecified
                     }
-                case .light:
-                    userInterfaceStyle = .light
-                case .dark:
-                    userInterfaceStyle = .dark
-                @unknown default:
-                    userInterfaceStyle = .unspecified
+                    
+                    incomingCallWindow?.overrideUserInterfaceStyle = userInterfaceStyle
+                } else {
+                    incomingCallWindow?.overrideUserInterfaceStyle = .light
                 }
-                
-                incomingCallWindow?.overrideUserInterfaceStyle = userInterfaceStyle
+            } else {
+                // Реализации темной темы для ios 12 нет.
             }
-            
+
             // MARK: Если вызов пришёл обычным пуш-уведомлением, то показываем экран входящего вызова
             if !isCallKitUsed {
                 incomingCallWindow?.rootViewController = portraitVC

@@ -87,24 +87,28 @@ final class CommonSettingsViewModel: BaseViewModel {
         let displaySettingsSubject = BehaviorSubject<(Bool, Bool, Bool)>(value: (showDisplaySettings, isChangeEnableListButtonVisible, isChangeAppearanceButtonVisible))
         let appereanceButtonTextSubject = BehaviorSubject<String>(value: NSLocalizedString("System", comment: ""))
 
-        ThemeManager.shared.currentTheme
-            .subscribe(
-                onNext: { style in
-                    switch style {
-                    case .unspecified:
-                        appereanceButtonTextSubject.onNext(NSLocalizedString("System", comment: ""))
-                    case .light:
-                        appereanceButtonTextSubject.onNext(NSLocalizedString("Light", comment: ""))
-                    case .dark:
-                        appereanceButtonTextSubject.onNext(NSLocalizedString("Dark", comment: ""))
-                    @unknown default:
-                        Logger.logWarning("!! Unknown UIUserInterfaceStyle encountered: \(style)")
-                        
-                        appereanceButtonTextSubject.onNext(NSLocalizedString("System", comment: ""))
+        if #available(iOS 13.0, *) {
+            ThemeManager.shared.currentTheme
+                .subscribe(
+                    onNext: { style in
+                        switch style {
+                        case .unspecified:
+                            appereanceButtonTextSubject.onNext(NSLocalizedString("System", comment: ""))
+                        case .light:
+                            appereanceButtonTextSubject.onNext(NSLocalizedString("Light", comment: ""))
+                        case .dark:
+                            appereanceButtonTextSubject.onNext(NSLocalizedString("Dark", comment: ""))
+                        @unknown default:
+                            Logger.logWarning("!! Unknown UIUserInterfaceStyle encountered: \(style)")
+                            
+                            appereanceButtonTextSubject.onNext(NSLocalizedString("System", comment: ""))
+                        }
                     }
-                }
-            )
-            .disposed(by: disposeBag)
+                )
+                .disposed(by: disposeBag)
+        } else {
+            // Реализации темной темы для ios 12 нет.
+        }
         
         apiWrapper
             .getCurrentNotificationState()
@@ -330,15 +334,15 @@ final class CommonSettingsViewModel: BaseViewModel {
             .drive(
                 onNext: { [weak self] in
                     let systemAction = UIAlertAction(title: NSLocalizedString("System", comment: ""), style: .default) { _ in
-                        ThemeManager.shared.setTheme(.unspecified)
+                        if #available(iOS 13.0, *) { ThemeManager.shared.setTheme(.unspecified) }
                         appereanceButtonTextSubject.onNext(NSLocalizedString("System", comment: ""))
                     }
                     let lightAction = UIAlertAction(title: NSLocalizedString("Light", comment: ""), style: .default) { _ in
-                        ThemeManager.shared.setTheme(.light)
+                        if #available(iOS 13.0, *) { ThemeManager.shared.setTheme(.light) }
                         appereanceButtonTextSubject.onNext(NSLocalizedString("Light", comment: ""))
                     }
                     let darkAction = UIAlertAction(title: NSLocalizedString("Dark", comment: ""), style: .default) { _ in
-                        ThemeManager.shared.setTheme(.dark)
+                        if #available(iOS 13.0, *) { ThemeManager.shared.setTheme(.dark) }
                         appereanceButtonTextSubject.onNext(NSLocalizedString("Dark", comment: ""))
                     }
                     let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .destructive)

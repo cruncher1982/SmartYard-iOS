@@ -54,11 +54,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainWindow.tintAdjustmentMode = .dimmed
         
         // MARK: - Настройка темы приложения
-        // Если есть поддержка темной темы, то тогда спрашиваем какую тему ставить после запуска
-        if Constants.isDarkModeEnabled {
-            ThemeManager.shared.applySavedTheme()
+        // Если есть поддержка темной темы, то тогда узнаем какая тема была сохранена в настройках.
+        // В противном случае строго ставим .light
+        if #available(iOS 13.0, *) {
+            if Constants.isDarkModeEnabled {
+                ThemeManager.shared.applySavedTheme()
+            } else {
+                ThemeManager.shared.setTheme(.light)
+            }
         }
-        
         return true
     }
     

@@ -34,7 +34,7 @@ final class SafeCachedButton: UIButton {
         }
         
         if loadingImageIndicator == nil {
-            loadingImageIndicator = UIActivityIndicatorView(style: .medium)
+            loadingImageIndicator = UIActivityIndicatorView(style: .gray)
             loadingImageIndicator?.color = .SmartYard.gray
         }
         
