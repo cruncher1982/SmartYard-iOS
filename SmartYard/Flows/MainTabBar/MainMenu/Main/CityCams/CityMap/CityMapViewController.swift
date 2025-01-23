@@ -69,6 +69,12 @@ final class CityMapViewController: BaseViewController, LoaderPresentable {
         bind()
     }
     
+    private func getCityCamImage(for style: UIUserInterfaceStyle) -> UIImage {
+        let image = UIImage(named: "CityCam")!
+        let traitCollection = UITraitCollection(userInterfaceStyle: style)
+        return image.imageAsset?.image(with: traitCollection) ?? image
+    }
+    
     fileprivate func updateAnnotations(_ annotationManager: PointAnnotationManager, _ cameras: [CityCameraObject]) {
         annotationManager.annotations = []
         
@@ -79,10 +85,17 @@ final class CityMapViewController: BaseViewController, LoaderPresentable {
                 return true
             }
             // point.userInfo = ["camera": camera]
-            point.image = .init(
-                image: (UIImage(named: "CityCam")?.withRenderingMode(.alwaysOriginal))!,
-                name: "MapPoint"
-            )
+            if #available(iOS 13.0, *) {
+                point.image = .init(
+                    image: getCityCamImage(for: ThemeManager.shared.currentTheme.value),
+                    name: "MapPoint"
+                )
+            } else {
+                point.image = .init(
+                    image: getCityCamImage(for: .light),
+                    name: "MapPoint"
+                )
+            }
             point.iconAnchor = .center
             return point
         }
@@ -154,7 +167,7 @@ extension CityMapViewController {
         updateMapStyle()
     }
     
-    func updateMapStyle() {
+    private func updateMapStyle() {
         let styleURI: StyleURI
         if traitCollection.userInterfaceStyle == .dark {
             styleURI = StyleURI(url: URL(string: "mapbox://styles/mapbox/dark-v11")!)!
